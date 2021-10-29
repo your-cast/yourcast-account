@@ -6,5 +6,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'account-ui';
+  title = 'Tic Tac Toe';
+  isAuthenticated = false;
+
+  async logout(): Promise<void> {
+    // todo
+  }
 }
