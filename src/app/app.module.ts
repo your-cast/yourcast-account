@@ -2,25 +2,30 @@ import {NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 import {AppComponent} from './app.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {LoginComponent} from './components/login/login.component';
-import {PageNotFoundComponent} from './components/page-not-found/page-not-found.component';
 import {AppRoutingModule} from './app-routing.module';
 import {MatComponentsModule} from './mat-components-module/mat-components.module';
+import {LoginComponent} from './login';
+import {SharedModule} from './shared/shared.module';
+import {ReactiveFormsModule} from '@angular/forms';
+import {HttpClientModule} from '@angular/common/http';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MatComponentsModule,
+    HttpClientModule,
+    SharedModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
+
 export class AppModule {
 }

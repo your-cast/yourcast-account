@@ -1,0 +1,48 @@
+<div class="main-div">
+  <mat-card class="login-form center">
+    <div id="logo" class="logo-container mb-3">
+      <div id="amadeus-logo" class="title color-primary">YourCast</div>
+      <div id="rail-go-logo" class="subtitle color-primary">Authorization</div>
+    </div>
+    <mat-card-content>
+      <form [formGroup]="form" #f="ngForm" (ngSubmit)="signIn(f.value)" class="example-form" id="login-form">
+        <table class="example-full-width">
+          <tr>
+            <td>
+              <mat-form-field appearance="outline" class="w-100">
+                <mat-label id="username-label">Username</mat-label>
+                <mat-icon class="pr-2 pl-2" matSuffix color="accent" id="username-icon">user</mat-icon>
+                <input formControlName="username" matInput placeholder="Username" id="username"
+                       type="text" required>
+                <mat-error *ngIf="form.controls['username'].touched && form.controls['username'].invalid">
+                  <div id="username-error" *ngIf="form.controls['username'].invalid">Username is required</div>
+                </mat-error>
+              </mat-form-field>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <mat-form-field appearance="outline" class="w-100">
+                <mat-label id="password-label">Password</mat-label>
+                <mat-icon matSuffix color="primary" class="cursor-pointer" id="password-icon"
+                          (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                <input formControlName="password" matInput placeholder="Password" id="password"
+                       [type]="hide ? 'password' : 'text'" required>
+                <mat-error *ngIf="form.controls['password'].touched && form.controls['password'].invalid">
+                  <div id="password-error" *ngIf="form.controls['password'].invalid">Password is required</div>
+                </mat-error>
+              </mat-form-field>
+            </td>
+          </tr>
+        </table>
+      </form>
+      <div class="form-additions">
+        <mat-progress-bar id="progress-bar" mode="indeterminate"
+                          [style.display]="showSpinner ? 'block' : 'none'"></mat-progress-bar>
+      </div>
+      <button class="w-100 sing-in-button mt-2" id="login"
+              form="login-form" mat-flat-button color="primary" cdkFocusInitial>Sign In
+      </button>
+    </mat-card-content>
+  </mat-card>
+</div>
