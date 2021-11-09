@@ -10,12 +10,12 @@
           <tr>
             <td>
               <mat-form-field appearance="outline" class="w-100">
-                <mat-label id="username-label">Username</mat-label>
+                <mat-label id="email-label">Email</mat-label>
                 <mat-icon class="pr-2 pl-2" matSuffix color="accent" id="username-icon">user</mat-icon>
-                <input formControlName="username" matInput placeholder="Username" id="username"
+                <input formControlName="email" matInput placeholder="Email" id="email"
                        type="text" required>
-                <mat-error *ngIf="form.controls['username'].touched && form.controls['username'].invalid">
-                  <div id="username-error" *ngIf="form.controls['username'].invalid">Username is required</div>
+                <mat-error *ngIf="form.controls['email'].touched && form.controls['email'].invalid">
+                  <div id="username-error" *ngIf="form.controls['email'].invalid">Email is required</div>
                 </mat-error>
               </mat-form-field>
             </td>

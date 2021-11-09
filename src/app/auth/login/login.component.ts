@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {ActivatedRoute, Router} from '@angular/router';
-import {AuthService} from '../services/auth.service';
+import {AuthService} from '../../services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -13,7 +13,7 @@ export class LoginComponent implements OnInit {
   hide = true;
 
   form = new FormGroup({
-    'username': new FormControl('', Validators.required),
+    'email': new FormControl('', Validators.required),
     'password': new FormControl('', Validators.required)
   });
 
@@ -46,7 +46,7 @@ export class LoginComponent implements OnInit {
           this.showSpinner = false;
           if (result && this.authService.isLoggedIn()) {
             let returnUrl = this.route.snapshot.queryParamMap.get('returnUrl');
-            returnUrl = returnUrl !== '/login' ? returnUrl : null;
+            returnUrl = returnUrl !== '/auth' ? returnUrl : null;
             this.router.navigate([returnUrl || '/admin']);
           } else {
             this.authService.logout();

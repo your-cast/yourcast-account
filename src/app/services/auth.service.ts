@@ -18,7 +18,7 @@ export class AuthService {
   }
 
   login(credentials: any): any {
-    return this.apiService.post('auth', JSON.stringify(credentials)).pipe(
+    return this.apiService.post('v1/login', JSON.stringify(credentials)).pipe(
       map(response => {
         if (response && response['token']) {
           localStorage.setItem('token', response['token']);

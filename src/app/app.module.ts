@@ -4,7 +4,7 @@ import {AppComponent} from './app.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {AppRoutingModule} from './app-routing.module';
 import {MatComponentsModule} from './mat-components-module/mat-components.module';
-import {LoginComponent} from './login';
+import {AuthModule} from './auth/auth.module';
 import {SharedModule} from './shared/shared.module';
 import {ReactiveFormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
@@ -12,7 +12,6 @@ import {HttpClientModule} from '@angular/common/http';
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent,
   ],
   imports: [
     BrowserModule,
@@ -21,6 +20,7 @@ import {HttpClientModule} from '@angular/common/http';
     MatComponentsModule,
     HttpClientModule,
     SharedModule,
+    AuthModule,
     ReactiveFormsModule
   ],
   providers: [],
