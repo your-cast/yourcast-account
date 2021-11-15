@@ -12,7 +12,7 @@ export class AuthService {
 
   constructor(
     private apiService: ApiService,
-    private router: Router,
+    private router: Router
   ) {
     this.apiUrl = environment.apiUrl;
   }
@@ -20,12 +20,20 @@ export class AuthService {
   login(credentials: any): any {
     return this.apiService.post('v1/login', JSON.stringify(credentials)).pipe(
       map(response => {
-        if (response && response['token']) {
-          localStorage.setItem('token', response['token']);
+        if (response && response['access_token']) {
+          localStorage.setItem('token', response['access_token']);
           return true;
         } else {
           return false;
         }
+      }));
+  }
+
+  register(credentials: any): any {
+    return this.apiService.post('v1/register', JSON.stringify(credentials)).pipe(
+      map(response => {
+        console.log(response);
+        return true;
       }));
   }
 

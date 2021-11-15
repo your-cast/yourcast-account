@@ -4,31 +4,32 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {AuthService} from '../../services/auth.service';
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  selector: 'app-registration',
+  templateUrl: './registration.component.html',
+  styleUrls: ['./registration.component.scss']
 })
-export class LoginComponent implements OnInit {
+export class RegistrationComponent implements OnInit {
   showSpinner: boolean;
   hide = true;
 
   form = new FormGroup({
+    'name': new FormControl('', Validators.required),
     'email': new FormControl('', Validators.required),
-    'password': new FormControl('', Validators.required)
+    'password': new FormControl('', Validators.required),
+    'password_confirmation': new FormControl('', Validators.required)
   });
 
   constructor(
     private router: Router,
     private route: ActivatedRoute,
-    private authService: AuthService,
+    private authService: AuthService
   ) {
     this.showSpinner = false;
   }
 
   ngOnInit() {
-    console.log('here')
     if (this.authService.isLoggedIn()) {
-      this.router.navigate(['/dashboard']);
+      this.router.navigate(['/admin']);
     }
   }
 
@@ -41,15 +42,12 @@ export class LoginComponent implements OnInit {
     }
 
     this.showSpinner = true;
-    this.authService.login(credentials)
+    this.authService.register(credentials)
       .subscribe((result: any) => {
           this.showSpinner = false;
-          if (result && this.authService.isLoggedIn()) {
-            let returnUrl = this.route.snapshot.queryParamMap.get('returnUrl');
-            returnUrl = returnUrl !== '/auth' ? returnUrl : null;
-            this.router.navigate([returnUrl || '/dashboard']);
-          } else {
-            this.authService.logout();
+          if (result) {
+            console.log(result);
+            this.router.navigate(['login']);
           }
         },
         () => {
@@ -57,7 +55,7 @@ export class LoginComponent implements OnInit {
         });
   }
 
-  navigateToRegister() {
-    this.router.navigate(['/registration']);
+  navigateToLogin() {
+    this.router.navigate(['/login']);
   }
 }

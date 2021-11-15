@@ -40,9 +40,9 @@
         <mat-progress-bar id="progress-bar" mode="indeterminate"
                           [style.display]="showSpinner ? 'block' : 'none'"></mat-progress-bar>
       </div>
-      <button class="w-100 sing-in-button mt-2" id="login"
-              form="login-form" mat-flat-button color="primary" cdkFocusInitial>Sign In
-      </button>
+      <button class="w-100 sing-in-button mt-2" id="login" form="login-form" mat-flat-button color="primary">Sign In</button>
+      <br/>
+      <button class="w-100 sing-in-button mt-2" mat-flat-button color="secondary" (click)="navigateToRegister()">Register</button>
     </mat-card-content>
   </mat-card>
 </div>

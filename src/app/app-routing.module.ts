@@ -1,6 +1,8 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 import {LoginComponent} from './auth/login/login.component';
+import {RegistrationComponent} from './auth/registration/registration.component';
+import {DashboardComponent} from './account/dashboard/dashboard.component';
 
 const appRoutes: Routes = [
   {
@@ -13,8 +15,15 @@ const appRoutes: Routes = [
     component: LoginComponent
   },
   {
+    path: 'registration',
+    component: RegistrationComponent
+  }, {
+    path: 'dashboard',
+    component: DashboardComponent
+  },
+  {
     path: '**',
-    redirectTo: 'admin',
+    redirectTo: 'dashboard',
     pathMatch: 'full'
   }
 ];

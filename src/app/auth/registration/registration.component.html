@@ -1,0 +1,73 @@
+<div class="main-div">
+  <mat-card class="login-form center">
+    <div id="logo" class="logo-container mb-3">
+      <div id="amadeus-logo" class="title color-primary">YourCast</div>
+      <div id="rail-go-logo" class="subtitle color-primary">Registration</div>
+    </div>
+    <mat-card-content>
+      <form [formGroup]="form" #f="ngForm" (ngSubmit)="signIn(f.value)" class="example-form" id="login-form">
+        <table class="example-full-width">
+          <tr>
+            <td>
+              <mat-form-field appearance="outline" class="w-100">
+                <mat-label>Name</mat-label>
+                <input formControlName="name" matInput placeholder="Name" type="text" required>
+                <mat-error *ngIf="form.controls['email'].touched && form.controls['email'].invalid">
+                  <div *ngIf="form.controls['name'].invalid">Name is required</div>
+                </mat-error>
+              </mat-form-field>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <mat-form-field appearance="outline" class="w-100">
+                <mat-label>Email</mat-label>
+                <input formControlName="email" matInput placeholder="Email" type="text" required>
+                <mat-error *ngIf="form.controls['email'].touched && form.controls['email'].invalid">
+                  <div *ngIf="form.controls['email'].invalid">Email is required</div>
+                </mat-error>
+              </mat-form-field>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <mat-form-field appearance="outline" class="w-100">
+                <mat-label id="password-label">Password</mat-label>
+                <mat-icon matSuffix color="primary" class="cursor-pointer"
+                          (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                <input formControlName="password" matInput placeholder="Password" [type]="hide ? 'password' : 'text'"
+                       required>
+                <mat-error *ngIf="form.controls['password'].touched && form.controls['password'].invalid">
+                  <div *ngIf="form.controls['password'].invalid">Password is required</div>
+                </mat-error>
+              </mat-form-field>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <mat-form-field appearance="outline" class="w-100">
+                <mat-label>Password Confirmation</mat-label>
+                <mat-icon matSuffix color="primary" class="cursor-pointer"
+                          (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                <input formControlName="password_confirmation" matInput placeholder="Confirm password"
+                       [type]="hide ? 'password' : 'text'" required>
+                <mat-error
+                  *ngIf="form.controls['password_confirmation'].touched && form.controls['password_confirmation'].invalid">
+                  <div *ngIf="form.controls['password_confirmation'].invalid">Password is required</div>
+                </mat-error>
+              </mat-form-field>
+            </td>
+          </tr>
+        </table>
+      </form>
+      <div class="form-additions">
+        <mat-progress-bar id="progress-bar" mode="indeterminate"
+                          [style.display]="showSpinner ? 'block' : 'none'"></mat-progress-bar>
+      </div>
+      <button class="w-100 sing-in-button mt-2" form="login-form" mat-flat-button color="primary">Register</button>
+      <br/>
+      <button class="w-100 sing-in-button mt-2" mat-flat-button color="secondary" (click)="navigateToLogin()">Login
+      </button>
+    </mat-card-content>
+  </mat-card>
+</div>
