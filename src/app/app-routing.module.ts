@@ -2,7 +2,7 @@ import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 import {LoginComponent} from './auth/login/login.component';
 import {RegistrationComponent} from './auth/registration/registration.component';
-import {DashboardComponent} from './account/dashboard/dashboard.component';
+import {AuthGuard} from './guard/auth.guard';
 
 const appRoutes: Routes = [
   {
@@ -17,9 +17,11 @@ const appRoutes: Routes = [
   {
     path: 'registration',
     component: RegistrationComponent
-  }, {
-    path: 'dashboard',
-    component: DashboardComponent
+  },
+  {
+    path: 'account',
+    loadChildren: () => import('./account/account.module').then(m => m.AccountModule),
+    canActivate: [AuthGuard]
   },
   {
     path: '**',

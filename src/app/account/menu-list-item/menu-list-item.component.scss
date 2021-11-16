@@ -1,0 +1,45 @@
+@import "../../../styles.scss";
+
+:host {
+    display: flex;
+    flex-direction: column;
+    outline: none;
+    width: 100%;
+
+    .mat-list-item.active {
+        //background-color: mat-color($app-primary, 50);
+    }
+    &:hover,
+    &:focus {
+        > .mat-list-item:not(.expanded) {
+            //background-color: mat-color($app-primary, 100) !important;
+        }
+    }
+}
+
+.mat-list-item {
+    height: 2rem;
+    padding: 0.5rem;
+    display: flex;
+    width: auto;
+    font-size: 1rem;
+    box-sizing: initial;
+
+    .routeIcon {
+        margin-right: 40px;
+        color: $accent;
+    }
+}
+
+.expand-icon {
+    height: 48px;
+    line-height: 2;
+}
+.mat-list-item .routeIcon {
+    margin-right: 10px;
+}
+
+.active-list-item{
+    background: rgba(0, 0, 0, 0.04);
+    border-right: 0.25rem solid $accent;
+}
