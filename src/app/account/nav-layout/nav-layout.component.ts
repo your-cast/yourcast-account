@@ -3,6 +3,7 @@ import {BreakpointObserver, Breakpoints} from '@angular/cdk/layout';
 import {Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
 import {NavItem} from '../menu-list-item/nav-item';
+import {AuthService} from '../../services/auth.service';
 
 @Component({
   selector: 'app-nav-layout',
@@ -19,40 +20,22 @@ export class NavLayoutComponent implements OnInit, OnDestroy {
       route: 'admin'
     },
     {
-      id: 'bookings-menu',
-      displayName: 'Bookings',
-      iconName: 'bookmark_outline',
-      route: 'admin/bookings'
-    },
-    {
-      id: 'transactions-menu',
-      displayName: 'Transactions',
-      iconName: 'bookmark_outline',
-      route: 'admin/transactions'
-    },
-    {
-      id: 'banners-menu',
-      displayName: 'Banners',
-      iconName: 'announcement',
-      route: 'admin/banners'
-    },
-    {
-      id: 'resellers-menu',
-      displayName: 'Resellers',
-      iconName: 'people',
-      route: 'admin/resellers',
+      id: 'shows-menu',
+      displayName: 'Shows',
+      iconName: 'sensors',
+      route: 'account/shows',
       children: [
         {
-          id: 'resellers-list-menu',
-          displayName: 'Resellers list',
-          iconName: 'person_pin',
-          route: 'admin/resellers/resellers-list'
+          id: 'shows-create-menu',
+          displayName: 'Create shows',
+          iconName: 'add_circle',
+          route: 'account/shows/create'
         },
         {
-          id: 'resellers-user-list-menu',
-          displayName: 'Reseller\'s user list',
-          iconName: 'supervisor_account',
-          route: 'admin/resellers/users-list'
+          id: 'list-shows-menu',
+          displayName: 'List shows',
+          iconName: 'contactless',
+          route: 'account/shows'
         }
       ]
     },
@@ -77,28 +60,10 @@ export class NavLayoutComponent implements OnInit, OnDestroy {
       ]
     },
     {
-      id: 'suppliers-menu',
-      displayName: 'Suppliers',
-      iconName: 'local_atm',
-      route: 'admin/suppliers'
-    },
-    {
-      id: 'logs-menu',
-      displayName: 'Logs',
-      iconName: 'code',
-      route: 'admin/logs'
-    },
-    {
-      id: 'users-menu',
-      displayName: 'Users',
-      iconName: 'supervisor_account',
-      route: 'admin/users'
-    },
-    {
-      id: 'sftp-export-menu',
-      displayName: 'SFTP-export',
-      iconName: 'folder',
-      route: 'admin/file-sharing-keys'
+      id: 'support-menu',
+      displayName: 'Support',
+      iconName: 'drafts',
+      route: 'account/support'
     },
     {
       id: 'access-tokens-menu',
@@ -107,25 +72,16 @@ export class NavLayoutComponent implements OnInit, OnDestroy {
       route: 'admin/access-tokens'
     },
     {
-      id: 'transporters-menu',
-      displayName: 'Transporters',
-      iconName: 'commute',
-      route: 'admin/transporters'
-
+      id: 'plans-menu',
+      displayName: 'Plans',
+      iconName: 'payments',
+      route: 'account/plans'
     },
     {
       id: 'markets-menu',
       displayName: 'Markets',
       iconName: 'language',
       route: 'admin/markets'
-
-    },
-    {
-      id: 'console-commands-menu',
-      displayName: 'Console commands',
-      iconName: 'tab',
-      route: 'admin/console-commands'
-
     }
   ];
 
@@ -135,13 +91,18 @@ export class NavLayoutComponent implements OnInit, OnDestroy {
     );
 
   constructor(
-    private breakpointObserver: BreakpointObserver
+    private breakpointObserver: BreakpointObserver,
+    private authService: AuthService
   ) {
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
   }
 
   ngOnDestroy(): void {
+  }
+
+  logOut(): void {
+    this.authService.logout();
   }
 }

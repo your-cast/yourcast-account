@@ -27,7 +27,7 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     if (this.authService.isLoggedIn()) {
-      this.router.navigate(['/account']);
+      this.router.navigate(['/account/dashboard']);
     }
   }
 
@@ -45,8 +45,8 @@ export class LoginComponent implements OnInit {
           this.showSpinner = false;
           if (result && this.authService.isLoggedIn()) {
             let returnUrl = this.route.snapshot.queryParamMap.get('returnUrl');
-            returnUrl = returnUrl !== '/auth' ? returnUrl : null;
-            this.router.navigate([returnUrl || '/account']);
+            returnUrl = returnUrl !== '/login' ? returnUrl : null;
+            this.router.navigate([returnUrl || '/account/dashboard']);
           } else {
             this.authService.logout();
           }

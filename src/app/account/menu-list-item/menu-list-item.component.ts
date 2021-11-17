@@ -38,14 +38,7 @@ export class MenuListItemComponent implements OnInit {
 
   onItemSelected(item: NavItem) {
     if (!item.children || !item.children.length) {
-      if (item.route === 'admin/logs') {
-        const generatedDateFrom = new Date().setHours(0, 0, 0);
-        const dateFrom = new DatePipe('en-US').transform(generatedDateFrom, 'yyyy-MM-ddTHH:mm:ss');
-        this.router.navigate([item.route], {queryParams: {dateTimeFrom: dateFrom}});
-      } else {
-        this.router.navigate([item.route]);
-      }
-
+      this.router.navigate([item.route]);
     }
     if (item.children && item.children.length) {
       this.expanded = !this.expanded;
