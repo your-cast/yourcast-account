@@ -2,7 +2,6 @@ import {Component, HostBinding, Input, OnInit} from '@angular/core';
 import {NavItem} from './nav-item';
 import {ActivatedRoute, Router} from '@angular/router';
 import {animate, state, style, transition, trigger} from '@angular/animations';
-import {DatePipe} from '@angular/common';
 
 @Component({
   selector: 'app-menu-list-item',
@@ -25,7 +24,10 @@ export class MenuListItemComponent implements OnInit {
   @Input() item: any;
   @Input() depth: any;
 
-  constructor(public router: Router, public route: ActivatedRoute) {
+  constructor(
+    public router: Router,
+    public route: ActivatedRoute
+  ) {
     if (this.depth === undefined) {
       this.depth = 0;
     }

@@ -14,6 +14,10 @@ const routes: Routes = [
         path: 'dashboard',
         component: DashboardComponent
       },
+      {
+        path: 'shows/create',
+        component: DashboardComponent
+      },
     ]
   }
 ];
