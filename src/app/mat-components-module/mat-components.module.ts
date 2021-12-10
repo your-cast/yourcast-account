@@ -27,6 +27,7 @@ import {MatTabsModule} from '@angular/material/tabs';
 import {MatListModule} from '@angular/material/list';
 import {MatIconModule} from '@angular/material/icon';
 import {MatSelectModule} from '@angular/material/select';
+import {MatStepperModule} from '@angular/material/stepper';
 
 @NgModule({
   exports: [
@@ -57,7 +58,8 @@ import {MatSelectModule} from '@angular/material/select';
     MatTooltipModule,
     MatDividerModule,
     MatButtonToggleModule,
-    MatRadioModule
+    MatRadioModule,
+    MatStepperModule
   ]
 })
 export class MatComponentsModule {

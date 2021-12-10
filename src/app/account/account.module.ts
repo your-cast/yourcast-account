@@ -8,12 +8,16 @@ import {DashboardComponent} from './dashboard/dashboard.component';
 import {NavLayoutComponent} from './nav-layout/nav-layout.component';
 import {MenuListItemComponent} from './menu-list-item/menu-list-item.component';
 import {AccountRoutingModule} from './account-routing.module';
+import {ShowCreateComponent} from './shows/create/show-create.component';
+import {EmailConfirmComponent} from './email-confirm/email-confirm.component';
 
 @NgModule({
   declarations: [
     DashboardComponent,
     NavLayoutComponent,
-    MenuListItemComponent
+    MenuListItemComponent,
+    ShowCreateComponent,
+    EmailConfirmComponent
   ],
   imports: [
     CommonModule,

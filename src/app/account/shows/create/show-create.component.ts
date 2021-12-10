@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {ActivatedRoute, Router} from '@angular/router';
 import {AuthService} from '../../../services/auth.service';
 
@@ -10,8 +10,12 @@ import {AuthService} from '../../../services/auth.service';
 })
 export class ShowCreateComponent implements OnInit {
   showSpinner: boolean;
+  isLinear = false;
+  firstFormGroup: FormGroup;
+  secondFormGroup: FormGroup;
 
   constructor(
+    private formBuilder: FormBuilder,
     private router: Router,
     private route: ActivatedRoute
   ) {
@@ -19,5 +23,12 @@ export class ShowCreateComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.firstFormGroup = this.formBuilder.group({
+      title: ['', Validators.required],
+      description: ['', Validators.max(150)]
+    });
+    this.secondFormGroup = this.formBuilder.group({
+      secondCtrl: ['', Validators.max(150)]
+    });
   }
 }
