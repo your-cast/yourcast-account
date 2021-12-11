@@ -1,4 +1,4 @@
-@mixin badge($color, $bg-color) {
+@mixin badge($color, $background) {
     display: inline-block;
     padding: .25em .4em;
     font-size: 90%;
@@ -10,7 +10,7 @@
     border-radius: .25rem;
     transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
     color: $color;
-    background-color: $bg-color;
+    background-color: $background;
 }
 
 .badge-gray {
@@ -22,7 +22,7 @@
 }
 
 .badge-accent {
-    @include badge(#fff, $accent);
+    @include badge(#fff, #00a9e0);
 }
 
 .badge-aliceblue {

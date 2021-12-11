@@ -6,14 +6,15 @@
   </div>
 </div>
 
-<div class="d-flex justify-content-center">
-  Setup Your Show Info
-</div>
-
 <mat-stepper orientation="vertical" [linear]="isLinear" #stepper>
-  <mat-step [stepControl]="firstFormGroup">
-    <form [formGroup]="firstFormGroup">
+  <mat-step [stepControl]="infoFormGroup">
+    <form [formGroup]="infoFormGroup">
       <ng-template matStepLabel>1. Show Info</ng-template>
+
+      <div class="d-flex align-content-start pb-4">
+        Setup Your Show Info
+      </div>
+
       <div class="flex-row flex-2-cols">
         <mat-form-field appearance="fill">
           <mat-label>Title</mat-label>
@@ -26,87 +27,249 @@
           <textarea matInput rows="5" placeholder="Description" formControlName="description"></textarea>
         </mat-form-field>
       </div>
-      <div>
-        <button mat-button matStepperNext>Next</button>
+      <div class="d-flex align-content-start">
+        <button color="accent" mat-button matStepperNext>Next</button>
       </div>
     </form>
   </mat-step>
-  <mat-step [stepControl]="secondFormGroup">
-    <form [formGroup]="secondFormGroup">
+
+  <mat-step [stepControl]="artworkFormGroup">
+    <form [formGroup]="artworkFormGroup">
       <ng-template matStepLabel>2. Show Artwork</ng-template>
-      <mat-form-field appearance="fill">
-        <mat-label>Address</mat-label>
-        <input matInput formControlName="secondCtrl" placeholder="Ex. 1 Main St, New York, NY"
-               required>
-      </mat-form-field>
+
+      <div class="d-flex align-content-start pb-4">
+        Setup Your Show Artwork
+      </div>
+
+      <div class="form-group row justify-content-md-center">
+        <div class="d-flex mb-3">
+          <figure class="mr-3">
+            <img class="rounded-pill" src="/assets/image/placeholder-image.png" alt="artwork" width="100">
+          </figure>
+          <div>
+            <p>Artwork</p>
+            <input type="file" accept=".png, .jpg, .jpeg" style="display: none;">
+            <button mat-button color="primary">Change Artwork</button>
+            <p class="small text-muted mt-3">
+              We recommend using an image that is 3000px wide<br>and we will
+              automatically crop it to a square.</p>
+            <p class="small text-muted mt-3">
+              You can skip this for now if you want but it will be required to
+              publish.
+            </p>
+          </div>
+        </div>
+      </div>
+
       <div>
         <button mat-button matStepperPrevious>Back</button>
         <button mat-button matStepperNext>Next</button>
       </div>
     </form>
   </mat-step>
-  <mat-step [stepControl]="secondFormGroup">
-    <form [formGroup]="secondFormGroup">
+
+  <mat-step [stepControl]="formatFormGroup">
+    <form [formGroup]="formatFormGroup">
       <ng-template matStepLabel>3. Format</ng-template>
-      <mat-form-field appearance="fill">
-        <mat-label>Address</mat-label>
-        <input matInput formControlName="secondCtrl" placeholder="Ex. 1 Main St, New York, NY"
-               required>
-      </mat-form-field>
+
+      <div class="d-flex align-content-start pb-4">
+        Choose format
+      </div>
+
+      <div class="d-flex align-content-start pb-4">
+        <mat-radio-group aria-label="Select an option" formControlName="format">
+          <mat-radio-button value="episodic">Episodic</mat-radio-button>
+        </mat-radio-group>
+      </div>
+      <div class="d-flex align-content-start pb-4">
+        <span class="option-body">
+          This is the default format with episodes presented and recommended from newest-to-oldest.
+          This option is recommended for stand-alone episodes.
+        </span>
+      </div>
+
+      <div class="d-flex align-content-start pb-4">
+        <mat-radio-group aria-label="Select an option" formControlName="format">
+          <mat-radio-button value="serial">Serial</mat-radio-button>
+        </mat-radio-group>
+      </div>
+      <div class="d-flex align-content-start pb-4">
+        <span class="option-body">
+          For Shows with episodes presented and recommended oldest-to-newest and grouped by seasons.
+          This option is recommended for narrative and storytelling formats.
+        </span>
+      </div>
+
       <div>
         <button mat-button matStepperPrevious>Back</button>
         <button mat-button matStepperNext>Next</button>
       </div>
     </form>
   </mat-step>
-  <mat-step [stepControl]="secondFormGroup">
-    <form [formGroup]="secondFormGroup">
+
+  <mat-step [stepControl]="otherFormGroup">
+    <form [formGroup]="otherFormGroup">
       <ng-template matStepLabel>4. Other Details</ng-template>
-      <mat-form-field appearance="fill">
-        <mat-label>Address</mat-label>
-        <input matInput formControlName="secondCtrl" placeholder="Ex. 1 Main St, New York, NY"
-               required>
-      </mat-form-field>
+
+      <div class="d-flex align-content-start pb-4">
+        Publishing time zone
+      </div>
+
+      <div class="d-flex align-content-start pb-4">
+        <mat-form-field appearance="fill">
+          <mat-label>Timezone</mat-label>
+          <mat-select formControlName="timezone">
+            <mat-option *ngFor="let timezone of timezones" [value]="timezone.value">
+              {{timezone.name}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+      <div class="d-flex align-content-start pb-4">
+        <mat-form-field appearance="fill">
+          <mat-label>Language</mat-label>
+          <mat-select formControlName="language">
+            <mat-option *ngFor="let language of languages" [value]="language.value">
+              {{language.name}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+      <div class="d-flex align-content-start pb-4">
+        <mat-slide-toggle formControlName="explicit">Explicit</mat-slide-toggle>
+      </div>
+
+      <div class="d-flex align-content-start pb-4">
+        <span class="option-body">
+          Check this to let your listeners know if they should expect to hear explicit language on your show.
+        </span>
+      </div>
+
       <div>
         <button mat-button matStepperPrevious>Back</button>
         <button mat-button matStepperNext>Next</button>
       </div>
     </form>
   </mat-step>
-  <mat-step [stepControl]="secondFormGroup">
-    <form [formGroup]="secondFormGroup">
+
+  <mat-step [stepControl]="categoryFormGroup">
+    <form [formGroup]="categoryFormGroup">
       <ng-template matStepLabel>5. Categorization</ng-template>
-      <mat-form-field appearance="fill">
-        <mat-label>Address</mat-label>
-        <input matInput formControlName="secondCtrl" placeholder="Ex. 1 Main St, New York, NY"
-               required>
-      </mat-form-field>
+
+      <div class="d-flex align-content-start pb-4">
+        Categorization
+      </div>
+
+      <div class="d-flex align-content-start pb-4">
+        <span class="option-body">
+          At least one category is required to create your show.
+          These are used by podcast apps for example Google Podcasts to categorize shows.
+        </span>
+      </div>
+
+      <div class="flex-row flex-2-cols">
+        <mat-form-field appearance="fill" class="pr-2">
+          <mat-label>1st category</mat-label>
+          <mat-select formControlName="firstCategory">
+            <mat-option value="option1">Option 1</mat-option>
+            <mat-option value="option3">Option 2</mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" class="pl-2">
+          <mat-label>Sub category</mat-label>
+          <mat-select [disabled]="true" formControlName="firstSubCategory">
+            <mat-option value="option1">Option 1</mat-option>
+            <mat-option value="option3">Option 3</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+      <div class="flex-row flex-2-cols">
+        <mat-form-field appearance="fill" class="pr-2">
+          <mat-label>2nd category</mat-label>
+          <mat-select formControlName="secondCategory">
+            <mat-option value="option1">Option 1</mat-option>
+            <mat-option value="option3">Option 2</mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" class="pl-2">
+          <mat-label>Sub category</mat-label>
+          <mat-select [disabled]="true" formControlName="secondSubCategory">
+            <mat-option value="option1">Option 1</mat-option>
+            <mat-option value="option3">Option 3</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+      <div class="flex-row flex-2-cols">
+        <mat-form-field appearance="fill" class="pr-2">
+          <mat-label>3rd category</mat-label>
+          <mat-select formControlName="thirdCategory">
+            <mat-option value="option1">Option 1</mat-option>
+            <mat-option value="option3">Option 2</mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" class="pl-2">
+          <mat-label>Sub category</mat-label>
+          <mat-select [disabled]="true" formControlName="thirdSubCategory">
+            <mat-option value="option1">Option 1</mat-option>
+            <mat-option value="option3">Option 3</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
       <div>
         <button mat-button matStepperPrevious>Back</button>
         <button mat-button matStepperNext>Next</button>
       </div>
     </form>
   </mat-step>
-  <mat-step [stepControl]="secondFormGroup">
-    <form [formGroup]="secondFormGroup">
+
+  <mat-step [stepControl]="ownerFormGroup">
+    <form [formGroup]="ownerFormGroup">
       <ng-template matStepLabel>6. Owner Details</ng-template>
-      <mat-form-field appearance="fill">
-        <mat-label>Address</mat-label>
-        <input matInput formControlName="secondCtrl" placeholder="Ex. 1 Main St, New York, NY"
-               required>
-      </mat-form-field>
+
+      <div class="d-flex align-content-start pb-4">
+        Owner Details
+      </div>
+
+      <div class="flex-row flex-2-cols">
+        <mat-form-field appearance="fill">
+          <mat-label>Author</mat-label>
+          <input matInput placeholder="Author" formControlName="author" required>
+        </mat-form-field>
+      </div>
+
+      <div class="flex-row flex-2-cols">
+        <mat-form-field appearance="fill">
+          <mat-label>Owner</mat-label>
+          <input matInput placeholder="Owner" formControlName="owner" required>
+        </mat-form-field>
+      </div>
+
+      <div class="flex-row flex-2-cols">
+        <mat-form-field appearance="fill">
+          <mat-label>Owner email</mat-label>
+          <input matInput placeholder="example@domain.com" formControlName="ownerEmail" required>
+        </mat-form-field>
+      </div>
+
+      <div class="flex-row flex-2-cols">
+        <mat-form-field appearance="fill">
+          <mat-label>Copyright</mat-label>
+          <input matInput placeholder="Copyright" formControlName="copyright">
+        </mat-form-field>
+      </div>
+
       <div>
         <button mat-button matStepperPrevious>Back</button>
-        <button mat-button matStepperNext>Next</button>
+        <button mat-button color="primary" (click)="submitForm()">Submit</button>
       </div>
     </form>
-  </mat-step>
-  <mat-step>
-    <ng-template matStepLabel>Done</ng-template>
-    <p>You are now done.</p>
-    <div>
-      <button mat-button matStepperPrevious>Back</button>
-      <button mat-button (click)="stepper.reset()">Reset</button>
-    </div>
   </mat-step>
 </mat-stepper>

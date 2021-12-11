@@ -1,18 +1,15 @@
 /* You can add global styles to this file, and also import other style files */
+@import '~@angular/material/prebuilt-themes/indigo-pink.css';
 
 @import url("https://fonts.googleapis.com/icon?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp");
 
-@import "assets/custom-material-theme";
-@import "assets/material-typography";
 @import "assets/_fonts";
-@import "assets/_icon.font";
 @import "assets/base-layout";
 @import "assets/bootstrap-utilities";
 @import "assets/flex-grid";
 @import "assets/badge";
-@import "assets/filter";
-@import "assets/highlight";
-
+//@import "assets/filter";
+//@import "assets/highlight";
 
 * {
   margin: 0
@@ -65,48 +62,45 @@ tr.mat-header-row {
   font-size: 0.825rem;
 }
 
-// global colors
-   .color-primary {
-     color: $primary;
-   }
+ .color-primary {
+   color: #005eb8;
+ }
 
 .color-accent {
-  color: $accent;
+  color: #00a9e0;
 }
 
 .color-warn {
-  color: $warn;
+  color: #ce0058;
 }
 
-// toaster styles
-   .toaster-position {
-     position: fixed;
-     top: 0.45rem;
-     right: 4rem;
-     left: auto;
-   }
+.toaster-position {
+  position: fixed;
+  top: 0.45rem;
+  right: 4rem;
+  left: auto;
+}
 
 .avatar-icon {
-  color: $accent;
+  color: #00a9e0;
   font-size: 3rem !important;
 }
 
-// fix for icon button
-   .mat-stroked-button > .mat-button-wrapper,
-   .mat-icon-button > .mat-button-wrapper {
-     display: flex;
-     align-items: center;
-     justify-content: center;
-   }
+.mat-stroked-button > .mat-button-wrapper,
+.mat-icon-button > .mat-button-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .a-without-style {
   color: inherit;
   text-decoration: none;
 }
 
-//cursor-utils
-  .cursor-pointer {
-    cursor: pointer;
-  }
+.cursor-pointer {
+  cursor: pointer;
+}
 
 .custom-chips {
   background-color: #e0e0e0;
