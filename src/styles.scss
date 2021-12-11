@@ -1,15 +1,11 @@
 /* You can add global styles to this file, and also import other style files */
 @import '~@angular/material/prebuilt-themes/indigo-pink.css';
 
-@import url("https://fonts.googleapis.com/icon?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp");
-
 @import "assets/_fonts";
 @import "assets/base-layout";
 @import "assets/bootstrap-utilities";
 @import "assets/flex-grid";
 @import "assets/badge";
-//@import "assets/filter";
-//@import "assets/highlight";
 
 * {
   margin: 0
@@ -62,9 +58,9 @@ tr.mat-header-row {
   font-size: 0.825rem;
 }
 
- .color-primary {
-   color: #005eb8;
- }
+.color-primary {
+  color: #005eb8;
+}
 
 .color-accent {
   color: #00a9e0;

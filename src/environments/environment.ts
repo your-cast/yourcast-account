@@ -5,8 +5,8 @@
 export const environment = {
   production: false,
   name: 'localhost',
-  apiUrl: 'http://your-cast.com'
-  // apiUrl: 'http://localhost'
+  // apiUrl: 'http://your-cast.com'
+  apiUrl: 'http://localhost'
 };
 
 /*

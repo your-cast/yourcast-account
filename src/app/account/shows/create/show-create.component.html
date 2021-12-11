@@ -28,11 +28,10 @@
         </mat-form-field>
       </div>
       <div class="d-flex align-content-start">
-        <button color="accent" mat-button matStepperNext>Next</button>
+        <button mat-raised-button color="primary" matStepperNext>Next</button>
       </div>
     </form>
   </mat-step>
-
   <mat-step [stepControl]="artworkFormGroup">
     <form [formGroup]="artworkFormGroup">
       <ng-template matStepLabel>2. Show Artwork</ng-template>
@@ -62,12 +61,11 @@
       </div>
 
       <div>
-        <button mat-button matStepperPrevious>Back</button>
-        <button mat-button matStepperNext>Next</button>
+        <button class="pr-3" mat-raised-button matStepperPrevious>Back</button>
+        <button class="pl-3" mat-raised-button color="primary" matStepperNext>Next</button>
       </div>
     </form>
   </mat-step>
-
   <mat-step [stepControl]="formatFormGroup">
     <form [formGroup]="formatFormGroup">
       <ng-template matStepLabel>3. Format</ng-template>
@@ -101,12 +99,11 @@
       </div>
 
       <div>
-        <button mat-button matStepperPrevious>Back</button>
-        <button mat-button matStepperNext>Next</button>
+        <button class="pr-3" mat-raised-button matStepperPrevious>Back</button>
+        <button class="pl-3" mat-raised-button color="primary" matStepperNext>Next</button>
       </div>
     </form>
   </mat-step>
-
   <mat-step [stepControl]="otherFormGroup">
     <form [formGroup]="otherFormGroup">
       <ng-template matStepLabel>4. Other Details</ng-template>
@@ -148,12 +145,11 @@
       </div>
 
       <div>
-        <button mat-button matStepperPrevious>Back</button>
-        <button mat-button matStepperNext>Next</button>
+        <button class="pr-3" mat-raised-button matStepperPrevious>Back</button>
+        <button class="pl-3" mat-raised-button color="primary" matStepperNext>Next</button>
       </div>
     </form>
   </mat-step>
-
   <mat-step [stepControl]="categoryFormGroup">
     <form [formGroup]="categoryFormGroup">
       <ng-template matStepLabel>5. Categorization</ng-template>
@@ -224,12 +220,11 @@
       </div>
 
       <div>
-        <button mat-button matStepperPrevious>Back</button>
-        <button mat-button matStepperNext>Next</button>
+        <button class="pr-3" mat-raised-button matStepperPrevious>Back</button>
+        <button class="pl-3" mat-raised-button color="primary" matStepperNext>Next</button>
       </div>
     </form>
   </mat-step>
-
   <mat-step [stepControl]="ownerFormGroup">
     <form [formGroup]="ownerFormGroup">
       <ng-template matStepLabel>6. Owner Details</ng-template>
@@ -267,8 +262,8 @@
       </div>
 
       <div>
-        <button mat-button matStepperPrevious>Back</button>
-        <button mat-button color="primary" (click)="submitForm()">Submit</button>
+        <button class="pr-3" mat-raised-button matStepperPrevious>Back</button>
+        <button class="pl-3" mat-raised-button color="accent" (click)="submitForm()">Submit</button>
       </div>
     </form>
   </mat-step>

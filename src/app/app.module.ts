@@ -6,7 +6,6 @@ import {AppRoutingModule} from './app-routing.module';
 import {MatComponentsModule} from './mat-components-module/mat-components.module';
 import {AuthModule} from './auth/auth.module';
 import {SharedModule} from './shared/shared.module';
-import {ReactiveFormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 import {AccountModule} from './account/account.module';
 
@@ -18,12 +17,11 @@ import {AccountModule} from './account/account.module';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MatComponentsModule,
     HttpClientModule,
     SharedModule,
     AuthModule,
     AccountModule,
-    ReactiveFormsModule
+    MatComponentsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
