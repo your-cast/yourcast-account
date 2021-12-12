@@ -1,5 +1,5 @@
 import {Component, HostBinding, Input, OnInit} from '@angular/core';
-import {NavItem} from './nav-item';
+import {NavItem} from '../../models/nav-item';
 import {ActivatedRoute, Router} from '@angular/router';
 import {animate, state, style, transition, trigger} from '@angular/animations';
 
@@ -17,7 +17,6 @@ import {animate, state, style, transition, trigger} from '@angular/animations';
     ])
   ]
 })
-
 export class MenuListItemComponent implements OnInit {
   expanded = false;
   @HostBinding('attr.aria-expanded') ariaExpanded = this.expanded;

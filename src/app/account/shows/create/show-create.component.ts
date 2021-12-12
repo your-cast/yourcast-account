@@ -3,11 +3,7 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {ShowService} from '../../../services/show.service';
 import languages from '../../../../assets/other/languages.json';
 import timezones from '../../../../assets/other/timezones.json';
-
-interface Params {
-  value: string;
-  name: string;
-}
+import {Param} from '../../../models/param';
 
 @Component({
   selector: 'app-show-create',
@@ -15,10 +11,9 @@ interface Params {
   styleUrls: ['./show-create.component.scss']
 })
 export class ShowCreateComponent implements OnInit {
-  showSpinner: boolean;
-  isLinear = false;
-  timezones: Params[] = [];
-  languages: Params[] = [];
+  isLinear = true;
+  timezones: Param[] = [];
+  languages: Param[] = [];
   infoFormGroup: FormGroup;
   artworkFormGroup: FormGroup;
   formatFormGroup: FormGroup;
@@ -30,7 +25,6 @@ export class ShowCreateComponent implements OnInit {
     private formBuilder: FormBuilder,
     private showService: ShowService
   ) {
-    this.showSpinner = false;
   }
 
   ngOnInit() {
@@ -79,7 +73,19 @@ export class ShowCreateComponent implements OnInit {
     this.languages = languages;
   }
 
+  validShowInfo(): boolean {
+    return !this.infoFormGroup.valid;
+  }
+
+  validCategory(): boolean {
+    return !this.categoryFormGroup.valid;
+  }
+
   submitForm() {
     this.showService.createShow({}).subscribe();
+  }
+
+  uploadFile($event: Event): void {
+    console.log($event);
   }
 }

@@ -2,7 +2,7 @@ import {Component, OnDestroy, OnInit, ViewEncapsulation} from '@angular/core';
 import {BreakpointObserver, Breakpoints} from '@angular/cdk/layout';
 import {Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
-import {NavItem} from '../menu-list-item/nav-item';
+import {NavItem} from '../../models/nav-item';
 import {AuthService} from '../../services/auth.service';
 
 @Component({
@@ -70,6 +70,12 @@ export class NavLayoutComponent implements OnInit, OnDestroy {
       displayName: 'Access Tokens',
       iconName: 'fingerprint',
       route: 'admin/access-tokens'
+    },
+    {
+      id: 'users-menu',
+      displayName: 'Users',
+      iconName: 'people',
+      route: 'account/users'
     },
     {
       id: 'plans-menu',
