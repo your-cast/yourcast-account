@@ -26,16 +26,36 @@ export class NavLayoutComponent implements OnInit, OnDestroy {
       route: 'account/shows',
       children: [
         {
-          id: 'shows-create-menu',
-          displayName: 'Create shows',
+          id: 'show-create-menu',
+          displayName: 'Create show',
           iconName: 'add_circle',
           route: 'account/shows/create'
         },
         {
-          id: 'list-shows-menu',
+          id: 'show-list-menu',
           displayName: 'List shows',
           iconName: 'contactless',
           route: 'account/shows'
+        }
+      ]
+    },
+    {
+      id: 'podcasts-menu',
+      displayName: 'Podcasts',
+      iconName: 'podcasts',
+      route: 'account/podcasts',
+      children: [
+        {
+          id: 'podcast-create-menu',
+          displayName: 'Create podcast',
+          iconName: 'add_circle',
+          route: 'account/podcasts/create'
+        },
+        {
+          id: 'podcast-list-menu',
+          displayName: 'List shows',
+          iconName: 'contactless',
+          route: 'account/podcasts'
         }
       ]
     },
