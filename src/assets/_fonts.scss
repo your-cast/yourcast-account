@@ -1,56 +1,56 @@
 @import "fonts.variables";
 
 h1, .h1 {
-  letter-spacing: $df-h1-letter-spacing !important;
+  letter-spacing: $h1-letter-spacing !important;
 }
 
 h2, .h2 {
-  letter-spacing: $df-h2-letter-spacing !important;
+  letter-spacing: $h2-letter-spacing !important;
 }
 
 h3, .h3 {
-  letter-spacing: $df-h3-letter-spacing !important;
+  letter-spacing: $h3-letter-spacing !important;
 }
 
 h4, .h4 {
-  letter-spacing: $df-h4-letter-spacing !important;
+  letter-spacing: $h4-letter-spacing !important;
 }
 
 h5, .h5 {
-  letter-spacing: $df-h5-letter-spacing !important;
+  letter-spacing: $h5-letter-spacing !important;
 }
 
 h6, .h6 {
-  letter-spacing: $df-h6-letter-spacing !important;
+  letter-spacing: $h6-letter-spacing !important;
 }
 
 .mat-display-1 {
-  letter-spacing: $df-display1-letter-spacing !important;
+  letter-spacing: $display1-letter-spacing !important;
 }
 
 .mat-display-2 {
-  letter-spacing: $df-display2-letter-spacing !important;
+  letter-spacing: $display2-letter-spacing !important;
 }
 
 .mat-display-3 {
-  letter-spacing: $df-display3-letter-spacing !important;
+  letter-spacing: $display3-letter-spacing !important;
 }
 
 .mat-display-4 {
-  letter-spacing: $df-display4-letter-spacing !important;
+  letter-spacing: $display4-letter-spacing !important;
 }
 
 caption {
-  font-size: $df-caption-font-size;
-  letter-spacing: $df-caption-letter-spacing
+  font-size: $caption-font-size;
+  letter-spacing: $caption-letter-spacing
 }
 
 blockquote {
-  font-style: $df-blockquote-font-style;
-  letter-spacing: $df-blockquote-letter-spacing;
-  line-height: $df-blockquote-line-height;
+  font-style: $blockquote-font-style;
+  letter-spacing: $blockquote-letter-spacing;
+  line-height: $blockquote-line-height;
 }
 
 mark {
-  color: $df-mark-color;
+  color: $mark-color;
 }

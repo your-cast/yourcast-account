@@ -9,6 +9,7 @@ import {AccountRoutingModule} from './account-routing.module';
 import {ShowCreateComponent} from './shows/create/show-create.component';
 import {EmailConfirmComponent} from './email-confirm/email-confirm.component';
 import {MatComponentsModule} from '../mat-components-module/mat-components.module';
+import {SharedModule} from '../shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import {MatComponentsModule} from '../mat-components-module/mat-components.modul
     LayoutModule,
     ReactiveFormsModule,
     MatComponentsModule,
-    AccountRoutingModule
+    AccountRoutingModule,
+    SharedModule
   ]
 })
 export class AccountModule {

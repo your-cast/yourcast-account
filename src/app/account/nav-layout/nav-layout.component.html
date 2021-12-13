@@ -1,9 +1,31 @@
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <button type="button" mat-icon-button (click)="sidenav.toggle()" *ngIf="isHandset$ | async">
+      <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+    </button>
+    <a routerLink=".." class="logo" id="main-logo"></a>
+    <span class="example-spacer"></span>
+    <button mat-icon-button [matMenuTriggerFor]="menu">
+      <mat-icon matBadge="15" matBadgeColor="warn">account_circle</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item>
+        <mat-icon>perm_identity</mat-icon>
+        <span>Profile</span>
+      </button>
+      <button mat-menu-item>
+        <mat-icon matBadge="15" matBadgeColor="warn">notifications</mat-icon>
+        <span>Notifications</span>
+      </button>
+      <button mat-menu-item (click)="logOut()">
+        <mat-icon>logout</mat-icon>
+        <span>Logout</span>
+      </button>
+    </mat-menu>
+  </mat-toolbar-row>
+</mat-toolbar>
 <mat-sidenav-container class="sidenav-container">
-  <mat-sidenav id="left-menu" #drawer class="sidenav" fixedInViewport="true"
-               [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
-               [mode]="(isHandset$ | async) ? 'over' : 'side'"
-               [opened]="!(isHandset$ | async)">
-    <mat-toolbar id="left-menu-label">Menu</mat-toolbar>
+  <mat-sidenav #sidenav class="sidenav" [fixedInViewport]="false" mode="side" [opened]="!(isHandset$ | async)">
     <mat-nav-list [disableRipple]="true" id="menu-list">
       <div *ngFor="let item of navItems">
         <app-menu-list-item [item]="item"></app-menu-list-item>
@@ -11,42 +33,11 @@
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
-    <mat-toolbar color="primary">
-      <mat-toolbar-row>
-        <button
-          id="handset-menu"
-          type="button"
-          aria-label="Toggle sidenav"
-          mat-icon-button
-          (click)="drawer.toggle()"
-          *ngIf="isHandset$ | async">
-          <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
-        </button>
-        <a routerLink=".." class="logo" id="main-logo"></a>
-        <span class="example-spacer"></span>
-
-        <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
-          <mat-icon matBadge="15" matBadgeColor="warn">account_circle</mat-icon>
-        </button>
-        <mat-menu #menu="matMenu">
-          <button mat-menu-item>
-            <mat-icon>perm_identity</mat-icon>
-            <span>Profile</span>
-          </button>
-          <button mat-menu-item>
-            <mat-icon matBadge="15" matBadgeColor="warn">notifications</mat-icon>
-            <span>Notifications</span>
-          </button>
-          <button mat-menu-item (click)="logOut()">
-            <mat-icon>logout</mat-icon>
-            <span>Logout</span>
-          </button>
-        </mat-menu>
-      </mat-toolbar-row>
-    </mat-toolbar>
 <!--    <app-loader></app-loader>-->
     <main class="main-container">
+      <app-breadcrumbs></app-breadcrumbs>
       <router-outlet></router-outlet>
     </main>
   </mat-sidenav-content>
 </mat-sidenav-container>
+<mat-toolbar class="example-footer">Footer</mat-toolbar>

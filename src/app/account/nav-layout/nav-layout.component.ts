@@ -60,6 +60,30 @@ export class NavLayoutComponent implements OnInit, OnDestroy {
       ]
     },
     {
+      id: 'support-menu',
+      displayName: 'Support',
+      iconName: 'drafts',
+      route: 'account/support'
+    },
+    {
+      id: 'users-menu',
+      displayName: 'Users',
+      iconName: 'people',
+      route: 'account/users'
+    },
+    {
+      id: 'plans-menu',
+      displayName: 'Plans',
+      iconName: 'payments',
+      route: 'account/plans'
+    },
+    {
+      id: 'access-tokens-menu',
+      displayName: 'Access Tokens',
+      iconName: 'fingerprint',
+      route: 'admin/access-tokens'
+    },
+    {
       id: 'settings-menu',
       displayName: 'Settings',
       iconName: 'settings',
@@ -78,36 +102,6 @@ export class NavLayoutComponent implements OnInit, OnDestroy {
           route: 'admin/settings/risk'
         }
       ]
-    },
-    {
-      id: 'support-menu',
-      displayName: 'Support',
-      iconName: 'drafts',
-      route: 'account/support'
-    },
-    {
-      id: 'access-tokens-menu',
-      displayName: 'Access Tokens',
-      iconName: 'fingerprint',
-      route: 'admin/access-tokens'
-    },
-    {
-      id: 'users-menu',
-      displayName: 'Users',
-      iconName: 'people',
-      route: 'account/users'
-    },
-    {
-      id: 'plans-menu',
-      displayName: 'Plans',
-      iconName: 'payments',
-      route: 'account/plans'
-    },
-    {
-      id: 'markets-menu',
-      displayName: 'Markets',
-      iconName: 'language',
-      route: 'admin/markets'
     }
   ];
 

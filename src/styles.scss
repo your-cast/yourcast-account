@@ -20,7 +20,8 @@ html, .mat-app-background {
 }
 
 main.main-container {
-  padding: 20px
+  padding: 20px;
+  min-height: 750px;
 }
 
 .mat-row:nth-child(even) {
