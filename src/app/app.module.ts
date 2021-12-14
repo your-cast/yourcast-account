@@ -5,10 +5,10 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {AuthModule} from './auth/auth.module';
 import {AccountModule} from './account/account.module';
 import {SharedModule} from './shared/shared.module';
-import {MatComponentsModule} from './mat-components-module/mat-components.module';
 import {AppComponent} from './app.component';
 import {AuthTokenInterceptor} from './interceptors/auth-token.interceptor';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
+import {MaterialModule} from './material/material.module';
 
 @NgModule({
   declarations: [
@@ -22,7 +22,7 @@ import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
     SharedModule,
     AuthModule,
     AccountModule,
-    MatComponentsModule
+    MaterialModule
   ],
   bootstrap: [AppComponent],
   providers: [

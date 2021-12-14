@@ -108,5 +108,5 @@ import {MatSliderModule} from '@angular/material/slider';
     MatDatepickerModule
   ]
 })
-export class MatComponentsModule {
+export class MaterialModule {
 }

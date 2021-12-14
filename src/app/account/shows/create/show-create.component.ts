@@ -3,6 +3,7 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {ShowService} from '../../../services/show.service';
 import languages from '../../../../assets/other/languages.json';
 import timezones from '../../../../assets/other/timezones.json';
+import categories from '../../../../assets/other/categories.json';
 import {Param} from '../../../models/param';
 
 @Component({
@@ -14,6 +15,8 @@ export class ShowCreateComponent implements OnInit {
   isLinear = true;
   timezones: Param[] = [];
   languages: Param[] = [];
+  categories: any = [];
+  firstSubcategory: any = [];
   infoFormGroup: FormGroup;
   artworkFormGroup: FormGroup;
   formatFormGroup: FormGroup;
@@ -31,6 +34,7 @@ export class ShowCreateComponent implements OnInit {
     this.prepareForm();
     this.prepareTimezones();
     this.prepareLanguages();
+    this.prepareCategories();
   }
 
   prepareForm(): void {
@@ -71,6 +75,28 @@ export class ShowCreateComponent implements OnInit {
 
   prepareLanguages(): void {
     this.languages = languages;
+  }
+
+  prepareCategories(): void {
+    this.categories = categories;
+  }
+
+  getFirstSubCategory(selected: string) {
+    this.firstSubcategory = [];
+
+    this.categories.forEach((category: Param[]) => {
+      console.log(category);
+      // if (category.value === selected) {
+      //   if (category.hasOwnProperty('children')) {
+      //     category.children.forEach((children: Param[]) => {
+      //       this.firstSubcategory.push({
+      //         'code': children.code,
+      //         'name': children.name
+      //       });
+      //     });
+      //   }
+      // }
+    });
   }
 
   validShowInfo(): boolean {

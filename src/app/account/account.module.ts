@@ -8,8 +8,8 @@ import {MenuListItemComponent} from './menu-list-item/menu-list-item.component';
 import {AccountRoutingModule} from './account-routing.module';
 import {ShowCreateComponent} from './shows/create/show-create.component';
 import {EmailConfirmComponent} from './email-confirm/email-confirm.component';
-import {MatComponentsModule} from '../mat-components-module/mat-components.module';
 import {SharedModule} from '../shared/shared.module';
+import {MaterialModule} from '../material/material.module';
 
 @NgModule({
   declarations: [
@@ -24,7 +24,7 @@ import {SharedModule} from '../shared/shared.module';
     FormsModule,
     LayoutModule,
     ReactiveFormsModule,
-    MatComponentsModule,
+    MaterialModule,
     AccountRoutingModule,
     SharedModule
   ]

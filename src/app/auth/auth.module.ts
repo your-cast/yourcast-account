@@ -3,9 +3,9 @@ import {CommonModule} from '@angular/common';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {LayoutModule} from '@angular/cdk/layout';
 import {MatIconModule} from '@angular/material/icon';
-import {MatComponentsModule} from '../mat-components-module/mat-components.module';
 import {LoginComponent} from './login/login.component';
 import {RegistrationComponent} from './registration/registration.component';
+import {MaterialModule} from '../material/material.module';
 
 @NgModule({
   declarations: [
@@ -17,7 +17,7 @@ import {RegistrationComponent} from './registration/registration.component';
     FormsModule,
     LayoutModule,
     ReactiveFormsModule,
-    MatComponentsModule,
+    MaterialModule,
     MatIconModule
   ]
 })

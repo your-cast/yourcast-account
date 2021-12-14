@@ -80,7 +80,8 @@
 
       <div class="d-flex align-content-start pb-4">
         <mat-radio-group formControlName="format">
-          <mat-radio-button [checked]="formatFormGroup.get('format')?.value === 'episodic'" value="episodic">Episodic</mat-radio-button>
+          <mat-radio-button [checked]="formatFormGroup.get('format')?.value === 'episodic'" value="episodic">Episodic
+          </mat-radio-button>
         </mat-radio-group>
       </div>
       <div class="d-flex align-content-start pb-4">
@@ -92,7 +93,8 @@
 
       <div class="d-flex align-content-start pb-4">
         <mat-radio-group formControlName="format">
-          <mat-radio-button [checked]="formatFormGroup.get('format')?.value === 'serial'" value="serial">Serial</mat-radio-button>
+          <mat-radio-button [checked]="formatFormGroup.get('format')?.value === 'serial'" value="serial">Serial
+          </mat-radio-button>
         </mat-radio-group>
       </div>
       <div class="d-flex align-content-start pb-4">
@@ -181,16 +183,14 @@
         <mat-form-field appearance="fill" class="pr-2">
           <mat-label>1st category</mat-label>
           <mat-select formControlName="firstCategory">
-            <mat-option value="option1">Option 1</mat-option>
-            <mat-option value="option3">Option 2</mat-option>
+            <mat-option value="{{ category.code }}" *ngFor="let category of categories">{{ category.name }}</mat-option>
           </mat-select>
         </mat-form-field>
 
         <mat-form-field appearance="fill" class="pl-2">
           <mat-label>Sub category</mat-label>
-          <mat-select formControlName="firstSubCategory">
-            <mat-option value="option1">Option 1</mat-option>
-            <mat-option value="option3">Option 3</mat-option>
+          <mat-select formControlName="firstSubCategory" [disabled]="firstSubcategory.length === 0">
+            <mat-option value="{{ subCategory.code }}" *ngFor="let subCategory of firstSubcategory">{{ subCategory.name }}</mat-option>
           </mat-select>
         </mat-form-field>
       </div>
