@@ -32,6 +32,7 @@ export class ShowCreateComponent implements OnInit {
 
   ngOnInit() {
     this.prepareForm();
+    this.subscribeValueChange();
     this.prepareTimezones();
     this.prepareLanguages();
     this.prepareCategories();
@@ -40,7 +41,7 @@ export class ShowCreateComponent implements OnInit {
   prepareForm(): void {
     this.infoFormGroup = this.formBuilder.group({
       title: ['', Validators.required],
-      description: ['', Validators.max(150)]
+      description: ['', [Validators.required, Validators.max(150)]]
     });
     this.artworkFormGroup = this.formBuilder.group({
       artwork: ['']
@@ -69,6 +70,12 @@ export class ShowCreateComponent implements OnInit {
     });
   }
 
+  subscribeValueChange(): void {
+    this.categoryFormGroup.controls['firstCategory'].valueChanges.subscribe((value: any) => {
+      this.applyFirstSubCategory(value);
+    });
+  }
+
   prepareTimezones(): void {
     this.timezones = timezones;
   }
@@ -78,24 +85,24 @@ export class ShowCreateComponent implements OnInit {
   }
 
   prepareCategories(): void {
+    console.log(categories);
     this.categories = categories;
   }
 
-  getFirstSubCategory(selected: string) {
+  applyFirstSubCategory(selected: string) {
     this.firstSubcategory = [];
 
-    this.categories.forEach((category: Param[]) => {
-      console.log(category);
-      // if (category.value === selected) {
-      //   if (category.hasOwnProperty('children')) {
-      //     category.children.forEach((children: Param[]) => {
-      //       this.firstSubcategory.push({
-      //         'code': children.code,
-      //         'name': children.name
-      //       });
-      //     });
-      //   }
-      // }
+    this.categories.forEach((category: Param) => {
+      if (category.value === selected) {
+        if (category.hasOwnProperty('children')) {
+          category.children?.forEach((children: Param) => {
+            this.firstSubcategory.push({
+              'value': children.value,
+              'name': children.name
+            });
+          });
+        }
+      }
     });
   }
 
@@ -116,7 +123,7 @@ export class ShowCreateComponent implements OnInit {
       timezone: this.otherFormGroup.controls['timezone'].value,
       language: this.otherFormGroup.controls['language'].value,
       explicit: this.otherFormGroup.controls['explicit'].value,
-      category: null,
+      category: this.categoryFormGroup.controls['firstCategory'].value,
       tags: null,
       author: this.ownerFormGroup.controls['author'].value,
       podcast_owner: this.ownerFormGroup.controls['owner'].value,
