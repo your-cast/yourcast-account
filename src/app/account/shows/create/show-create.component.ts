@@ -45,8 +45,8 @@ export class ShowCreateComponent implements OnInit {
       format: ['episodic', Validators.required]
     });
     this.otherFormGroup = this.formBuilder.group({
-      timezone: ['Europe/Kiev', Validators.required],
-      language: ['uk', Validators.required],
+      timezone: ['Etc/GMT', Validators.required],
+      language: ['en', Validators.required],
       explicit: [false]
     });
     this.categoryFormGroup = this.formBuilder.group({
@@ -82,7 +82,25 @@ export class ShowCreateComponent implements OnInit {
   }
 
   submitForm() {
-    this.showService.createShow({}).subscribe();
+    const formData = {
+      title: this.infoFormGroup.controls['title'].value,
+      description: this.infoFormGroup.controls['description'].value,
+      artwork: this.artworkFormGroup.controls['artwork'].value,
+      format: this.formatFormGroup.controls['format'].value,
+      timezone: this.otherFormGroup.controls['timezone'].value,
+      language: this.otherFormGroup.controls['language'].value,
+      explicit: this.otherFormGroup.controls['explicit'].value,
+      category: null,
+      tags: null,
+      author: this.ownerFormGroup.controls['author'].value,
+      podcast_owner: this.ownerFormGroup.controls['owner'].value,
+      email_owner: this.ownerFormGroup.controls['ownerEmail'].value,
+      copyright: this.ownerFormGroup.controls['copyright'].value
+    };
+
+    this.showService.createShow(formData).subscribe(response => {
+      console.log(response);
+    });
   }
 
   uploadFile($event: Event): void {

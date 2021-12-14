@@ -1,17 +1,18 @@
 import {NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
-import {AppComponent} from './app.component';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {AppRoutingModule} from './app-routing.module';
-import {MatComponentsModule} from './mat-components-module/mat-components.module';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {AuthModule} from './auth/auth.module';
-import {SharedModule} from './shared/shared.module';
-import {HttpClientModule} from '@angular/common/http';
 import {AccountModule} from './account/account.module';
+import {SharedModule} from './shared/shared.module';
+import {MatComponentsModule} from './mat-components-module/mat-components.module';
+import {AppComponent} from './app.component';
+import {AuthTokenInterceptor} from './interceptors/auth-token.interceptor';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 
 @NgModule({
   declarations: [
-    AppComponent,
+    AppComponent
   ],
   imports: [
     BrowserModule,
@@ -21,10 +22,16 @@ import {AccountModule} from './account/account.module';
     SharedModule,
     AuthModule,
     AccountModule,
-    MatComponentsModule,
+    MatComponentsModule
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthTokenInterceptor,
+      multi: true
+    }
+  ]
 })
 
 export class AppModule {

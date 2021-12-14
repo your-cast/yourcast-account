@@ -104,6 +104,9 @@ export class NavLayoutComponent implements OnInit, OnDestroy {
       ]
     }
   ];
+  loading: boolean = true;
+  hasShow: boolean = false;
+  user: any = {};
 
   isHandset$: Observable<boolean> = this.breakpointObserver.observe([Breakpoints.Large, Breakpoints.XLarge])
     .pipe(
@@ -117,6 +120,11 @@ export class NavLayoutComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
+    this.authService.profile().subscribe(response => {
+      this.user = response.user;
+      this.hasShow = response.hasShow;
+      this.loading = false;
+    });
   }
 
   ngOnDestroy(): void {

@@ -9,6 +9,11 @@
       <mat-icon matBadge="15" matBadgeColor="warn">account_circle</mat-icon>
     </button>
     <mat-menu #menu="matMenu">
+      <div class="user-info d-flex flex-column">
+        <span class="user-name d-flex">{{ user.name }}</span>
+        <span class="user-email d-flex">{{ user.email }}</span>
+      </div>
+      <mat-divider></mat-divider>
       <button mat-menu-item>
         <mat-icon>perm_identity</mat-icon>
         <span>Profile</span>
@@ -34,8 +39,8 @@
   </mat-sidenav>
   <mat-sidenav-content>
 <!--    <app-loader></app-loader>-->
-    <main class="main-container">
-<!--      <app-breadcrumbs></app-breadcrumbs>-->
+    <main class="main-container" *ngIf="!loading">
+      <!--      <app-breadcrumbs></app-breadcrumbs>-->
       <router-outlet></router-outlet>
     </main>
   </mat-sidenav-content>

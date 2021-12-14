@@ -3,6 +3,8 @@ import {environment} from 'src/environments/environment';
 import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
 import {Observable, throwError} from 'rxjs';
 import {catchError, finalize} from 'rxjs/operators';
+import {AuthService} from './auth.service';
+import {Router} from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -13,6 +15,7 @@ export class ApiService {
 
   constructor(
     private http: HttpClient,
+    private router: Router
   ) {
     const headers = new HttpHeaders().set('Content-Type', 'application/json');
 
@@ -56,6 +59,10 @@ export class ApiService {
   }
 
   handleError(error: any): Error {
+    if (error.status === 401) {
+      localStorage.removeItem('token');
+      this.router.navigate(['/login']);
+    }
     return error;
   }
 }
