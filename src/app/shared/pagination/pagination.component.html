@@ -1,0 +1,75 @@
+<div class="table-paginator-container">
+  <div class="table-paginator row">
+    <ng-container *ngIf="pages.length > 7; else simplePaginator">
+      <button class="table-paginator-button"
+              *ngIf="currentPage >= 4"
+              (click)="onSelectPage(currentPage - 1)">
+        <svg style="transform: rotate(180deg)" xmlns="http://www.w3.org/2000/svg" height="15px" viewBox="0 0 24 24"
+             width="15px" fill="#000000">
+          <path d="M0 0h24v24H0V0z" fill="none"/>
+          <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6-6-6z"/>
+        </svg>
+      </button>
+      <button (click)="onSelectPage(1)"
+              *ngIf="currentPage >= 4"
+              class="table-paginator-button">1
+      </button>
+      <ng-container *ngFor="let item of pages; let i = index">
+        <button (click)="onSelectPage(i + 1)"
+                *ngIf="currentPage < 4 && i < 4"
+                class="table-paginator-button"
+                [ngClass]="{'active': currentPage === i + 1}">{{ i + 1 }}</button>
+      </ng-container>
+      <button class="table-paginator-button truncate"
+              *ngIf="pages.length >= 4 && currentPage >= 4">...
+      </button>
+      <ng-container *ngIf="currentPage >= 4 && currentPage <= pages.length - 4">
+        <button (click)="onSelectPage(currentPage - 1)"
+                class="table-paginator-button">{{ currentPage - 1 }}</button>
+        <button (click)="onSelectPage(currentPage)"
+                class="table-paginator-button active">{{ currentPage }}</button>
+        <button (click)="onSelectPage(currentPage + 1)"
+                class="table-paginator-button">{{ currentPage + 1 }}</button>
+      </ng-container>
+      <button class="table-paginator-button truncate"
+              *ngIf="currentPage <= pages.length - 4">...
+      </button>
+      <ng-container *ngFor="let item of pages; let i = index">
+        <button (click)="onSelectPage(i+1)"
+                *ngIf="currentPage > pages.length - 4 && i >= pages.length - 4 && i < pages.length"
+                class="table-paginator-button"
+                [ngClass]="{'active': currentPage === i+1}">{{ i + 1 }}</button>
+      </ng-container>
+      <button (click)="onSelectPage(pages.length)"
+              *ngIf="currentPage <= pages.length - 4"
+              class="table-paginator-button">{{ pages.length }}</button>
+      <button
+        [class]="pages.length === 1 || currentPage === pages.length ? 'table-paginator-button disabled' : 'table-paginator-button'"
+        (click)="onSelectPage(currentPage + 1)">
+        <svg xmlns="http://www.w3.org/2000/svg" height="15px" viewBox="0 0 24 24" width="15px" fill="#000000">
+          <path d="M0 0h24v24H0V0z" fill="none"/>
+          <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6-6-6z"/>
+        </svg>
+      </button>
+    </ng-container>
+    <ng-template #simplePaginator>
+      <button (click)="onSelectPage(i + 1)"
+              *ngFor="let item of pages; let i = index"
+              class="table-paginator-button"
+              [ngClass]="{'active': currentPage === i + 1}">{{ i + 1 }}</button>
+      <button
+        [class]="pages.length === 1 || currentPage === pages.length ? 'table-paginator-button disabled' : 'table-paginator-button'"
+        (click)="onSelectPage(currentPage + 1)">
+        <svg xmlns="http://www.w3.org/2000/svg" height="15px" viewBox="0 0 24 24" width="15px" fill="#000000">
+          <path d="M0 0h24v24H0V0z" fill="none"/>
+          <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6-6-6z"/>
+        </svg>
+      </button>
+    </ng-template>
+  </div>
+  <div class="table-subpaginator row">
+    <span class="heading">{{ 'SHOWED_BY' | translate }}:</span>
+    <span *ngFor="let limit of limits" (click)="onSelectLimit(limit)"
+          [ngClass]="{'active': selectedLimit === limit}">{{ limit }}</span>
+  </div>
+</div>

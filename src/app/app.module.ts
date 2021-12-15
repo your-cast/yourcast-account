@@ -9,10 +9,14 @@ import {AppComponent} from './app.component';
 import {AuthTokenInterceptor} from './interceptors/auth-token.interceptor';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {MaterialModule} from './material/material.module';
+import {TableComponent} from './common/table/table.component';
+import {Translations} from './pipes/translations';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    TableComponent,
+    Translations
   ],
   imports: [
     BrowserModule,

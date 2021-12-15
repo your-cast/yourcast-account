@@ -1,0 +1,88 @@
+$c-main: #fff
+$secondary-default: #D9D9D9
+$background: #F5F5F5
+$accent: #FFDD00
+$hover: #FEED00
+$table-text: #2B2D33
+$table-paginator: #93A0AB
+$table-paginator-active: #474955
+
+.row
+  -ms-flex-wrap: wrap
+  flex-wrap: wrap
+  flex-direction: row
+
+.table-paginator
+  display: flex
+  border-radius: 3px
+  border: 1px solid $secondary-default
+
+  &-button
+    display: block
+    border: none
+    outline: none
+    border-right: 1px solid $secondary-default
+    height: 34px
+    width: 40px
+    align-items: center
+    justify-content: center
+    color: $table-paginator-active
+    cursor: pointer
+    background-color: $c-main
+    fill: $table-text
+
+    &:last-child
+      border-right: none
+
+    &.active
+      background-color: $accent
+      color: $table-paginator-active
+    &:hover
+      background-color: $accent
+
+    &:disabled
+      cursor: not-allowed
+
+    &.disabled svg
+      cursor: not-allowed
+      fill: $table-paginator
+
+    &.truncate
+      &.active, &:hover
+        background-color: $c-main
+        color: $table-paginator-active
+
+  &-container
+    height: 60px
+    padding: 4px 10px
+    display: flex
+    justify-content: space-between
+    align-items: center
+    bottom: 14px
+    background: $c-main
+
+    &--border-bottom-0
+      border-bottom: 0
+
+  &-subpaginator
+    display: flex
+
+span
+  font-size: 12px !important
+  color: $table-paginator
+  margin-right: 15px
+  cursor: pointer
+
+  &:last-child
+    margin-right: 0
+
+  &.active
+    color: $table-paginator-active
+
+  &.disabled
+    text-decoration: line-through
+    cursor: not-allowed
+
+  .heading
+    font-weight: normal
+    color: $table-paginator-active

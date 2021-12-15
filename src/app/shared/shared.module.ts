@@ -1,5 +1,6 @@
 import {NgModule} from '@angular/core';
 import {BreadcrumbsComponent} from './breadcrumbs/breadcrumbs.component';
+import {PageContentComponent} from './page-content/page-content.component';
 import {NotFoundComponent} from './not-found/not-found.component';
 import {Footer} from './footer/footer';
 import {MaterialModule} from '../material/material.module';
@@ -8,11 +9,13 @@ import {MaterialModule} from '../material/material.module';
   declarations: [
     BreadcrumbsComponent,
     NotFoundComponent,
+    PageContentComponent,
     Footer
   ],
   exports: [
     BreadcrumbsComponent,
     NotFoundComponent,
+    PageContentComponent,
     Footer
   ],
   imports: [

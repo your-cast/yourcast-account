@@ -1,0 +1,4 @@
+<span [attr.status]="status" class="status-row">
+  <span *ngIf="!status">---</span>
+  <span *ngIf="status" [class]="status">●{{ ' ' + getStatus(status) }}</span>
+</span>

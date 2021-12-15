@@ -39,7 +39,7 @@ export class NavigationsService {
             id: 'show-list-menu',
             displayName: 'List shows',
             iconName: 'contactless',
-            route: 'account/shows'
+            route: 'account/shows/list'
           }
         ]
       },

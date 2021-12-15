@@ -27,6 +27,7 @@ export class AuthService {
       map(response => {
         if (response && response['access_token']) {
           localStorage.setItem('token', response['access_token']);
+          localStorage.setItem('userId', response['user'].id);
           return true;
         } else {
           return false;

@@ -5,6 +5,7 @@ import {AuthGuard} from '../guard/auth.guard';
 import {DashboardComponent} from './dashboard/dashboard.component';
 import {ShowCreateComponent} from './shows/create/show-create.component';
 import {EmailConfirmComponent} from './email-confirm/email-confirm.component';
+import {ShowListComponent} from './shows/list/show-list.component';
 
 const routes: Routes = [
   {
@@ -23,6 +24,10 @@ const routes: Routes = [
       {
         path: 'shows/create',
         component: ShowCreateComponent
+      },
+      {
+        path: 'shows/list',
+        component: ShowListComponent
       }
     ]
   }
