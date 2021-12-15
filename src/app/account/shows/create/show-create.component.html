@@ -190,7 +190,7 @@
         <mat-form-field appearance="fill" class="pl-2">
           <mat-label>Sub category</mat-label>
           <mat-select formControlName="firstSubCategory" [disabled]="firstSubcategory.length === 0">
-            <mat-option value="{{ childred.value }}" *ngFor="let childred of firstSubcategory">{{ childred.name }}</mat-option>
+            <mat-option value="{{ children.value }}" *ngFor="let children of firstSubcategory">{{ children.name }}</mat-option>
           </mat-select>
         </mat-form-field>
       </div>
@@ -205,8 +205,7 @@
         <mat-form-field appearance="fill" class="pl-2">
           <mat-label>Sub category</mat-label>
           <mat-select formControlName="secondSubCategory">
-            <mat-option value="option1">Option 1</mat-option>
-            <mat-option value="option3">Option 3</mat-option>
+            <mat-option value="{{ children.value }}" *ngFor="let children of secondSubcategory">{{ children.name }}</mat-option>
           </mat-select>
         </mat-form-field>
       </div>
@@ -221,8 +220,7 @@
         <mat-form-field appearance="fill" class="pl-2">
           <mat-label>Sub category</mat-label>
           <mat-select formControlName="thirdSubCategory">
-            <mat-option value="option1">Option 1</mat-option>
-            <mat-option value="option3">Option 3</mat-option>
+            <mat-option value="{{ children.value }}" *ngFor="let children of thirdSubcategory">{{ children.name }}</mat-option>
           </mat-select>
         </mat-form-field>
       </div>

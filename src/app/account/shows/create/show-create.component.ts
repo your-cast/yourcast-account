@@ -16,7 +16,9 @@ export class ShowCreateComponent implements OnInit {
   timezones: Param[] = [];
   languages: Param[] = [];
   categories: any = [];
-  firstSubcategory: any = [];
+  firstSubcategory: Param[] = [];
+  secondSubcategory: Param[] = [];
+  thirdSubcategory: Param[] = [];
   infoFormGroup: FormGroup;
   artworkFormGroup: FormGroup;
   formatFormGroup: FormGroup;
@@ -72,7 +74,13 @@ export class ShowCreateComponent implements OnInit {
 
   subscribeValueChange(): void {
     this.categoryFormGroup.controls['firstCategory'].valueChanges.subscribe((value: any) => {
-      this.applyFirstSubCategory(value);
+      this.applySubCategory(value, 'first');
+    });
+    this.categoryFormGroup.controls['secondCategory'].valueChanges.subscribe((value: any) => {
+      this.applySubCategory(value, 'second');
+    });
+    this.categoryFormGroup.controls['thirdCategory'].valueChanges.subscribe((value: any) => {
+      this.applySubCategory(value, 'third');
     });
   }
 
@@ -85,25 +93,34 @@ export class ShowCreateComponent implements OnInit {
   }
 
   prepareCategories(): void {
-    console.log(categories);
     this.categories = categories;
   }
 
-  applyFirstSubCategory(selected: string) {
-    this.firstSubcategory = [];
+  applySubCategory(selected: string, value: string) {
+    const subcategory: Param[] = [];
 
     this.categories.forEach((category: Param) => {
       if (category.value === selected) {
         if (category.hasOwnProperty('children')) {
           category.children?.forEach((children: Param) => {
-            this.firstSubcategory.push({
-              'value': children.value,
-              'name': children.name
+            subcategory.push({
+              value: children.value,
+              name: children.name
             });
           });
         }
       }
     });
+
+    if (value === 'first') {
+      this.firstSubcategory = subcategory;
+    }
+    if (value === 'second') {
+      this.secondSubcategory = subcategory;
+    }
+    if (value === 'third') {
+      this.thirdSubcategory = subcategory;
+    }
   }
 
   validShowInfo(): boolean {
