@@ -5,6 +5,8 @@ import languages from '../../../../assets/other/languages.json';
 import timezones from '../../../../assets/other/timezones.json';
 import categories from '../../../../assets/other/categories.json';
 import {Param} from '../../../models/param';
+import {Router} from '@angular/router';
+import {NotificationService} from '../../../services/notification.service';
 
 @Component({
   selector: 'app-show-create',
@@ -28,7 +30,9 @@ export class ShowCreateComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private showService: ShowService
+    private showService: ShowService,
+    private router: Router,
+    public notificationService: NotificationService
   ) {
   }
 
@@ -149,7 +153,12 @@ export class ShowCreateComponent implements OnInit {
     };
 
     this.showService.createShow(formData).subscribe(response => {
-      console.log(response);
+      this.router.navigate(['/account/shows/list']);
+
+      this.notificationService.openNotification({
+        message: 'New show created!',
+        type: 'check'
+      });
     });
   }
 

@@ -1,12 +1,12 @@
-.rgo-page-content {
+.page-content {
   background-color: #F5F5F5;
-  padding: 8px 14px 14px 8px;
+  padding: 8px;
   display: flex;
   height: 100%;
   position: relative;
   flex-direction: column;
 }
 
-.rgo-page-content > *:not(:last-child) {
+.page-content > *:not(:last-child) {
   margin-bottom: 8px;
 }

@@ -1,42 +1,33 @@
 import {Component, OnInit} from '@angular/core';
-import {Router} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {ShowService} from '../../../services/show.service';
 import {TableComponent} from '../../../common/table/table.component';
 import {NotificationService} from '../../../services/notification.service';
 
 @Component({
-  selector: 'app-show-list',
-  templateUrl: './show-list.component.html',
-  styleUrls: ['./show-list.component.scss']
+  selector: 'app-show-detail',
+  templateUrl: './show-detail.component.html',
+  styleUrls: ['./show-detail.component.scss']
 })
-export class ShowListComponent extends TableComponent implements OnInit {
+export class ShowDetailComponent implements OnInit {
+  show: any;
+
   constructor(
     protected showService: ShowService,
     private router: Router,
+    private activatedRoute: ActivatedRoute,
     public notificationService: NotificationService
   ) {
-    super(showService);
   }
 
   ngOnInit(): void {
-    super.ngOnInit();
     this.getData();
-
-    this.displayedColumns = [
-      'select',
-      'id',
-      'artwork',
-      'title',
-      'description',
-      'format',
-      'category',
-      'status'
-    ];
   }
 
   getData(): void {
-    this.showService.showList().subscribe(response => {
-      this.dataSource = response.result;
+    const id = this.activatedRoute.snapshot.paramMap.get('id')
+    this.showService.getShowInfo(id).subscribe(response => {
+      this.show = response.result;
     });
   }
 

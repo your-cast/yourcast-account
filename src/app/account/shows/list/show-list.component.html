@@ -1,5 +1,6 @@
 <p>SHOW LIST</p>
 
+<app-notification [data]="notificationService.notification | async"></app-notification>
 <app-page-content>
   <div class="table">
     <table mat-table [dataSource]="dataSource">

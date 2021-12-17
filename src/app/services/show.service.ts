@@ -11,7 +11,10 @@ export class ShowService extends ApiService {
   }
 
   showList(): Observable<any> {
-    const userId = localStorage.getItem('userId')
-    return this.get('v1/show/list/' + userId);
+    return this.get('v1/show/list/');
+  }
+
+  getShowInfo(id: any): Observable<any> {
+    return this.get('v1/show/' + id);
   }
 }

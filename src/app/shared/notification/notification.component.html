@@ -1,8 +1,8 @@
 <div class="notification" [ngClass]="{'notification-show': data}" [class]="'notification-' + data?.type">
   <div [class]="'notification-icon-container notification-icon-container-' + data?.type">
-    <rbi-icon *ngIf="data?.type === 'error'">warning</rbi-icon>
-    <rbi-icon *ngIf="data?.type === 'info'">info_white</rbi-icon>
-    <rbi-icon *ngIf="data?.type === 'check'">check_white</rbi-icon>
+    <mat-icon *ngIf="data?.type === 'error'">warning</mat-icon>
+    <mat-icon *ngIf="data?.type === 'info'">info_white</mat-icon>
+    <mat-icon *ngIf="data?.type === 'check'">check_white</mat-icon>
   </div>
   <span class="notification-message">{{ data?.message }}</span>
 </div>

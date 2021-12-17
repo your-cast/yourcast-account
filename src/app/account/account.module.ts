@@ -11,6 +11,7 @@ import {SharedModule} from '../shared/shared.module';
 import {MaterialModule} from '../material/material.module';
 import {ShowCreateComponent} from './shows/create/show-create.component';
 import {ShowListComponent} from './shows/list/show-list.component';
+import {ShowDetailComponent} from './shows/detail/show-detail.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import {ShowListComponent} from './shows/list/show-list.component';
     MenuListItemComponent,
     ShowCreateComponent,
     ShowListComponent,
+    ShowDetailComponent,
     EmailConfirmComponent
   ],
   imports: [

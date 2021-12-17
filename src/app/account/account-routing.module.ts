@@ -6,6 +6,7 @@ import {DashboardComponent} from './dashboard/dashboard.component';
 import {ShowCreateComponent} from './shows/create/show-create.component';
 import {EmailConfirmComponent} from './email-confirm/email-confirm.component';
 import {ShowListComponent} from './shows/list/show-list.component';
+import {ShowDetailComponent} from './shows/detail/show-detail.component';
 
 const routes: Routes = [
   {
@@ -28,6 +29,10 @@ const routes: Routes = [
       {
         path: 'shows/list',
         component: ShowListComponent
+      },
+      {
+        path: 'shows/details/:id',
+        component: ShowDetailComponent
       }
     ]
   }
