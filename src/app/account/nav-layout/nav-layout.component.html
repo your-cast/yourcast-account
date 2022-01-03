@@ -38,10 +38,13 @@
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
-<!--    <app-loader></app-loader>-->
-    <main class="main-container" *ngIf="!loading">
-      <!--      <app-breadcrumbs></app-breadcrumbs>-->
-      <router-outlet></router-outlet>
+
+    <!--<app-loader></app-loader>-->
+    <main class="main-container">
+      <div *ngIf="!loading">
+        <router-outlet></router-outlet>
+      </div>
+      <!--<app-breadcrumbs></app-breadcrumbs>-->
     </main>
   </mat-sidenav-content>
 </mat-sidenav-container>

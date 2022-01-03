@@ -7,6 +7,7 @@ import {ShowCreateComponent} from './shows/create/show-create.component';
 import {EmailConfirmComponent} from './email-confirm/email-confirm.component';
 import {ShowListComponent} from './shows/list/show-list.component';
 import {ShowDetailComponent} from './shows/detail/show-detail.component';
+import {PodcastCreateComponent} from './podcasts/create/podcast-create.component';
 
 const routes: Routes = [
   {
@@ -33,7 +34,15 @@ const routes: Routes = [
       {
         path: 'shows/details/:id',
         component: ShowDetailComponent
-      }
+      },
+      {
+        path: 'episodes/create',
+        component: PodcastCreateComponent
+      },
+      {
+        path: 'episodes/list',
+        component: ShowListComponent
+      },
     ]
   }
 ];

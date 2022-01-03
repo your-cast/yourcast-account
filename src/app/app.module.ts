@@ -26,7 +26,7 @@ import {Translations} from './pipes/translations';
     SharedModule,
     AuthModule,
     AccountModule,
-    MaterialModule
+    MaterialModule,
   ],
   bootstrap: [AppComponent],
   providers: [

@@ -12,6 +12,7 @@ import {MaterialModule} from '../material/material.module';
 import {ShowCreateComponent} from './shows/create/show-create.component';
 import {ShowListComponent} from './shows/list/show-list.component';
 import {ShowDetailComponent} from './shows/detail/show-detail.component';
+import {PodcastCreateComponent} from './podcasts/create/podcast-create.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import {ShowDetailComponent} from './shows/detail/show-detail.component';
     ShowCreateComponent,
     ShowListComponent,
     ShowDetailComponent,
+    PodcastCreateComponent,
     EmailConfirmComponent
   ],
   imports: [
@@ -30,7 +32,7 @@ import {ShowDetailComponent} from './shows/detail/show-detail.component';
     ReactiveFormsModule,
     MaterialModule,
     AccountRoutingModule,
-    SharedModule
+    SharedModule,
   ]
 })
 export class AccountModule {

@@ -32,6 +32,8 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatBadgeModule} from '@angular/material/badge';
 import {MatSliderModule} from '@angular/material/slider';
+import {MatMomentDateModule} from '@angular/material-moment-adapter';
+import {MatNativeDateModule} from '@angular/material/core';
 
 @NgModule({
   imports: [
@@ -68,7 +70,9 @@ import {MatSliderModule} from '@angular/material/slider';
     MatSortModule,
     MatPaginatorModule,
     MatDividerModule,
-    MatButtonModule
+    MatButtonModule,
+    MatNativeDateModule,
+    MatMomentDateModule,
   ],
   exports: [
     MatCheckboxModule,
@@ -102,7 +106,10 @@ import {MatSliderModule} from '@angular/material/slider';
     MatTableModule,
     MatSortModule,
     MatPaginatorModule,
-    MatButtonModule
+    MatButtonModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatMomentDateModule,
   ],
   providers: [
     MatDatepickerModule

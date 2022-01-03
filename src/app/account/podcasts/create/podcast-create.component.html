@@ -1,0 +1,158 @@
+<p>PODCAST CREATE</p>
+
+<mat-card>
+  <mat-card-title>Audio file</mat-card-title>
+  <mat-divider></mat-divider>
+  <mat-card-content>
+    <div class="upload">
+      <div class="upload-zone upload-zone-select">
+        <span class="upload-zone-button">
+          <input type="file" accept="audio/*" style="display: none;">
+          <span>
+            <span><strong>Episode audio file</strong></span>
+            <br>
+            <span>Drop your audio file here or click to upload (up to 150 MB).</span>
+          </span>
+        </span>
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>
+<mat-card>
+  <form [formGroup]="infoFormGroup">
+    <mat-card-title>General</mat-card-title>
+    <mat-divider></mat-divider>
+    <mat-card-content>
+      <div class="d-flex">
+        <div class="upload w-45">
+          <span class="label">Cover</span>
+          <div class="upload-zone upload-zone-select">
+        <span class="upload-zone-button">
+          <input type="file" accept="image/*" style="display: none;">
+          <span>
+            <span>Upload your cover</span>
+            <br>
+            <span>Square PNG or JPEG files. (1400 - 3000px)</span>
+          </span>
+        </span>
+          </div>
+        </div>
+        <div class="other w-100">
+          <div>
+            <mat-form-field appearance="fill" class="w-100">
+              <mat-label>Title</mat-label>
+              <input matInput placeholder="Title" formControlName="title" required>
+            </mat-form-field>
+          </div>
+          <div>
+            <mat-form-field appearance="fill" class="w-100">
+              <mat-label>Subtitle</mat-label>
+              <input matInput placeholder="Subtitle" formControlName="subtitle">
+            </mat-form-field>
+          </div>
+          <div>
+            <mat-form-field appearance="fill" class="w-100">
+              <mat-label>Link</mat-label>
+              <input matInput placeholder="Link" formControlName="link">
+            </mat-form-field>
+          </div>
+          <div class="d-flex justify-content-between w-100">
+            <div class="d-flex w-45">
+              <mat-form-field appearance="fill" class="w-100">
+                <mat-label>Season</mat-label>
+                <input matInput placeholder="Season" formControlName="season">
+              </mat-form-field>
+            </div>
+            <div class="d-flex w-45">
+              <mat-form-field appearance="fill" class="w-100">
+                <mat-label>Episode #</mat-label>
+                <input matInput placeholder="Episode #" formControlName="episode">
+              </mat-form-field>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="d-flex">
+        <div class="w-100">
+          <div>
+            <span class="label">Alias</span>
+          </div>
+          <div>
+            <mat-form-field appearance="fill">
+              <span matPrefix>https://your-cast.com/show/</span>
+              <input matInput placeholder="my-episode" formControlName="alias">
+              <mat-icon matSuffix>mode_edit</mat-icon>
+            </mat-form-field>
+          </div>
+          <span class="help">
+            <small>
+              Choose wisely, this will be the public URL of your episode and you won't be able to change it!
+              It can only contain alphanumeric characters and dashes.
+            </small>
+          </span>
+          <div>
+            <span class="label">Type</span>
+          </div>
+          <div>
+            <mat-button-toggle-group formControlName="type">
+              <mat-button-toggle value="full">Full (complete content)</mat-button-toggle>
+              <mat-button-toggle value="trailer">Trailer (short, promotional)</mat-button-toggle>
+              <mat-button-toggle value="bonus">Bonus (extra content)</mat-button-toggle>
+            </mat-button-toggle-group>
+          </div>
+          <div>
+            <span class="label">Summary</span>
+          </div>
+          <div>
+            <mat-form-field appearance="fill" style="width: 100%;">
+              <textarea matInput rows="8" formControlName="summary"></textarea>
+            </mat-form-field>
+          </div>
+          <div>
+            <span class="label">Does this episode contain explicit language?</span>
+          </div>
+          <div>
+            <mat-slide-toggle formControlName="explicit"></mat-slide-toggle>
+          </div>
+        </div>
+      </div>
+    </mat-card-content>
+  </form>
+</mat-card>
+<mat-card>
+  <mat-card-title>Publishing Settings</mat-card-title>
+  <mat-divider></mat-divider>
+  <mat-card-content>
+    <div>
+      <span class="label mt-4">Publish Date</span>
+    </div>
+    <div>
+      <mat-form-field appearance="fill">
+        <mat-label>Choose a date</mat-label>
+        <input matInput [matDatepicker]="picker">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+    </div>
+  </mat-card-content>
+</mat-card>
+
+<pre>{{ infoFormGroup.value | json }}</pre>
+
+<mat-card>
+  <mat-card-content>
+    <div class="d-flex justify-content-between">
+      <div class="d-flex">
+        <button mat-raised-button>Cancel</button>
+      </div>
+      <div class="d-flex">
+        <div class="d-flex pr-3">
+          <button mat-raised-button color="primary">Save as draft</button>
+        </div>
+        <div class="d-flex pl-3">
+          <button class="pl-3" mat-raised-button color="accent" (click)="submitForm()">Publish</button>
+        </div>
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>

@@ -45,21 +45,15 @@ export class NavigationsService {
       },
       {
         id: 'podcasts-menu',
-        displayName: 'Podcasts',
+        displayName: 'Episodes',
         iconName: 'podcasts',
-        route: 'account/podcasts',
+        route: 'account/episodes',
         children: [
           {
             id: 'podcast-create-menu',
-            displayName: 'Create podcast',
+            displayName: 'Create episode',
             iconName: 'add_circle',
-            route: 'account/podcasts/create'
-          },
-          {
-            id: 'podcast-list-menu',
-            displayName: 'List shows',
-            iconName: 'contactless',
-            route: 'account/podcasts'
+            route: 'account/episodes/create'
           }
         ]
       },
