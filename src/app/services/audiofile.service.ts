@@ -6,10 +6,7 @@ import {Observable} from 'rxjs';
   providedIn: 'root'
 })
 export class AudioFileService extends ApiService {
-  uploadAudioFile(file: File): Observable<any> {
-    let formData: FormData = new FormData();
-    formData.append('audio', file, file.name);
-
+  uploadAudioFile(formData: FormData): Observable<any> {
     return this.post('v1/upload-audio', formData);
   }
 }

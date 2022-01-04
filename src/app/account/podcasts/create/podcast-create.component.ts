@@ -76,7 +76,10 @@ export class PodcastCreateComponent implements OnInit {
     const element = $event.currentTarget as HTMLInputElement;
     let fileList: FileList | null = element.files;
     if (fileList) {
-      this.audioFileService.uploadAudioFile(fileList[0]).subscribe(response => {
+      let formData: FormData = new FormData();
+      formData.append('audio', fileList[0], fileList[0].name);
+
+      this.audioFileService.uploadAudioFile(formData).subscribe(response => {
         console.log(response);
       });
     }
