@@ -4,10 +4,10 @@
   <mat-card-title>Audio file</mat-card-title>
   <mat-divider></mat-divider>
   <mat-card-content>
-    <div class="upload">
+    <div class="upload" (click)="uploader.click()">
       <div class="upload-zone upload-zone-select">
         <span class="upload-zone-button">
-          <input type="file" accept="audio/*" style="display: none;">
+          <input type="file" accept="audio/*" hidden #uploader (change)="uploadFile($event)">
           <span>
             <span><strong>Episode audio file</strong></span>
             <br>
@@ -136,9 +136,6 @@
     </div>
   </mat-card-content>
 </mat-card>
-
-<pre>{{ infoFormGroup.value | json }}</pre>
-
 <mat-card>
   <mat-card-content>
     <div class="d-flex justify-content-between">

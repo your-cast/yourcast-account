@@ -1,8 +1,9 @@
 import {Component, OnInit} from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {ShowService} from '../../../services/show.service';
 import {Router} from '@angular/router';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {NotificationService} from '../../../services/notification.service';
+import {EpisodesService} from '../../../services/episodes.service';
+import {AudioFileService} from '../../../services/audiofile.service';
 
 @Component({
   selector: 'app-podcast-create',
@@ -14,7 +15,8 @@ export class PodcastCreateComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private showService: ShowService,
+    private episodesService: EpisodesService,
+    private audioFileService: AudioFileService,
     private router: Router,
     public notificationService: NotificationService
   ) {
@@ -29,26 +31,38 @@ export class PodcastCreateComponent implements OnInit {
       title: ['', Validators.required],
       subtitle: ['', Validators.required],
       link: ['', Validators.required],
-      season: ['', Validators.required],
-      episode: ['', Validators.required],
+      season: ['1', Validators.required],
+      episode: ['1', Validators.required],
       alias: ['', Validators.required],
       type: ['full', Validators.required],
       summary: ['', Validators.required],
-      explicit: [false, Validators.required],
+      explicit: [false, Validators.required]
     });
   }
 
   validShowInfo(): boolean {
-    return !this.infoFormGroup.valid;
+    return this.infoFormGroup.valid;
   }
 
   submitForm() {
+    if (!this.validShowInfo()) {
+      return;
+    }
+
     const formData = {
+      show_id: 1,
       title: this.infoFormGroup.controls['title'].value,
-      description: this.infoFormGroup.controls['description'].value,
+      subtitle: this.infoFormGroup.controls['subtitle'].value,
+      link: this.infoFormGroup.controls['link'].value,
+      season: this.infoFormGroup.controls['season'].value,
+      episode: this.infoFormGroup.controls['episode'].value,
+      alias: this.infoFormGroup.controls['alias'].value,
+      type: this.infoFormGroup.controls['type'].value,
+      summary: this.infoFormGroup.controls['summary'].value,
+      explicit: this.infoFormGroup.controls['explicit'].value
     };
 
-    this.showService.createShow(formData).subscribe(response => {
+    this.episodesService.createEpisode(formData).subscribe(response => {
       this.router.navigate(['/account/shows/list']);
 
       this.notificationService.openNotification({
@@ -59,6 +73,12 @@ export class PodcastCreateComponent implements OnInit {
   }
 
   uploadFile($event: Event): void {
-    console.log($event);
+    const element = $event.currentTarget as HTMLInputElement;
+    let fileList: FileList | null = element.files;
+    if (fileList) {
+      this.audioFileService.uploadAudioFile(fileList[0]).subscribe(response => {
+        console.log(response);
+      });
+    }
   }
 }
