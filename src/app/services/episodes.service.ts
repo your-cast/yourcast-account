@@ -7,7 +7,7 @@ import {Observable} from 'rxjs';
 })
 export class EpisodesService extends ApiService {
   createEpisode(formData: any): Observable<any> {
-    return this.post('v1/episodes/create', JSON.stringify(formData));
+    return this.post('v1/episodes/create', formData);
   }
 
   listEpisodes(): Observable<any> {

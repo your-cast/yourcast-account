@@ -7,7 +7,7 @@ import {Observable} from 'rxjs';
 })
 export class ShowService extends ApiService {
   createShow(formData: any): Observable<any> {
-    return this.post('v1/show/create', JSON.stringify(formData));
+    return this.post('v1/show/create', formData);
   }
 
   showList(): Observable<any> {

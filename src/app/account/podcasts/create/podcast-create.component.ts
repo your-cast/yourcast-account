@@ -4,6 +4,7 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {NotificationService} from '../../../services/notification.service';
 import {EpisodesService} from '../../../services/episodes.service';
 import {AudioFileService} from '../../../services/audiofile.service';
+import {Track} from 'ngx-audio-player';
 
 @Component({
   selector: 'app-podcast-create',
@@ -12,6 +13,8 @@ import {AudioFileService} from '../../../services/audiofile.service';
 })
 export class PodcastCreateComponent implements OnInit {
   infoFormGroup: FormGroup;
+  audioFile: any = null;
+  audioFileList: Track[] = [];
 
   constructor(
     private formBuilder: FormBuilder,
@@ -51,6 +54,7 @@ export class PodcastCreateComponent implements OnInit {
 
     const formData = {
       show_id: 1,
+      audio_id: this.audioFile.id,
       title: this.infoFormGroup.controls['title'].value,
       subtitle: this.infoFormGroup.controls['subtitle'].value,
       link: this.infoFormGroup.controls['link'].value,
@@ -66,7 +70,7 @@ export class PodcastCreateComponent implements OnInit {
       this.router.navigate(['/account/shows/list']);
 
       this.notificationService.openNotification({
-        message: 'New show created!',
+        message: 'New episode added to your show!',
         type: 'check'
       });
     });
@@ -80,8 +84,22 @@ export class PodcastCreateComponent implements OnInit {
       formData.append('audio', fileList[0], fileList[0].name);
 
       this.audioFileService.uploadAudioFile(formData).subscribe(response => {
-        console.log(response);
+        this.audioFileList.push({
+          title: 'Audio file',
+          link: response.path,
+          artist: 'You'
+        });
+
+        this.audioFile = {
+          path: response.path,
+          id: response.file_id
+        };
       });
     }
+  }
+
+  deleteAudioFile() {
+    this.audioFileList = [];
+    this.audioFile = null;
   }
 }

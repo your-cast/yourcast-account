@@ -13,6 +13,7 @@ import {ShowCreateComponent} from './shows/create/show-create.component';
 import {ShowListComponent} from './shows/list/show-list.component';
 import {ShowDetailComponent} from './shows/detail/show-detail.component';
 import {PodcastCreateComponent} from './podcasts/create/podcast-create.component';
+import {NgxAudioPlayerModule} from 'ngx-audio-player';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import {PodcastCreateComponent} from './podcasts/create/podcast-create.component
     MaterialModule,
     AccountRoutingModule,
     SharedModule,
+    NgxAudioPlayerModule
   ]
 })
 export class AccountModule {

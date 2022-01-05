@@ -4,7 +4,7 @@
   <mat-card-title>Audio file</mat-card-title>
   <mat-divider></mat-divider>
   <mat-card-content>
-    <div class="upload" (click)="uploader.click()">
+    <div class="upload" (click)="uploader.click()" *ngIf="!audioFile">
       <div class="upload-zone upload-zone-select">
         <span class="upload-zone-button">
           <input type="file" accept="audio/*" hidden #uploader (change)="uploadFile($event)">
@@ -16,7 +16,24 @@
         </span>
       </div>
     </div>
+
+    <div class="audio-file" *ngIf="audioFile">
+      <ngx-audio-player [playlist]="audioFileList" [displayTitle]="false" [autoPlay]="false"
+                        muted="muted" [displayPlaylist]="false" [pageSizeOptions]="[2,4,6]"
+                        [displayArtist]="false" [displayDuration]="true"
+                        [expanded]="true"
+                        [displayVolumeControls]="true"
+                        [displayRepeatControls]="false"
+                        [disablePositionSlider]="false"></ngx-audio-player>
+    </div>
   </mat-card-content>
+  <mat-card-actions *ngIf="audioFile">
+    <div class="d-flex justify-content-end">
+      <div class="d-flex">
+        <button mat-raised-button color="accent" (click)="deleteAudioFile()">Delete</button>
+      </div>
+    </div>
+  </mat-card-actions>
 </mat-card>
 <mat-card>
   <form [formGroup]="infoFormGroup">
