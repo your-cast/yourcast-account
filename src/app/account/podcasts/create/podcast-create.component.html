@@ -43,15 +43,15 @@
       <div class="d-flex">
         <div class="upload w-45">
           <span class="label">Cover</span>
-          <div class="upload-zone upload-zone-select">
-        <span class="upload-zone-button">
-          <input type="file" accept="image/*" style="display: none;">
-          <span>
-            <span>Upload your cover</span>
-            <br>
-            <span>Square PNG or JPEG files. (1400 - 3000px)</span>
-          </span>
-        </span>
+          <div class="upload-zone upload-zone-select" (click)="imageUploader.click()" >
+            <span class="upload-zone-button">
+              <input type="file" accept="image/*" hidden #imageUploader (change)="uploadImage($event)">
+              <span>
+                <span>Upload your cover</span>
+                <br>
+                <span>Square PNG or JPEG files. (1400 - 3000px)</span>
+              </span>
+            </span>
           </div>
         </div>
         <div class="other w-100">

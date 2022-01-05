@@ -5,6 +5,7 @@ import {NotificationService} from '../../../services/notification.service';
 import {EpisodesService} from '../../../services/episodes.service';
 import {AudioFileService} from '../../../services/audiofile.service';
 import {Track} from 'ngx-audio-player';
+import {ImageService} from '../../../services/image.service';
 
 @Component({
   selector: 'app-podcast-create',
@@ -13,6 +14,7 @@ import {Track} from 'ngx-audio-player';
 })
 export class PodcastCreateComponent implements OnInit {
   infoFormGroup: FormGroup;
+  image: string = '';
   audioFile: any = null;
   audioFileList: Track[] = [];
 
@@ -20,6 +22,7 @@ export class PodcastCreateComponent implements OnInit {
     private formBuilder: FormBuilder,
     private episodesService: EpisodesService,
     private audioFileService: AudioFileService,
+    private imageService: ImageService,
     private router: Router,
     public notificationService: NotificationService
   ) {
@@ -27,6 +30,7 @@ export class PodcastCreateComponent implements OnInit {
 
   ngOnInit() {
     this.prepareForm();
+    this.subscribeEditForm();
   }
 
   prepareForm(): void {
@@ -40,6 +44,12 @@ export class PodcastCreateComponent implements OnInit {
       type: ['full', Validators.required],
       summary: ['', Validators.required],
       explicit: [false, Validators.required]
+    });
+  }
+
+  subscribeEditForm(): void {
+    this.infoFormGroup.controls['title'].valueChanges.subscribe((value: any) => {
+      console.log('here');
     });
   }
 
@@ -94,6 +104,19 @@ export class PodcastCreateComponent implements OnInit {
           path: response.path,
           id: response.file_id
         };
+      });
+    }
+  }
+
+  uploadImage($event: Event): void {
+    const element = $event.currentTarget as HTMLInputElement;
+    let fileList: FileList | null = element.files;
+    if (fileList) {
+      let formData: FormData = new FormData();
+      formData.append('image', fileList[0], fileList[0].name);
+
+      this.imageService.uploadImage(formData).subscribe(response => {
+        this.image = response.path;
       });
     }
   }
