@@ -23,7 +23,7 @@ export class AuthService {
   }
 
   login(credentials: any): any {
-    return this.apiService.post('v1/login', JSON.stringify(credentials)).pipe(
+    return this.apiService.post('v1/login', credentials).pipe(
       map(response => {
         if (response && response['access_token']) {
           localStorage.setItem('token', response['access_token']);
@@ -36,7 +36,7 @@ export class AuthService {
   }
 
   register(credentials: any): any {
-    return this.apiService.post('v1/register', JSON.stringify(credentials)).pipe(
+    return this.apiService.post('v1/register', credentials).pipe(
       map(response => {
         console.log(response);
         return true;
@@ -44,8 +44,14 @@ export class AuthService {
   }
 
   logout() {
-    localStorage.removeItem('token');
-    this.router.navigate(['/login']);
+    this.apiService.get('v1/logout').pipe(
+      map(response => {
+        return true;
+      })).subscribe(response => {
+
+      localStorage.removeItem('token');
+      this.router.navigate(['/login']);
+    });
   }
 
   isLoggedIn(): boolean {
