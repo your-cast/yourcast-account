@@ -2,6 +2,10 @@ mat-card {
   margin-bottom: 20px;
 }
 
+.w70 {
+  width: 70px;
+}
+
 .divider:before, .divider:after {
   content: "";
   display: inline-block;
@@ -40,6 +44,65 @@ mat-card {
 
 .upload {
   margin-top: 25px !important;
+}
+
+.shows {
+  margin-top: 25px !important;
+}
+
+.shows-area {
+  min-height: 200px;
+  position: relative;
+  width: 100%;
+}
+
+.shows-area-select {
+  background-color: #fafafa;
+  border: 1px dashed #ededf7;
+  border-radius: 4px;
+  cursor: pointer;
+  height: 100px;
+  width: 250px;
+  margin-bottom: 8px;
+  margin-right: 8px;
+  text-align: center;
+  transition: border-color .3s;
+  vertical-align: top;
+}
+
+.shows-area-select:hover {
+  border-color: #4040a8;
+}
+
+.shows-area-selected {
+  background: rgba(64, 64, 168, 0.4);
+  border-color: #4040a8;
+}
+
+.shows-area-button {
+  align-items: center;
+  display: flex;
+  height: 100%;
+  justify-content: center;
+  text-align: center;
+}
+
+.uploaded-cover {
+  max-height: 200px;
+  position: relative;
+}
+
+.uploaded-cover-select {
+  background-color: #fafafa;
+  border: 1px dashed #ededf7;
+  border-radius: 4px;
+  cursor: pointer;
+  height: 104px;
+  margin-bottom: 8px;
+  margin-right: 8px;
+  text-align: center;
+  transition: border-color .3s;
+  vertical-align: top;
 }
 
 .upload-zone {

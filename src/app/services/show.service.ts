@@ -11,7 +11,11 @@ export class ShowService extends ApiService {
   }
 
   showList(): Observable<any> {
-    return this.get('v1/show/list/');
+    return this.get('v1/show/list');
+  }
+
+  showShortList(): Observable<any> {
+    return this.get('v1/show/short');
   }
 
   getShowInfo(id: any): Observable<any> {

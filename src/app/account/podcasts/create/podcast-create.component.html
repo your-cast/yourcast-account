@@ -1,6 +1,27 @@
 <p>PODCAST CREATE</p>
 
 <mat-card>
+  <mat-card-title>Show</mat-card-title>
+  <mat-divider></mat-divider>
+  <mat-card-content>
+    <div class="shows" (click)="handleSelectShow(show.id)" *ngFor="let show of shows">
+      <div [class]="selectedShowId === show.id ? 'shows-area-selected shows-area shows-area-select' : 'shows-area shows-area-select'">
+        <span class="upload-zone-button">
+          <span>
+            <span><strong>{{ show.title }}</strong></span>
+            <br>
+            <span>{{ show.description }}</span>
+            <br>
+            <span>
+              <img class="rounded-pill w70" [src]="show.artwork" alt="artwork" *ngIf="show.artwork">
+            </span>
+          </span>
+        </span>
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>
+<mat-card>
   <mat-card-title>Audio file</mat-card-title>
   <mat-divider></mat-divider>
   <mat-card-content>
@@ -43,7 +64,10 @@
       <div class="d-flex">
         <div class="upload w-45">
           <span class="label">Cover</span>
-          <div class="upload-zone upload-zone-select" (click)="imageUploader.click()" >
+          <div class="uploaded-cover-zone" *ngIf="image">
+            <img class="uploaded-cover" [src]="image" *ngIf="image" alt="cover">
+          </div>
+          <div class="upload-zone upload-zone-select" (click)="imageUploader.click()" *ngIf="!image">
             <span class="upload-zone-button">
               <input type="file" accept="image/*" hidden #imageUploader (change)="uploadImage($event)">
               <span>

@@ -6,6 +6,7 @@ import {EpisodesService} from '../../../services/episodes.service';
 import {AudioFileService} from '../../../services/audiofile.service';
 import {Track} from 'ngx-audio-player';
 import {ImageService} from '../../../services/image.service';
+import {ShowService} from '../../../services/show.service';
 
 @Component({
   selector: 'app-podcast-create',
@@ -15,12 +16,15 @@ import {ImageService} from '../../../services/image.service';
 export class PodcastCreateComponent implements OnInit {
   infoFormGroup: FormGroup;
   image: string = '';
+  selectedShowId: any = null;
   audioFile: any = null;
   audioFileList: Track[] = [];
+  shows: any = [];
 
   constructor(
     private formBuilder: FormBuilder,
     private episodesService: EpisodesService,
+    private showService: ShowService,
     private audioFileService: AudioFileService,
     private imageService: ImageService,
     private router: Router,
@@ -29,8 +33,15 @@ export class PodcastCreateComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.getShows();
     this.prepareForm();
     this.subscribeEditForm();
+  }
+
+  getShows(): void {
+    this.showService.showShortList().subscribe(response => {
+      this.shows = response.result;
+    });
   }
 
   prepareForm(): void {
@@ -113,7 +124,8 @@ export class PodcastCreateComponent implements OnInit {
     let fileList: FileList | null = element.files;
     if (fileList) {
       let formData: FormData = new FormData();
-      formData.append('image', fileList[0], fileList[0].name);
+      formData.append('file', fileList[0], fileList[0].name);
+      formData.append('param', 'cover');
 
       this.imageService.uploadImage(formData).subscribe(response => {
         this.image = response.path;
@@ -124,5 +136,9 @@ export class PodcastCreateComponent implements OnInit {
   deleteAudioFile() {
     this.audioFileList = [];
     this.audioFile = null;
+  }
+
+  handleSelectShow(id: number) {
+    this.selectedShowId = id;
   }
 }
