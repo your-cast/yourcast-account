@@ -74,7 +74,7 @@ export class PodcastCreateComponent implements OnInit {
     }
 
     const formData = {
-      show_id: 1,
+      show_id: this.selectedShowId,
       audio_id: this.audioFile.id,
       title: this.infoFormGroup.controls['title'].value,
       subtitle: this.infoFormGroup.controls['subtitle'].value,

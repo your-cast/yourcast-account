@@ -1,8 +1,6 @@
 <p>PODCAST CREATE</p>
 
-
-{{selectedShowId}}
-<mat-card>
+<mat-card *ngIf="shows.length">
   <mat-card-title>Show</mat-card-title>
   <mat-divider></mat-divider>
   <mat-card-content>
