@@ -1,11 +1,14 @@
 <p>PODCAST CREATE</p>
 
+
+{{selectedShowId}}
 <mat-card>
   <mat-card-title>Show</mat-card-title>
   <mat-divider></mat-divider>
   <mat-card-content>
-    <div class="shows" (click)="handleSelectShow(show.id)" *ngFor="let show of shows">
-      <div [class]="selectedShowId === show.id ? 'shows-area-selected shows-area shows-area-select' : 'shows-area shows-area-select'">
+    <div class="shows-row">
+      <div class="shows" (click)="handleSelectShow(show.id)" *ngFor="let show of shows">
+        <div [class]="selectedShowId === show.id ? 'shows-area-selected shows-area shows-area-select' : 'shows-area shows-area-select'">
         <span class="upload-zone-button">
           <span>
             <span><strong>{{ show.title }}</strong></span>
@@ -14,9 +17,11 @@
             <br>
             <span>
               <img class="rounded-pill w70" [src]="show.artwork" alt="artwork" *ngIf="show.artwork">
+              <img class="rounded-pill w70" src="/assets/image/placeholder-image.png" alt="artwork" *ngIf="!show.artwork">
             </span>
           </span>
         </span>
+        </div>
       </div>
     </div>
   </mat-card-content>

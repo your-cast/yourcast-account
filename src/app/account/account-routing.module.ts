@@ -8,6 +8,7 @@ import {EmailConfirmComponent} from './email-confirm/email-confirm.component';
 import {ShowListComponent} from './shows/list/show-list.component';
 import {ShowDetailComponent} from './shows/detail/show-detail.component';
 import {PodcastCreateComponent} from './podcasts/create/podcast-create.component';
+import {UsersListComponent} from './users/list/users-list.component';
 
 const routes: Routes = [
   {
@@ -43,6 +44,10 @@ const routes: Routes = [
         path: 'episodes/list',
         component: ShowListComponent
       },
+      {
+        path: 'users/list',
+        component: UsersListComponent
+      }
     ]
   }
 ];

@@ -3,7 +3,6 @@ import {environment} from 'src/environments/environment';
 import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
 import {Observable, throwError} from 'rxjs';
 import {catchError, finalize} from 'rxjs/operators';
-import {AuthService} from './auth.service';
 import {Router} from '@angular/router';
 
 @Injectable({

@@ -16,7 +16,7 @@ import {Translations} from './pipes/translations';
   declarations: [
     AppComponent,
     TableComponent,
-    Translations
+    Translations,
   ],
   imports: [
     BrowserModule,

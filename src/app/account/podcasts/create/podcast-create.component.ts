@@ -139,6 +139,9 @@ export class PodcastCreateComponent implements OnInit {
   }
 
   handleSelectShow(id: number) {
+    if (this.selectedShowId === id) {
+      this.selectedShowId = 0;
+    }
     this.selectedShowId = id;
   }
 }

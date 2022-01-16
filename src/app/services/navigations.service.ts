@@ -77,10 +77,10 @@ export class NavigationsService {
         route: 'account/support'
       },
       {
-        id: 'users-menu',
+        id: 'list-menu',
         displayName: 'Users',
         iconName: 'people',
-        route: 'account/users'
+        route: 'account/users/list'
       },
       {
         id: 'settings-menu',

@@ -14,6 +14,7 @@ import {ShowListComponent} from './shows/list/show-list.component';
 import {ShowDetailComponent} from './shows/detail/show-detail.component';
 import {PodcastCreateComponent} from './podcasts/create/podcast-create.component';
 import {NgxAudioPlayerModule} from 'ngx-audio-player';
+import {UsersListComponent} from './users/list/users-list.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import {NgxAudioPlayerModule} from 'ngx-audio-player';
     ShowListComponent,
     ShowDetailComponent,
     PodcastCreateComponent,
-    EmailConfirmComponent
+    EmailConfirmComponent,
+    UsersListComponent
   ],
   imports: [
     CommonModule,
