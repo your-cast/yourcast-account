@@ -1,11 +1,18 @@
 version: '3.1'
 
 services:
-  angular:
+  nginx:
     container_name: account_nginx
     image: nginx
     volumes:
       - ./.docker/nginx/default.conf:/etc/nginx/conf.d/default.conf
-      - ./compile/:/var/www/html
+      - ./dist/:/var/www/html
     ports:
       - '80:80'
+
+#  node:
+#    container_name: account_node
+#    build:
+#      context: .docker/node
+#    volumes:
+#      - .:/dist
