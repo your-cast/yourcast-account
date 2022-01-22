@@ -9,10 +9,3 @@ services:
       - ./dist/:/var/www/html
     ports:
       - '80:80'
-
-#  node:
-#    container_name: account_node
-#    build:
-#      context: .docker/node
-#    volumes:
-#      - .:/dist
