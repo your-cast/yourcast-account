@@ -88,7 +88,7 @@ export class PodcastCreateComponent implements OnInit {
     };
 
     this.episodesService.createEpisode(formData).subscribe(response => {
-      this.router.navigate(['/account/shows/list']);
+      this.router.navigate(['/shows/list']);
 
       this.notificationService.openNotification({
         message: 'New episode added to your show!',

@@ -61,7 +61,7 @@ export class ApiService {
   handleError(error: any): Error {
     if (error.status === 401) {
       localStorage.removeItem('token');
-      this.router.navigate(['/login']);
+      this.router.navigate(['/auth/login']);
     }
     return error;
   }

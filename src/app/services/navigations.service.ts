@@ -27,19 +27,19 @@ export class NavigationsService {
         id: 'shows-menu',
         displayName: 'Shows',
         iconName: 'sensors',
-        route: 'account/shows',
+        route: 'shows',
         children: [
           {
             id: 'show-create-menu',
             displayName: 'Create show',
             iconName: 'add_circle',
-            route: 'account/shows/create'
+            route: 'shows/create'
           },
           {
             id: 'show-list-menu',
             displayName: 'List shows',
             iconName: 'contactless',
-            route: 'account/shows/list'
+            route: 'shows/list'
           }
         ]
       },
@@ -47,13 +47,13 @@ export class NavigationsService {
         id: 'podcasts-menu',
         displayName: 'Episodes',
         iconName: 'podcasts',
-        route: 'account/episodes',
+        route: 'episodes',
         children: [
           {
             id: 'podcast-create-menu',
             displayName: 'Create episode',
             iconName: 'add_circle',
-            route: 'account/episodes/create'
+            route: 'episodes/create'
           }
         ]
       },
@@ -62,7 +62,7 @@ export class NavigationsService {
         id: 'plans-menu',
         displayName: 'Plans',
         iconName: 'payments',
-        route: 'account/plans'
+        route: 'plans'
       },
       {
         id: 'access-tokens-menu',
@@ -74,13 +74,13 @@ export class NavigationsService {
         id: 'support-menu',
         displayName: 'Support',
         iconName: 'drafts',
-        route: 'account/support'
+        route: 'support'
       },
       {
         id: 'list-menu',
         displayName: 'Users',
         iconName: 'people',
-        route: 'account/users/list'
+        route: 'users/list'
       },
       {
         id: 'settings-menu',

@@ -32,6 +32,6 @@ export class ShowDetailComponent implements OnInit {
   }
 
   handleMoveToDetails(element: any): void {
-    this.router.navigate(['/account/shows/details/' + element.id]);
+    this.router.navigate(['/shows/details/' + element.id]);
   }
 }

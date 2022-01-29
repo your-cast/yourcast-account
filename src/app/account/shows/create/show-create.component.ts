@@ -153,7 +153,7 @@ export class ShowCreateComponent implements OnInit {
     };
 
     this.showService.createShow(formData).subscribe(response => {
-      this.router.navigate(['/account/shows/list']);
+      this.router.navigate(['/shows/list']);
 
       this.notificationService.openNotification({
         message: 'New show created!',

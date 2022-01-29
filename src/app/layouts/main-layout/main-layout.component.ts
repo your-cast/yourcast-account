@@ -7,12 +7,12 @@ import {AuthService} from '../../services/auth.service';
 import {NavigationsService} from '../../services/navigations.service';
 
 @Component({
-  selector: 'app-nav-layout',
-  templateUrl: './nav-layout.component.html',
-  styleUrls: ['./nav-layout.component.scss'],
+  selector: 'app-main-layout',
+  templateUrl: './main-layout.component.html',
+  styleUrls: ['./main-layout.component.scss'],
   encapsulation: ViewEncapsulation.None
 })
-export class NavLayoutComponent implements OnInit, OnDestroy {
+export class MainLayoutComponent implements OnInit, OnDestroy {
   navItems: NavItem[] = []
   loading: boolean = true;
   hasShow: boolean = false;

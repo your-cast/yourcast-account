@@ -3,9 +3,6 @@ import {CommonModule} from '@angular/common';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {LayoutModule} from '@angular/cdk/layout';
 import {DashboardComponent} from './dashboard/dashboard.component';
-import {NavLayoutComponent} from './nav-layout/nav-layout.component';
-import {MenuListItemComponent} from './menu-list-item/menu-list-item.component';
-import {AccountRoutingModule} from './account-routing.module';
 import {EmailConfirmComponent} from './email-confirm/email-confirm.component';
 import {SharedModule} from '../shared/shared.module';
 import {MaterialModule} from '../material/material.module';
@@ -19,8 +16,6 @@ import {UsersListComponent} from './users/list/users-list.component';
 @NgModule({
   declarations: [
     DashboardComponent,
-    NavLayoutComponent,
-    MenuListItemComponent,
     ShowCreateComponent,
     ShowListComponent,
     ShowDetailComponent,
@@ -34,7 +29,6 @@ import {UsersListComponent} from './users/list/users-list.component';
     LayoutModule,
     ReactiveFormsModule,
     MaterialModule,
-    AccountRoutingModule,
     SharedModule,
     NgxAudioPlayerModule
   ]

@@ -29,7 +29,7 @@ export class RegistrationComponent implements OnInit {
 
   ngOnInit() {
     if (this.authService.isLoggedIn()) {
-      this.router.navigate(['/admin']);
+      this.router.navigate(['/auth/dashboard']);
     }
   }
 
@@ -46,8 +46,7 @@ export class RegistrationComponent implements OnInit {
       .subscribe((result: any) => {
           this.showSpinner = false;
           if (result) {
-            console.log(result);
-            this.router.navigate(['login']);
+            this.router.navigate(['/auth/login']);
           }
         },
         () => {
@@ -56,6 +55,6 @@ export class RegistrationComponent implements OnInit {
   }
 
   navigateToLogin() {
-    this.router.navigate(['/login']);
+    this.router.navigate(['/auth/login']);
   }
 }
