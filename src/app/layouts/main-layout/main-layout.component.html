@@ -3,7 +3,9 @@
     <button type="button" mat-icon-button (click)="sidenav.toggle()" *ngIf="isHandset$ | async">
       <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
     </button>
-    <a routerLink=".." class="logo" id="main-logo"></a>
+    <a routerLink=".." class="logo" id="main-logo">
+      <img class="header-logo" src="/assets/image/podcast_logo.png" alt="logo">
+    </a>
     <span class="example-spacer"></span>
     <button mat-icon-button [matMenuTriggerFor]="menu">
       <mat-icon matBadge="15" matBadgeColor="warn">account_circle</mat-icon>
