@@ -1,48 +1,41 @@
 <div class="main-div">
   <mat-card class="login-form center">
     <div id="logo" class="logo-container mb-3">
-      <div id="amadeus-logo" class="title color-primary">YourCast</div>
+      <img class="header-logo" src="/assets/image/podcast_logo.png" alt="logo">
       <div id="rail-go-logo" class="subtitle color-primary">Authorization</div>
     </div>
     <mat-card-content>
       <form [formGroup]="form" #f="ngForm" (ngSubmit)="signIn(f.value)" class="example-form" id="login-form">
-        <table class="example-full-width">
-          <tr>
-            <td>
-              <mat-form-field appearance="outline" class="w-100">
-                <mat-label id="email-label">Email</mat-label>
-                <mat-icon class="pr-2 pl-2" matSuffix color="accent" id="username-icon">user</mat-icon>
-                <input formControlName="email" matInput placeholder="Email" id="email"
-                       type="text" required>
-                <mat-error *ngIf="form.controls['email'].touched && form.controls['email'].invalid">
-                  <div id="username-error" *ngIf="form.controls['email'].invalid">Email is required</div>
-                </mat-error>
-              </mat-form-field>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <mat-form-field appearance="outline" class="w-100">
-                <mat-label id="password-label">Password</mat-label>
-                <mat-icon matSuffix color="primary" class="cursor-pointer" id="password-icon"
-                          (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-                <input formControlName="password" matInput placeholder="Password" id="password"
-                       [type]="hide ? 'password' : 'text'" required>
-                <mat-error *ngIf="form.controls['password'].touched && form.controls['password'].invalid">
-                  <div id="password-error" *ngIf="form.controls['password'].invalid">Password is required</div>
-                </mat-error>
-              </mat-form-field>
-            </td>
-          </tr>
-        </table>
+        <mat-form-field appearance="outline" class="w-100">
+          <mat-label id="email-label">Email</mat-label>
+          <mat-icon class="pr-2 pl-2" matSuffix color="accent" id="username-icon">user</mat-icon>
+          <input formControlName="email" matInput placeholder="Email" id="email"
+                 type="text" required>
+          <mat-error *ngIf="form.controls['email'].touched && form.controls['email'].invalid">
+            <div id="username-error" *ngIf="form.controls['email'].invalid">Email is required</div>
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="w-100">
+          <mat-label id="password-label">Password</mat-label>
+          <mat-icon matSuffix color="primary" class="cursor-pointer" id="password-icon" (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+          <input formControlName="password" matInput
+                 placeholder="Password"
+                 id="password"
+                 [type]="hide ? 'password' : 'text'" required>
+          <mat-error *ngIf="form.controls['password'].touched && form.controls['password'].invalid">
+            <div id="password-error" *ngIf="form.controls['password'].invalid">Password is required</div>
+          </mat-error>
+        </mat-form-field>
       </form>
       <div class="form-additions">
-        <mat-progress-bar id="progress-bar" mode="indeterminate"
-                          [style.display]="showSpinner ? 'block' : 'none'"></mat-progress-bar>
+        <mat-progress-bar id="progress-bar" mode="indeterminate" [style.display]="showSpinner ? 'block' : 'none'"></mat-progress-bar>
       </div>
-      <button class="w-100 sing-in-button mt-2" id="login" form="login-form" mat-flat-button color="primary">Sign In</button>
+      <button class="w-100 sing-in-button mt-2" id="login" form="login-form" mat-flat-button color="primary">Login
+      </button>
       <br/>
-      <button class="w-100 sing-in-button mt-2" mat-flat-button color="secondary" (click)="navigateToRegister()">Register</button>
+      <button class="w-100 sing-in-button mt-2" mat-flat-button color="secondary" (click)="navigateToRegister()">
+        Register
+      </button>
     </mat-card-content>
   </mat-card>
 </div>
