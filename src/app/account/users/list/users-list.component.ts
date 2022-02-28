@@ -31,4 +31,8 @@ export class UsersListComponent extends TableComponent implements OnInit {
       this.dataSource = response.result;
     });
   }
+
+  handleMoveToDetails(element: any) {
+
+  }
 }
