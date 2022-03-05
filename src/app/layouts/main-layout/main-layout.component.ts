@@ -5,6 +5,7 @@ import {map} from 'rxjs/operators';
 import {NavItem} from '../../models/nav-item';
 import {AuthService} from '../../services/auth.service';
 import {NavigationsService} from '../../services/navigations.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-main-layout',
@@ -26,7 +27,8 @@ export class MainLayoutComponent implements OnInit, OnDestroy {
   constructor(
     private breakpointObserver: BreakpointObserver,
     private navigationsService: NavigationsService,
-    private authService: AuthService
+    private authService: AuthService,
+    private router: Router
   ) {
   }
 
@@ -44,5 +46,9 @@ export class MainLayoutComponent implements OnInit, OnDestroy {
 
   logOut(): void {
     this.authService.logout();
+  }
+
+  handleMoveToDetail(id: string) {
+    this.router.navigate(['/users/detail/' + id]);
   }
 }

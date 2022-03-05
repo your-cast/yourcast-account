@@ -39,6 +39,7 @@ import {MatNativeDateModule} from '@angular/material/core';
   imports: [
     CommonModule,
     MatCheckboxModule,
+    MatGridListModule,
     MatCheckboxModule,
     MatInputModule,
     MatAutocompleteModule,
@@ -53,7 +54,6 @@ import {MatNativeDateModule} from '@angular/material/core';
     MatBadgeModule,
     MatToolbarModule,
     MatListModule,
-    MatGridListModule,
     MatCardModule,
     MatStepperModule,
     MatTabsModule,

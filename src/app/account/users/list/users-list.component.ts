@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {UsersService} from '../../../services/users.service';
 import {TableComponent} from '../../../common/table/table.component';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-list',
@@ -9,7 +10,8 @@ import {TableComponent} from '../../../common/table/table.component';
 })
 export class UsersListComponent extends TableComponent implements OnInit {
   constructor(
-    protected usersService: UsersService
+    protected usersService: UsersService,
+    private router: Router,
   ) {
     super(usersService);
   }
@@ -22,6 +24,10 @@ export class UsersListComponent extends TableComponent implements OnInit {
       'select',
       'id',
       'name',
+      'email',
+      'role',
+      'tariff',
+      'system_id',
       'status'
     ];
   }
@@ -32,7 +38,7 @@ export class UsersListComponent extends TableComponent implements OnInit {
     });
   }
 
-  handleMoveToDetails(element: any) {
-
+  handleMoveToDetail(element: any) {
+    this.router.navigate(['/users/detail/' + element.id]);
   }
 }

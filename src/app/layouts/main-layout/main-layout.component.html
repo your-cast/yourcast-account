@@ -18,7 +18,7 @@
       <mat-divider></mat-divider>
       <button mat-menu-item>
         <mat-icon>perm_identity</mat-icon>
-        <span>Profile</span>
+        <span (click)="handleMoveToDetail(user.id)">Profile</span>
       </button>
       <button mat-menu-item>
         <mat-icon matBadge="15" matBadgeColor="warn">notifications</mat-icon>

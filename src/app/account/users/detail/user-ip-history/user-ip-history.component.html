@@ -1,0 +1,20 @@
+<mat-expansion-panel class="mat-elevation-z1" (opened)="true" [expanded]="true" (closed)="false">
+    <mat-expansion-panel-header>
+        <mat-panel-title>
+            User IP history
+        </mat-panel-title>
+        <mat-panel-description>
+            Information login IPs
+        </mat-panel-description>
+    </mat-expansion-panel-header>
+    <mat-grid-list cols="1" rowHeight="50px" class="mat-grid-list-el">
+        <mat-grid-tile class="grid-element-border pr-1" *ngFor="let ip of history">
+            <div class="history-grid-row">
+                <span class="grid-histroy-ip"> {{ ip.ip_address }} </span>
+                <span class="grid-history-city"> ({{ ip.city + ', ' + ip.country }}) </span>
+                <span> {{ ip.created_at }} </span>
+            </div>
+            <mat-divider class="divider"></mat-divider>
+        </mat-grid-tile>
+    </mat-grid-list>
+</mat-expansion-panel>

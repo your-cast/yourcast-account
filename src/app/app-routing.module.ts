@@ -12,6 +12,7 @@ import {PodcastCreateComponent} from './account/podcasts/create/podcast-create.c
 import {UsersListComponent} from './account/users/list/users-list.component';
 import {AppComponent} from './app.component';
 import {MainLayoutComponent} from './layouts/main-layout/main-layout.component';
+import {UsersDetailComponent} from './account/users/detail/users-detail.component';
 
 const appRoutes: Routes = [
   {
@@ -50,6 +51,10 @@ const appRoutes: Routes = [
       {
         path: 'users/list',
         component: UsersListComponent
+      },
+      {
+        path: 'users/detail/:id',
+        component: UsersDetailComponent
       }
     ]
   },

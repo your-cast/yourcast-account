@@ -5,6 +5,10 @@ import {Observable} from 'rxjs';
 @Injectable({providedIn: 'root'})
 export class UsersService extends ApiService {
   getUsersList(): Observable<any> {
-    return this.get('v1/users/list');
+    return this.get('v1/user/list');
+  }
+
+  getUserDetail(id: any): Observable<any> {
+    return this.get('v1/user/' + id);
   }
 }
