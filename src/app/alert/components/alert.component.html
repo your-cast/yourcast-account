@@ -1,0 +1,9 @@
+<div [class]="cssClass(alert)" (click)="removeAlert(alert)" *ngFor="let alert of alerts">
+  <div [class]="cssIconClass(alert)">
+<!--    <rbi-icon *ngIf="alert?.type === AlertType.Warning">warning</rbi-icon>-->
+<!--    <rbi-icon *ngIf="alert?.type === AlertType.Info">info_white</rbi-icon>-->
+<!--    <rbi-icon *ngIf="alert?.type === AlertType.Success">check_white</rbi-icon>-->
+<!--    <rbi-icon *ngIf="alert?.type === AlertType.Error">warning</rbi-icon>-->
+  </div>
+  <span class="notification-message" [innerHTML]="alert.message"></span>
+</div>
