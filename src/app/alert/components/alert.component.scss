@@ -1,0 +1,76 @@
+@import './../../../../assets/variables.scss';
+
+.notification {
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 16px;
+  color: $c-primary;
+  display: flex;
+  margin: 8px 0 8px 0;
+  background-color: $c-main;
+  border-radius: 3px;
+  border: 1px solid;
+  box-shadow: $success;
+  height: 0;
+  opacity: 0;
+  overflow: hidden;
+  cursor: pointer;
+  transition: height 1s ease, opacity 1s ease, border-color 1s ease;
+}
+
+.notification-alert-danger {
+  border-color: $c-error-700;
+}
+
+.notification-alert-info {
+  border-color: $c-extra-700;
+}
+
+.notification-alert-success {
+  border-color: $success;
+}
+
+.notification-alert-warning {
+  border-color: $accent;
+}
+
+.notification-message {
+  padding: 10px 12px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  width: fit-content;
+  white-space: pre;
+}
+
+.notification-icon-container {
+  min-height: 100%;
+  width: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+::ng-deep .notification-icon-container svg {fill: $c-main};
+
+.notification-icon-container-danger {
+  background-color: $c-error-700;
+}
+
+.notification-icon-container-info {
+  background-color: $c-extra-700;
+}
+
+.notification-icon-container-success {
+  background-color: $success;
+}
+
+.notification-icon-container-warning {
+  background-color: $accent;
+}
+
+.notification-show {
+  min-height: 36px;
+  opacity: 1;
+  visibility: 1;
+  height: fit-content;
+  transition: opacity .25 ease;
+}
