@@ -109,3 +109,19 @@ tr.mat-header-row {
   padding-right: 8px;
   padding-left: 12px
 }
+
+.success-snackbar {
+  background-color: #00a9e0;
+}
+
+.error-snackbar {
+  background-color: #ce0058;
+}
+
+.info-snackbar {
+  background-color: #005eb8;
+}
+
+.warn-snackbar {
+  background-color: #f7a800;
+}

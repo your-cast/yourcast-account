@@ -4,6 +4,7 @@ import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
 import {Observable, throwError} from 'rxjs';
 import {catchError, finalize} from 'rxjs/operators';
 import {Router} from '@angular/router';
+import {AlertService} from './alert.service';
 
 @Injectable({
   providedIn: 'root'
@@ -14,6 +15,7 @@ export class ApiService {
 
   constructor(
     private http: HttpClient,
+    private alertService: AlertService,
     private router: Router
   ) {
     const headers = new HttpHeaders();
@@ -60,6 +62,13 @@ export class ApiService {
 
   handleError(error: any): Error {
     if (error.status === 401) {
+      this.alertService.error('You are not authorized to access this page.');
+      localStorage.removeItem('token');
+      this.router.navigate(['/auth/login']);
+    }
+
+    if (error.status === 0) {
+      this.alertService.error('Check your internet connection.');
       localStorage.removeItem('token');
       this.router.navigate(['/auth/login']);
     }
