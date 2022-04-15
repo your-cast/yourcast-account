@@ -1,7 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ShowService} from '../../../services/show.service';
-import {NotificationService} from '../../../services/notification.service';
+import {Show} from '../../../models/show';
+import {AlertService} from '../../../services/alert.service';
 
 @Component({
   selector: 'app-show-detail',
@@ -9,13 +10,13 @@ import {NotificationService} from '../../../services/notification.service';
   styleUrls: ['./show-detail.component.scss']
 })
 export class ShowDetailComponent implements OnInit {
-  show: any;
+  show: Show;
 
   constructor(
-    protected showService: ShowService,
     private router: Router,
+    private showService: ShowService,
     private activatedRoute: ActivatedRoute,
-    public notificationService: NotificationService
+    private alertService: AlertService
   ) {
   }
 

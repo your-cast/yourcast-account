@@ -1,3 +1,7 @@
 <p>SHOW DETAILS</p>
 
-<app-notification [data]="notificationService.notification | async"></app-notification>
+<mat-tab-group>
+  <mat-tab label="Show"> Content Show </mat-tab>
+  <mat-tab label="Settings"> Settings </mat-tab>
+  <mat-tab label="Analytics"> Content Analytics </mat-tab>
+</mat-tab-group>
