@@ -126,19 +126,36 @@
         <mat-form-field appearance="fill">
           <mat-label>Timezone</mat-label>
           <mat-select formControlName="timezone">
-            <mat-option *ngFor="let timezone of timezones" [value]="timezone.value">
-              {{timezone.name}}
+            <mat-option *ngFor="let timezone of timezones" [value]="timezone.code">
+              {{timezone.value}}
             </mat-option>
           </mat-select>
         </mat-form-field>
       </div>
 
+<!--      <div class="d-flex align-content-start pb-4">-->
+<!--        <mat-form-field appearance="fill">-->
+<!--          <mat-label>Number</mat-label>-->
+<!--          <input type="text"-->
+<!--                 placeholder="Pick one"-->
+<!--                 aria-label="Number"-->
+<!--                 matInput-->
+<!--                 formControlName="timezone"-->
+<!--                 [matAutocomplete]="auto">-->
+<!--          <mat-autocomplete #auto="matAutocomplete">-->
+<!--            <mat-option *ngFor="let timezone of filteredTimezones | async" [value]="timezone.value">-->
+<!--              {{timezone.name}}-->
+<!--            </mat-option>-->
+<!--          </mat-autocomplete>-->
+<!--        </mat-form-field>-->
+<!--      </div>-->
+
       <div class="d-flex align-content-start pb-4">
         <mat-form-field appearance="fill">
           <mat-label>Language</mat-label>
           <mat-select formControlName="language">
-            <mat-option *ngFor="let language of languages" [value]="language.value">
-              {{language.name}}
+            <mat-option *ngFor="let language of languages" [value]="language.code">
+              {{language.value}}
             </mat-option>
           </mat-select>
         </mat-form-field>
@@ -183,14 +200,16 @@
         <mat-form-field appearance="fill" class="pr-2">
           <mat-label>1st category</mat-label>
           <mat-select formControlName="firstCategory">
-            <mat-option value="{{ category.value }}" *ngFor="let category of categories">{{ category.name }}</mat-option>
+            <mat-option value="{{ category.code }}"
+                        *ngFor="let category of categories">{{ category.value }}</mat-option>
           </mat-select>
         </mat-form-field>
 
         <mat-form-field appearance="fill" class="pl-2">
           <mat-label>Sub category</mat-label>
           <mat-select formControlName="firstSubCategory" [disabled]="firstSubcategory.length === 0">
-            <mat-option value="{{ children.value }}" *ngFor="let children of firstSubcategory">{{ children.name }}</mat-option>
+            <mat-option value="{{ children.code }}"
+                        *ngFor="let children of firstSubcategory">{{ children.value }}</mat-option>
           </mat-select>
         </mat-form-field>
       </div>
@@ -198,14 +217,16 @@
         <mat-form-field appearance="fill" class="pr-2">
           <mat-label>2nd category</mat-label>
           <mat-select formControlName="secondCategory">
-            <mat-option value="{{ category.value }}" *ngFor="let category of categories">{{ category.name }}</mat-option>
+            <mat-option value="{{ category.code }}"
+                        *ngFor="let category of categories">{{ category.value }}</mat-option>
           </mat-select>
         </mat-form-field>
 
         <mat-form-field appearance="fill" class="pl-2">
           <mat-label>Sub category</mat-label>
           <mat-select formControlName="secondSubCategory">
-            <mat-option value="{{ children.value }}" *ngFor="let children of secondSubcategory">{{ children.name }}</mat-option>
+            <mat-option value="{{ children.code }}"
+                        *ngFor="let children of secondSubcategory">{{ children.value }}</mat-option>
           </mat-select>
         </mat-form-field>
       </div>
@@ -213,14 +234,16 @@
         <mat-form-field appearance="fill" class="pr-2">
           <mat-label>3rd category</mat-label>
           <mat-select formControlName="thirdCategory">
-            <mat-option value="{{ category.value }}" *ngFor="let category of categories">{{ category.name }}</mat-option>
+            <mat-option value="{{ category.code }}"
+                        *ngFor="let category of categories">{{ category.value }}</mat-option>
           </mat-select>
         </mat-form-field>
 
         <mat-form-field appearance="fill" class="pl-2">
           <mat-label>Sub category</mat-label>
           <mat-select formControlName="thirdSubCategory">
-            <mat-option value="{{ children.value }}" *ngFor="let children of thirdSubcategory">{{ children.name }}</mat-option>
+            <mat-option value="{{ children.code }}"
+                        *ngFor="let children of thirdSubcategory">{{ children.value }}</mat-option>
           </mat-select>
         </mat-form-field>
       </div>

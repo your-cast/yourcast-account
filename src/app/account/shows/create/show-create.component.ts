@@ -1,12 +1,14 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {ShowService} from '../../../services/show.service';
-import languages from '../../../../assets/other/languages.json';
-import timezones from '../../../../assets/other/timezones.json';
-import categories from '../../../../assets/other/categories.json';
 import {Param} from '../../../models/param';
 import {Router} from '@angular/router';
-import {NotificationService} from '../../../services/notification.service';
+import {AlertService} from '../../../services/alert.service';
+import {forkJoin, Observable} from 'rxjs';
+import {map, startWith} from 'rxjs/operators';
+import {DictionaryService} from '../../../services/dictionary.service';
+import {Timezone} from '../../../models/timezone';
+import {Language} from '../../../models/language';
 
 @Component({
   selector: 'app-show-create',
@@ -15,12 +17,12 @@ import {NotificationService} from '../../../services/notification.service';
 })
 export class ShowCreateComponent implements OnInit {
   isLinear = true;
-  timezones: Param[] = [];
-  languages: Param[] = [];
+  timezones: Timezone[] = [];
+  languages: Language[] = [];
   categories: any = [];
-  firstSubcategory: Param[] = [];
-  secondSubcategory: Param[] = [];
-  thirdSubcategory: Param[] = [];
+  firstSubcategory: any = [];
+  secondSubcategory: any = [];
+  thirdSubcategory: any = [];
   infoFormGroup: FormGroup;
   artworkFormGroup: FormGroup;
   formatFormGroup: FormGroup;
@@ -28,20 +30,27 @@ export class ShowCreateComponent implements OnInit {
   categoryFormGroup: FormGroup;
   ownerFormGroup: FormGroup;
 
+  filteredTimezones: Observable<any[]>;
+
+  timezones$: Observable<any>;
+  languages$: Observable<any>;
+  categories$: Observable<any>;
+
+  allRequestFinished$: Observable<any>;
+
   constructor(
     private formBuilder: FormBuilder,
     private showService: ShowService,
+    private dictionaryService: DictionaryService,
     private router: Router,
-    public notificationService: NotificationService
+    private alertService: AlertService
   ) {
   }
 
   ngOnInit() {
     this.prepareForm();
+    this.prepareDictionary();
     this.subscribeValueChange();
-    this.prepareTimezones();
-    this.prepareLanguages();
-    this.prepareCategories();
   }
 
   prepareForm(): void {
@@ -86,18 +95,34 @@ export class ShowCreateComponent implements OnInit {
     this.categoryFormGroup.controls['thirdCategory'].valueChanges.subscribe((value: any) => {
       this.applySubCategory(value, 'third');
     });
+
+    this.filteredTimezones = this.otherFormGroup.controls['timezone'].valueChanges.pipe(
+      startWith(''),
+      map(value => this.filterTimezone(value)),
+    );
   }
 
-  prepareTimezones(): void {
-    this.timezones = timezones;
+  filterTimezone(value: string): string[] {
+    const filterValue = value.toLowerCase();
+
+    // @ts-ignore
+    return this.timezones.filter(option => option.toLowerCase().includes(filterValue));
   }
 
-  prepareLanguages(): void {
-    this.languages = languages;
-  }
+  prepareDictionary(): void {
+    this.timezones$ = this.dictionaryService.getTimezonesDictionary();
+    this.languages$ = this.dictionaryService.getLanguagesDictionary();
+    this.categories$ = this.dictionaryService.getCategoriesDictionary();
 
-  prepareCategories(): void {
-    this.categories = categories;
+    this.allRequestFinished$ = forkJoin([this.timezones$, this.languages$, this.categories$]);
+
+    this.allRequestFinished$.subscribe(value => {
+      this.timezones = value[0].result;
+      this.languages = value[1].result;
+      this.categories = value[2].result;
+    }, error => {
+      this.alertService.error('Something want wrong!');
+    });
   }
 
   applySubCategory(selected: string, value: string) {
@@ -155,10 +180,7 @@ export class ShowCreateComponent implements OnInit {
     this.showService.createShow(formData).subscribe(response => {
       this.router.navigate(['/shows/list']);
 
-      this.notificationService.openNotification({
-        message: 'New show created!',
-        type: 'check'
-      });
+      this.alertService.success('New show created!');
     });
   }
 
