@@ -43,7 +43,8 @@
       <div class="form-group row justify-content-md-center">
         <div class="d-flex mb-3">
           <figure class="pr-3">
-            <img class="rounded-pill w300" src="/assets/image/placeholder-image.png" alt="artwork">
+            <img class="rounded-pill w300" [src]="image" alt="artwork" *ngIf="image">
+            <img class="rounded-pill w300" src="/assets/image/placeholder-image.png" alt="artwork" *ngIf="!image">
           </figure>
           <div class="pl-3">
             <p>Artwork</p>
@@ -269,14 +270,14 @@
       <div class="flex-row flex-2-cols">
         <mat-form-field appearance="fill">
           <mat-label>Author</mat-label>
-          <input matInput placeholder="Author" formControlName="author" required>
+          <input matInput placeholder="Author name" formControlName="author" required>
         </mat-form-field>
       </div>
 
       <div class="flex-row flex-2-cols">
         <mat-form-field appearance="fill">
           <mat-label>Owner</mat-label>
-          <input matInput placeholder="Owner" formControlName="owner" required>
+          <input matInput placeholder="Owner name" formControlName="owner" required>
         </mat-form-field>
       </div>
 
