@@ -9,6 +9,7 @@ import {map, startWith} from 'rxjs/operators';
 import {DictionaryService} from '../../../services/dictionary.service';
 import {Timezone} from '../../../models/timezone';
 import {Language} from '../../../models/language';
+import {ImageService} from '../../../services/image.service';
 
 @Component({
   selector: 'app-show-create',
@@ -16,6 +17,7 @@ import {Language} from '../../../models/language';
   styleUrls: ['./show-create.component.scss']
 })
 export class ShowCreateComponent implements OnInit {
+  image: string = '';
   isLinear = true;
   timezones: Timezone[] = [];
   languages: Language[] = [];
@@ -42,6 +44,7 @@ export class ShowCreateComponent implements OnInit {
     private formBuilder: FormBuilder,
     private showService: ShowService,
     private dictionaryService: DictionaryService,
+    private imageService: ImageService,
     private router: Router,
     private alertService: AlertService
   ) {
@@ -129,12 +132,12 @@ export class ShowCreateComponent implements OnInit {
     const subcategory: Param[] = [];
 
     this.categories.forEach((category: Param) => {
-      if (category.value === selected) {
+      if (category.code === selected) {
         if (category.hasOwnProperty('children')) {
           category.children?.forEach((children: Param) => {
             subcategory.push({
               value: children.value,
-              name: children.name
+              code: children.code
             });
           });
         }
@@ -164,12 +167,12 @@ export class ShowCreateComponent implements OnInit {
     const formData = {
       title: this.infoFormGroup.controls['title'].value,
       description: this.infoFormGroup.controls['description'].value,
-      artwork: this.artworkFormGroup.controls['artwork'].value,
+      artwork: this.image,
       format: this.formatFormGroup.controls['format'].value,
       timezone: this.otherFormGroup.controls['timezone'].value,
       language: this.otherFormGroup.controls['language'].value,
       explicit: this.otherFormGroup.controls['explicit'].value,
-      category: this.categoryFormGroup.controls['firstCategory'].value,
+      category: this.getCategories(),
       tags: null,
       author: this.ownerFormGroup.controls['author'].value,
       podcast_owner: this.ownerFormGroup.controls['owner'].value,
@@ -185,6 +188,46 @@ export class ShowCreateComponent implements OnInit {
   }
 
   uploadFile($event: Event): void {
-    console.log($event);
+    const element = $event.currentTarget as HTMLInputElement;
+    let fileList: FileList | null = element.files;
+    if (fileList) {
+      let formData: FormData = new FormData();
+      formData.append('file', fileList[0], fileList[0].name);
+      formData.append('param', 'artwork');
+
+      this.imageService.uploadImage(formData).subscribe(response => {
+        this.image = response.path;
+      });
+    }
+  }
+
+  getCategories(): string {
+    let categories = [];
+
+    if (this.categoryFormGroup.controls['firstCategory'].value) {
+      categories.push(this.categoryFormGroup.controls['firstCategory'].value);
+    }
+
+    if (this.categoryFormGroup.controls['firstSubCategory'].value) {
+      categories.push(this.categoryFormGroup.controls['firstSubCategory'].value);
+    }
+
+    if (this.categoryFormGroup.controls['secondCategory'].value) {
+      categories.push(this.categoryFormGroup.controls['secondCategory'].value);
+    }
+
+    if (this.categoryFormGroup.controls['secondSubCategory'].value) {
+      categories.push(this.categoryFormGroup.controls['secondSubCategory'].value);
+    }
+
+    if (this.categoryFormGroup.controls['thirdCategory'].value) {
+      categories.push(this.categoryFormGroup.controls['thirdCategory'].value);
+    }
+
+    if (this.categoryFormGroup.controls['thirdSubCategory'].value) {
+      categories.push(this.categoryFormGroup.controls['thirdSubCategory'].value);
+    }
+
+    return categories.join();
   }
 }
