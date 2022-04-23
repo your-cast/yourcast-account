@@ -65,10 +65,36 @@ export class NavigationsService {
         route: 'plans'
       },
       {
-        id: 'access-tokens-menu',
-        displayName: 'Access Tokens',
-        iconName: 'fingerprint',
-        route: 'admin/access-tokens'
+        id: 'news-menu',
+        displayName: 'News',
+        iconName: 'newspaper',
+        route: 'news',
+        children: [
+          {
+            id: 'news-create-menu',
+            displayName: 'Create news',
+            iconName: 'add_circle',
+            route: 'news/create'
+          },
+          {
+            id: 'news-list-menu',
+            displayName: 'News list',
+            iconName: 'feed',
+            route: 'news/list'
+          }
+        ]
+      },
+      {
+        id: 'subscriber-menu',
+        displayName: 'Subscribers',
+        iconName: 'unsubscribe',
+        route: 'subscriber'
+      },
+      {
+        id: 'contacts-menu',
+        displayName: 'Contacts form',
+        iconName: 'mark_email_unread',
+        route: 'contacts'
       },
       {
         id: 'support-menu',
@@ -86,25 +112,25 @@ export class NavigationsService {
         id: 'settings-menu',
         displayName: 'Settings',
         iconName: 'settings',
-        route: 'admin/settings',
+        route: 'settings',
         children: [
           {
             id: 'languages-menu',
             displayName: 'Languages',
             iconName: 'languages',
-            route: 'admin/settings/languages'
+            route: 'settings/languages'
           },
           {
             id: 'timezones-menu',
             displayName: 'Timezones',
             iconName: 'schedule',
-            route: 'admin/settings/timezones'
+            route: 'settings/timezones'
           },
           {
             id: 'categories-menu',
             displayName: 'Categories',
             iconName: 'account_tree',
-            route: 'admin/settings/categories'
+            route: 'settings/categories'
           }
         ]
       }

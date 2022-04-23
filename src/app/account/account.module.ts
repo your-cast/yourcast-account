@@ -14,6 +14,7 @@ import {NgxAudioPlayerModule} from 'ngx-audio-player';
 import {UsersListComponent} from './users/list/users-list.component';
 import {UsersDetailComponent} from './users/detail/users-detail.component';
 import {UserIpHistoryComponent} from './users/detail/user-ip-history/user-ip-history.component';
+import {CKEditorModule} from '@ckeditor/ckeditor5-angular';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import {UserIpHistoryComponent} from './users/detail/user-ip-history/user-ip-his
     ReactiveFormsModule,
     MaterialModule,
     SharedModule,
+    CKEditorModule,
     NgxAudioPlayerModule
   ]
 })
