@@ -6,7 +6,8 @@
   <mat-card-content>
     <div class="shows-row">
       <div class="shows" (click)="handleSelectShow(show.id)" *ngFor="let show of shows">
-        <div [class]="selectedShowId === show.id ? 'shows-area-selected shows-area shows-area-select' : 'shows-area shows-area-select'">
+        <div
+          [class]="selectedShowId === show.id ? 'shows-area-selected shows-area shows-area-select' : 'shows-area shows-area-select'">
         <span class="upload-zone-button">
           <span>
             <span><strong>{{ show.title }}</strong></span>
@@ -15,7 +16,8 @@
             <br>
             <span>
               <img class="rounded-pill w70" [src]="show.artwork" alt="artwork" *ngIf="show.artwork">
-              <img class="rounded-pill w70" src="/assets/image/placeholder-image.png" alt="artwork" *ngIf="!show.artwork">
+              <img class="rounded-pill w70" src="/assets/image/placeholder-image.png" alt="artwork"
+                   *ngIf="!show.artwork">
             </span>
           </span>
         </span>
@@ -148,9 +150,7 @@
             <span class="label">Summary</span>
           </div>
           <div>
-            <mat-form-field appearance="fill" style="width: 100%;">
-              <textarea matInput rows="8" formControlName="summary"></textarea>
-            </mat-form-field>
+            <ckeditor [editor]="Editor" (change)="onChange($event)"></ckeditor>
           </div>
           <div>
             <span class="label">Does this episode contain explicit language?</span>

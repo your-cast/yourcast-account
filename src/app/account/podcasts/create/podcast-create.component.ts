@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {Router} from '@angular/router';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {NotificationService} from '../../../services/notification.service';
@@ -7,11 +7,15 @@ import {AudioFileService} from '../../../services/audiofile.service';
 import {Track} from 'ngx-audio-player';
 import {ImageService} from '../../../services/image.service';
 import {ShowService} from '../../../services/show.service';
+// @ts-ignore
+import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
+import {ChangeEvent} from '@ckeditor/ckeditor5-angular';
 
 @Component({
   selector: 'app-podcast-create',
   templateUrl: './podcast-create.component.html',
-  styleUrls: ['./podcast-create.component.scss']
+  styleUrls: ['./podcast-create.component.scss'],
+  encapsulation: ViewEncapsulation.None,
 })
 export class PodcastCreateComponent implements OnInit {
   infoFormGroup: FormGroup;
@@ -20,6 +24,8 @@ export class PodcastCreateComponent implements OnInit {
   audioFile: any = null;
   audioFileList: Track[] = [];
   shows: any = [];
+
+  public Editor = ClassicEditor;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -32,7 +38,7 @@ export class PodcastCreateComponent implements OnInit {
   ) {
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.getShows();
     this.prepareForm();
     this.subscribeEditForm();
@@ -143,5 +149,9 @@ export class PodcastCreateComponent implements OnInit {
       this.selectedShowId = 0;
     }
     this.selectedShowId = id;
+  }
+
+  onChange({editor}: ChangeEvent) {
+    this.infoFormGroup.controls['summary'].setValue(editor.getData());
   }
 }
