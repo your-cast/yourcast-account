@@ -1,0 +1,46 @@
+@mixin badge($color, $background) {
+    display: inline-block;
+    padding: .25em .4em;
+    font-size: 90%;
+    font-weight: 700;
+    line-height: 1;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: .25rem;
+    transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+    color: $color;
+    background-color: $background;
+}
+
+.badge-gray {
+    @include badge(#fff, #6c757d);
+}
+
+.badge-blue {
+    @include badge(#fff, #007bff);
+}
+
+.badge-accent {
+    @include badge(#fff, #00a9e0);
+}
+
+.badge-aliceblue {
+    @include badge(#000, #F0F8FF);
+}
+
+.badge-green {
+    @include badge(#fff, #28a745);
+}
+
+.badge-mintcream {
+    @include badge(#000, #F5FFFA);
+}
+
+.badge-red {
+    @include badge(#fff, #dc3545);
+}
+
+.badge-yellow {
+    @include badge(#212529, #ffc107);
+}

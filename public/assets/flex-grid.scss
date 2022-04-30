@@ -1,0 +1,67 @@
+@mixin flex-grid-with-gutter($cols, $gutter) {
+    display: flex;
+    flex-wrap: wrap;
+
+    > * {
+        // Reset to prevent external styles break the grid.
+        margin-left: 0;
+        margin-bottom: 0;
+        $item-width: calc((100% / #{$cols}) - #{$gutter} + (#{$gutter} / #{$cols}));
+        margin-right: $gutter;
+        width: $item-width;
+        box-sizing: border-box;
+
+        // We add the gutter for all items except the first row.
+        &:nth-child(n+#{$cols + 1}) {
+            margin-top: $gutter;
+        }
+
+        // When we reach the cols per line, the last
+        // col item must not have margin right.
+        &:nth-child(#{$cols}n) {
+            margin-right: 0;
+        }
+
+    }
+}
+
+@mixin flex-grid($cols) {
+    display: flex;
+    flex-wrap: wrap;
+
+    > * {
+        // Reset to prevent external styles break the grid.
+        margin-left: 0;
+        margin-bottom: 0;
+        $item-width: calc((100% / #{$cols}));
+        width: $item-width;
+        box-sizing: border-box;
+
+    }
+}
+
+/////////////////////////////////////////
+.flex-2-cols {
+    @include flex-grid(2)
+}
+
+.flex-3-cols {
+    @include flex-grid(3)
+}
+
+.flex-4-cols {
+    @include flex-grid(4)
+}
+
+.flex-4-cols-gutter-20 {
+    @include flex-grid-with-gutter(4, 20px)
+}
+
+.flex-2-cols-gutter-20 {
+    @include flex-grid-with-gutter(2, 20px)
+}
+
+
+.flex-6-cols {
+    @include flex-grid(6)
+}

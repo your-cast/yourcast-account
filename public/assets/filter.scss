@@ -1,0 +1,64 @@
+.filter-actions {
+  text-align: right;
+  width: 7rem;
+  min-width: 7rem;
+}
+
+.mat-chip-list-wrapper {
+  display: ruby !important;
+  margin: 0 !important;
+}
+
+.mat-custom-style {
+  min-height: 1.5rem;
+  line-height: 1.5rem;
+  font-size: 0.825rem;
+}
+
+.filter-body {
+  padding: 20px;
+  overflow: hidden;
+}
+
+.w-20em {
+  width: 15em;
+}
+
+.w-170px {
+  width: 170px;
+}
+
+.chip-custom-icon {
+  margin-bottom: -0.4rem !important;
+  font-size: 1.2rem !important;
+  opacity: 0.4;
+  cursor: pointer;
+}
+
+::ng-deep .mat-datepicker-toggle {
+  color: #00a9e0;
+}
+
+.mat-option {
+  font-size: 1rem;
+}
+
+.mat-form-field-infix {
+  height: 19px;
+}
+
+.checkbox-round-trip {
+  top: -0.3rem;
+  position: inherit;
+  color: #7d657d;
+}
+
+
+.custom-checkbox-round-trip {
+  .mat-form-field-infix {
+    height: 19px;
+  }
+}
+
+
+

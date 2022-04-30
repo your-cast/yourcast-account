@@ -1,0 +1,38 @@
+.admin-block > h3 {
+  margin-top: 1em;
+  margin-bottom: .3em;
+  font-size: 1.2em;
+  color: rgb(0, 112, 201);
+}
+
+.admin-block > h4 {
+  margin-top: .8em;
+  margin-bottom: .2em;
+  font-size: 1.05em;
+}
+
+.admin-table {
+  width: 100%;
+  transition: none !important;
+  box-shadow: none !important;
+}
+
+span.badge {
+  min-width: auto !important;
+}
+
+.admin-table td,
+.admin-table td.mat-cell {
+  padding-top: 3px;
+  padding-bottom: 3px;
+}
+
+.price-currency {
+  font-size: .8em;
+  padding-left: .3em;
+  color: #999;
+}
+
+.filter-field .mat-form-field-wrapper {
+  padding-bottom: 0.4em !important;
+}

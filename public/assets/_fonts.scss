@@ -1,0 +1,56 @@
+@import "fonts.variables";
+
+h1, .h1 {
+  letter-spacing: $h1-letter-spacing !important;
+}
+
+h2, .h2 {
+  letter-spacing: $h2-letter-spacing !important;
+}
+
+h3, .h3 {
+  letter-spacing: $h3-letter-spacing !important;
+}
+
+h4, .h4 {
+  letter-spacing: $h4-letter-spacing !important;
+}
+
+h5, .h5 {
+  letter-spacing: $h5-letter-spacing !important;
+}
+
+h6, .h6 {
+  letter-spacing: $h6-letter-spacing !important;
+}
+
+.mat-display-1 {
+  letter-spacing: $display1-letter-spacing !important;
+}
+
+.mat-display-2 {
+  letter-spacing: $display2-letter-spacing !important;
+}
+
+.mat-display-3 {
+  letter-spacing: $display3-letter-spacing !important;
+}
+
+.mat-display-4 {
+  letter-spacing: $display4-letter-spacing !important;
+}
+
+caption {
+  font-size: $caption-font-size;
+  letter-spacing: $caption-letter-spacing
+}
+
+blockquote {
+  font-style: $blockquote-font-style;
+  letter-spacing: $blockquote-letter-spacing;
+  line-height: $blockquote-line-height;
+}
+
+mark {
+  color: $mark-color;
+}
