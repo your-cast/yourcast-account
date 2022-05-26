@@ -14,6 +14,10 @@ export class EpisodesService extends ApiService {
     return this.get('v1/episodes/list/');
   }
 
+  showEpisodesList(showId: any): Observable<any> {
+    return this.get('v1/episodes/show/' + showId + '/list/');
+  }
+
   getEpisodeInfo(id: any): Observable<any> {
     return this.get('v1/episodes/' + id);
   }

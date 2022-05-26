@@ -134,22 +134,22 @@
         </mat-form-field>
       </div>
 
-<!--      <div class="d-flex align-content-start pb-4">-->
-<!--        <mat-form-field appearance="fill">-->
-<!--          <mat-label>Number</mat-label>-->
-<!--          <input type="text"-->
-<!--                 placeholder="Pick one"-->
-<!--                 aria-label="Number"-->
-<!--                 matInput-->
-<!--                 formControlName="timezone"-->
-<!--                 [matAutocomplete]="auto">-->
-<!--          <mat-autocomplete #auto="matAutocomplete">-->
-<!--            <mat-option *ngFor="let timezone of filteredTimezones | async" [value]="timezone.value">-->
-<!--              {{timezone.name}}-->
-<!--            </mat-option>-->
-<!--          </mat-autocomplete>-->
-<!--        </mat-form-field>-->
-<!--      </div>-->
+      <div class="d-flex align-content-start pb-4">
+        <mat-form-field appearance="fill">
+          <mat-label>Number</mat-label>
+          <input type="text"
+                 placeholder="Pick one"
+                 aria-label="Number"
+                 matInput
+                 formControlName="timezone"
+                 [matAutocomplete]="auto">
+          <mat-autocomplete #auto="matAutocomplete">
+            <mat-option *ngFor="let timezone of filteredTimezones | async" [value]="timezone.value">
+              {{timezone.name}}
+            </mat-option>
+          </mat-autocomplete>
+        </mat-form-field>
+      </div>
 
       <div class="d-flex align-content-start pb-4">
         <mat-form-field appearance="fill">

@@ -10,6 +10,7 @@ import {ShowService} from '../../../services/show.service';
 // @ts-ignore
 import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import {ChangeEvent} from '@ckeditor/ckeditor5-angular';
+import {AlertService} from '../../../services/alert.service';
 
 @Component({
   selector: 'app-podcast-create',
@@ -34,7 +35,7 @@ export class PodcastCreateComponent implements OnInit {
     private audioFileService: AudioFileService,
     private imageService: ImageService,
     private router: Router,
-    public notificationService: NotificationService
+    public alertService: AlertService
   ) {
   }
 
@@ -96,10 +97,7 @@ export class PodcastCreateComponent implements OnInit {
     this.episodesService.createEpisode(formData).subscribe(response => {
       this.router.navigate(['/shows/list']);
 
-      this.notificationService.openNotification({
-        message: 'New episode added to your show!',
-        type: 'check'
-      });
+      this.alertService.success('New episode added to your show!');
     });
   }
 
