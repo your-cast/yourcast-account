@@ -44,9 +44,23 @@ export class ShowDetailComponent implements OnInit {
 
     this.allRequestFinished$.subscribe(value => {
       this.show = value[0].result;
+      this.episodesDataSource = value[1].result;
     }, error => {
       console.log(error)
       this.alertService.error('Something want wrong!');
     });
+  }
+
+  getClassByStatus(status: string) {
+    switch (status) {
+      case 'enabled':
+        return 'badge badge-green';
+      case 'drafted':
+        return 'badge badge-yellow';
+      case 'disabled':
+        return 'badge badge-gray';
+      default:
+        return 'badge badge-blue';
+    }
   }
 }
