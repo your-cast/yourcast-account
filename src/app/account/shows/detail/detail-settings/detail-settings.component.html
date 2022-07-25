@@ -1,0 +1,50 @@
+<form [formGroup]="settingsFormGroup">
+  <h2 class="margin-10">Publish show?</h2>
+
+  <section class="checkbox-section">
+    <mat-slide-toggle class="margin-10" formControlName="publish"> Publish</mat-slide-toggle>
+  </section>
+
+  <h2 class="margin-10">Show configuration</h2>
+
+  <div class="flex-row flex-2-cols">
+    <mat-form-field appearance="fill">
+      <mat-label>Title</mat-label>
+      <input matInput placeholder="Title" formControlName="title" required>
+    </mat-form-field>
+  </div>
+  <div class="flex-row flex-2-cols">
+    <mat-form-field appearance="fill">
+      <mat-label>Description</mat-label>
+      <textarea matInput rows="5" placeholder="Description" formControlName="description" required></textarea>
+    </mat-form-field>
+  </div>
+
+  <h2 class="margin-10">Artwork</h2>
+
+  <div class="form-group row justify-content-md-center">
+    <div class="d-flex mb-3">
+      <figure class="pr-3">
+        <img class="rounded-pill w200" [src]="image" alt="artwork" *ngIf="image">
+        <img class="rounded-pill w200" src="/assets/image/placeholder-image.png" alt="artwork" *ngIf="!image">
+      </figure>
+      <div class="pl-3">
+        <input type="file" accept=".png, .jpg, .jpeg" hidden #uploader (change)="uploadFile($event)">
+        <button mat-raised-button color="warn" (click)="uploader.click()">Change Artwork</button>
+        <p class="small text-muted mt-3">
+          We recommend using an image that is 3000px wide<br>and we will
+          automatically crop it to a square.</p>
+        <p class="small text-muted mt-3">
+          You can skip this for now if you want but it will be required to
+          publish.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="d-flex">
+    <div class="d-flex pl-3">
+      <button mat-raised-button color="primary" (click)="handleUpdate()">Update</button>
+    </div>
+  </div>
+</form>
