@@ -15,6 +15,7 @@ import {UsersListComponent} from './users/list/users-list.component';
 import {UsersDetailComponent} from './users/detail/users-detail.component';
 import {UserIpHistoryComponent} from './users/detail/user-ip-history/user-ip-history.component';
 import {CKEditorModule} from '@ckeditor/ckeditor5-angular';
+import {DetailSettingsComponent} from './shows/detail/detail-settings/detail-settings.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import {CKEditorModule} from '@ckeditor/ckeditor5-angular';
     ShowCreateComponent,
     ShowListComponent,
     ShowDetailComponent,
+    DetailSettingsComponent,
     PodcastCreateComponent,
     EmailConfirmComponent,
     UsersListComponent,
