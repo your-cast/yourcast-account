@@ -55,7 +55,6 @@ export class PodcastCreateComponent implements OnInit {
     this.infoFormGroup = this.formBuilder.group({
       title: ['', Validators.required],
       subtitle: ['', Validators.required],
-      link: ['', Validators.required],
       season: ['1', Validators.required],
       episode: ['1', Validators.required],
       alias: ['', Validators.required],
@@ -66,9 +65,53 @@ export class PodcastCreateComponent implements OnInit {
   }
 
   subscribeEditForm(): void {
+    const english = /^[A-Za-z\s]*$/;
     this.infoFormGroup.controls['title'].valueChanges.subscribe((value: any) => {
-      console.log('here');
+      if (english.test(value)) {
+        this.infoFormGroup.patchValue({
+          alias: this.replaceSymbols(value),
+        });
+      } else {
+        this.infoFormGroup.patchValue({
+          alias: this.replaceCyrillicSymbols(value),
+        });
+      }
     });
+  }
+
+  replaceSymbols(value: string): string {
+    const replace = /[^A-Z\d]/ig;
+    return value.replace(replace, '-');
+  }
+
+  replaceCyrillicSymbols(value: string): string {
+    const cyrillic = {
+      'а': 'a', 'б': 'b', 'в': 'v', 'г': 'g', 'д': 'd',
+      'е': 'e', 'ё': 'e', 'ж': 'j', 'з': 'z', 'и': 'i',
+      'к': 'k', 'л': 'l', 'м': 'm', 'н': 'n', 'о': 'o',
+      'п': 'p', 'р': 'r', 'с': 's', 'т': 't', 'у': 'u',
+      'ф': 'f', 'х': 'h', 'ц': 'c', 'ч': 'ch', 'ш': 'sh',
+      'щ': 'shch', 'ы': 'y', 'э': 'e', 'ю': 'u', 'я': 'ya'
+    };
+
+    const translate = [];
+
+    value = value.replace(/[ъь]+/g, '').replace(/й/g, 'i');
+
+    for (let i = 0; i < value.length; ++i) {
+      translate.push(
+        // @ts-ignore
+        cyrillic[value[i]]
+        // @ts-ignore
+        || cyrillic[value[i].toLowerCase()] == undefined && value[i]
+        // @ts-ignore
+        || cyrillic[value[i].toLowerCase()].replace(/^(.)/, function (match) {
+          return match.toUpperCase()
+        })
+      );
+    }
+
+    return this.replaceSymbols(translate.join(''));
   }
 
   validShowInfo(): boolean {
