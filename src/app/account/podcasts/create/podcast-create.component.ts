@@ -120,6 +120,7 @@ export class PodcastCreateComponent implements OnInit {
 
   submitForm() {
     if (!this.validShowInfo()) {
+      console.log(this.validShowInfo())
       return;
     }
 
@@ -128,7 +129,6 @@ export class PodcastCreateComponent implements OnInit {
       audio_id: this.audioFile.id,
       title: this.infoFormGroup.controls['title'].value,
       subtitle: this.infoFormGroup.controls['subtitle'].value,
-      link: this.infoFormGroup.controls['link'].value,
       season: this.infoFormGroup.controls['season'].value,
       episode: this.infoFormGroup.controls['episode'].value,
       alias: this.infoFormGroup.controls['alias'].value,
