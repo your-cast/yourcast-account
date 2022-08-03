@@ -55,6 +55,7 @@ export class PodcastCreateComponent implements OnInit {
     this.infoFormGroup = this.formBuilder.group({
       title: ['', Validators.required],
       subtitle: ['', Validators.required],
+      link: ['', Validators.required],
       season: ['1', Validators.required],
       episode: ['1', Validators.required],
       alias: ['', Validators.required],
@@ -129,6 +130,7 @@ export class PodcastCreateComponent implements OnInit {
       audio_id: this.audioFile.id,
       title: this.infoFormGroup.controls['title'].value,
       subtitle: this.infoFormGroup.controls['subtitle'].value,
+      link: this.infoFormGroup.controls['link'].value,
       season: this.infoFormGroup.controls['season'].value,
       episode: this.infoFormGroup.controls['episode'].value,
       alias: this.infoFormGroup.controls['alias'].value,

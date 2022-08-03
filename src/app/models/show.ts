@@ -14,6 +14,7 @@ export interface Show {
   podcast_owner: string
   status: string
   tags: string
+  link: string
   timezone: string
   title: string
   token: string

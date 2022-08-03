@@ -28,12 +28,14 @@ export class DetailSettingsComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.image = this.show.artwork;
     this.prepareForm();
   }
 
   prepareForm(): void {
     this.settingsFormGroup = this.formBuilder.group({
       title: this.show.title,
+      link: this.show.link,
       description: this.show.description,
       status: this.show.status === 'enabled',
     });
@@ -58,6 +60,7 @@ export class DetailSettingsComponent implements OnInit {
     const formData = {
       title: this.settingsFormGroup.controls['title'].value,
       description: this.settingsFormGroup.controls['description'].value,
+      link: this.settingsFormGroup.controls['link'].value,
       status: this.settingsFormGroup.controls['status'].value,
       artwork: this.image,
     };
