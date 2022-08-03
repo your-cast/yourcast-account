@@ -10,6 +10,10 @@ export class ShowService extends ApiService {
     return this.post('v1/show/create', formData);
   }
 
+  updateShow(formData: any, id: any): Observable<any> {
+    return this.put('v1/show/update/' + id, formData);
+  }
+
   showList(): Observable<any> {
     return this.get('v1/show/list');
   }
