@@ -82,7 +82,7 @@ export class PodcastCreateComponent implements OnInit {
 
   replaceSymbols(value: string): string {
     const replace = /[^A-Z\d]/ig;
-    return value.replace(replace, '-');
+    return value.replace(replace, '-').toLowerCase();
   }
 
   replaceCyrillicSymbols(value: string): string {
@@ -112,7 +112,7 @@ export class PodcastCreateComponent implements OnInit {
       );
     }
 
-    return this.replaceSymbols(translate.join(''));
+    return this.replaceSymbols(translate.join('')).toLowerCase();
   }
 
   validShowInfo(): boolean {
@@ -121,13 +121,13 @@ export class PodcastCreateComponent implements OnInit {
 
   submitForm() {
     if (!this.validShowInfo()) {
-      console.log(this.validShowInfo())
       return;
     }
 
     const formData = {
       show_id: this.selectedShowId,
       audio_id: this.audioFile.id,
+      cover: this.image,
       title: this.infoFormGroup.controls['title'].value,
       subtitle: this.infoFormGroup.controls['subtitle'].value,
       link: this.infoFormGroup.controls['link'].value,
