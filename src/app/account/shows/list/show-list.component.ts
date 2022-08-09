@@ -43,4 +43,16 @@ export class ShowListComponent extends TableComponent implements OnInit {
   handleMoveToDetails(element: any): void {
     this.router.navigate(['/shows/details/' + element.id]);
   }
+
+  getClassByStatus(status: string): string {
+    const value = status.toLowerCase();
+    switch (value) {
+      case 'enabled':
+        return 'badge badge-green';
+      case 'disabled':
+        return 'badge badge-red';
+      default:
+        return 'badge badge-gray';
+    }
+  }
 }
