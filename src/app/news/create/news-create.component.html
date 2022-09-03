@@ -1,0 +1,109 @@
+<p>NEWS CREATE</p>
+
+<mat-card>
+  <form [formGroup]="infoFormGroup">
+    <mat-card-title>General</mat-card-title>
+    <mat-divider></mat-divider>
+    <mat-card-content>
+      <div class="d-flex">
+        <div class="upload w-45">
+          <span class="label">Cover</span>
+          <div class="uploaded-cover-zone" *ngIf="image">
+            <img class="uploaded-cover" [src]="image" *ngIf="image" alt="cover">
+          </div>
+          <div class="upload-zone upload-zone-select" (click)="imageUploader.click()" *ngIf="!image">
+            <span class="upload-zone-button">
+              <input type="file" accept="image/*" hidden #imageUploader (change)="uploadImage($event)">
+              <span>
+                <span>Upload your cover</span>
+                <br>
+                <span>Square PNG or JPEG files. (1400 - 3000px)</span>
+              </span>
+            </span>
+          </div>
+        </div>
+        <div class="other w-100">
+          <div>
+            <mat-form-field appearance="fill" class="w-100">
+              <mat-label>Name</mat-label>
+              <input matInput placeholder="Name" formControlName="name" required>
+            </mat-form-field>
+          </div>
+          <div>
+            <mat-form-field appearance="fill" class="w-100">
+              <mat-label>Subtitle</mat-label>
+              <textarea matInput placeholder="Description" rows="4" formControlName="description" required></textarea>
+            </mat-form-field>
+          </div>
+          <div>
+            <span class="label">Enable news?</span>
+          </div>
+          <div>
+            <mat-slide-toggle formControlName="enabled"></mat-slide-toggle>
+          </div>
+        </div>
+      </div>
+      <div class="d-flex">
+        <div class="w-100">
+          <div>
+            <span class="label">Alias</span>
+          </div>
+          <div>
+            <mat-form-field appearance="fill">
+              <span matPrefix>https://your-cast.com/news/</span>
+              <input matInput placeholder="news-alias" formControlName="alias">
+              <mat-icon matSuffix>mode_edit</mat-icon>
+            </mat-form-field>
+          </div>
+          <span class="help">
+            <small>
+              Choose wisely, this will be the public URL of your episode and you won't be able to change it!
+              It can only contain alphanumeric characters and dashes.
+            </small>
+          </span>
+          <div>
+            <span class="label">Content</span>
+          </div>
+          <div>
+            <ckeditor [editor]="Editor" (change)="onChange($event)"></ckeditor>
+          </div>
+
+        </div>
+      </div>
+    </mat-card-content>
+  </form>
+</mat-card>
+<mat-card>
+  <mat-card-title>Publishing Settings</mat-card-title>
+  <mat-divider></mat-divider>
+  <mat-card-content>
+    <div>
+      <span class="label mt-4">Publish Date</span>
+    </div>
+    <div>
+      <mat-form-field appearance="fill">
+        <mat-label>Choose a date</mat-label>
+        <input matInput [matDatepicker]="picker">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+    </div>
+  </mat-card-content>
+</mat-card>
+<mat-card>
+  <mat-card-content>
+    <div class="d-flex justify-content-between">
+      <div class="d-flex">
+        <button mat-raised-button>Cancel</button>
+      </div>
+      <div class="d-flex">
+        <div class="d-flex pr-3">
+          <button mat-raised-button color="primary">Save as draft</button>
+        </div>
+        <div class="d-flex pl-3">
+          <button class="pl-3" mat-raised-button color="accent" (click)="submitForm()">Publish</button>
+        </div>
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>

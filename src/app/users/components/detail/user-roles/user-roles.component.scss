@@ -1,0 +1,55 @@
+.divider {
+    display: flex;
+    align-self: end;
+    width: 95% !important;
+    margin: 0 0 0 1rem;
+}
+
+.history-grid-row {
+    display: flex;
+    width: 100%;
+    padding: 0 1rem;
+}
+
+.grid-histroy-ip {
+    flex: 0 0 10%;
+}
+
+.grid-history-city {
+  flex: 0 0 25%;
+}
+
+.grid-supplier-toggle {
+    flex: 0 0 10%;
+    text-align: right;
+}
+
+.grid-supplier-reseller-active {
+    flex: 0 0 10%;
+    justify-content: center;
+    text-align: right;
+    cursor: pointer
+}
+
+.divider-position {
+    position: unset !important;
+}
+
+.is-disabled {
+    color: #00000026;
+}
+
+.is-enabled {
+    color: #00a9e0;
+}
+
+:host .mat-expansion-panel-header-title,
+:host .mat-expansion-panel-header-description {
+    flex-basis: 0;
+}
+
+:host .mat-expansion-panel-header-description {
+    padding-left: 3em;
+    justify-content: space-between;
+    align-items: center;
+}

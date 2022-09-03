@@ -9,10 +9,12 @@ import {ShowCreateComponent} from './account/shows/create/show-create.component'
 import {ShowListComponent} from './account/shows/list/show-list.component';
 import {ShowDetailComponent} from './account/shows/detail/show-detail.component';
 import {PodcastCreateComponent} from './account/podcasts/create/podcast-create.component';
-import {UsersListComponent} from './account/users/list/users-list.component';
 import {AppComponent} from './app.component';
 import {MainLayoutComponent} from './layouts/main-layout/main-layout.component';
-import {UsersDetailComponent} from './account/users/detail/users-detail.component';
+import {NewsListComponent} from './news/list/news-list.component';
+import {NewsCreateComponent} from './news/create/news-create.component';
+import {UsersDetailComponent} from './users/components/detail/users-detail.component';
+import {UsersListComponent} from './users/components/list/users-list.component';
 
 const appRoutes: Routes = [
   {
@@ -47,6 +49,14 @@ const appRoutes: Routes = [
       {
         path: 'episodes/list',
         component: ShowListComponent
+      },
+      {
+        path: 'news/list',
+        component: NewsListComponent
+      },
+      {
+        path: 'news/create',
+        component: NewsCreateComponent
       },
       {
         path: 'users/list',

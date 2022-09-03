@@ -11,9 +11,6 @@ import {ShowListComponent} from './shows/list/show-list.component';
 import {ShowDetailComponent} from './shows/detail/show-detail.component';
 import {PodcastCreateComponent} from './podcasts/create/podcast-create.component';
 import {NgxAudioPlayerModule} from 'ngx-audio-player';
-import {UsersListComponent} from './users/list/users-list.component';
-import {UsersDetailComponent} from './users/detail/users-detail.component';
-import {UserIpHistoryComponent} from './users/detail/user-ip-history/user-ip-history.component';
 import {CKEditorModule} from '@ckeditor/ckeditor5-angular';
 import {DetailSettingsComponent} from './shows/detail/detail-settings/detail-settings.component';
 
@@ -26,9 +23,6 @@ import {DetailSettingsComponent} from './shows/detail/detail-settings/detail-set
     DetailSettingsComponent,
     PodcastCreateComponent,
     EmailConfirmComponent,
-    UsersListComponent,
-    UsersDetailComponent,
-    UserIpHistoryComponent
   ],
   imports: [
     CommonModule,

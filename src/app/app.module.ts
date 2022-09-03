@@ -12,6 +12,8 @@ import {MaterialModule} from './material/material.module';
 import {TableComponent} from './common/table/table.component';
 import {LayoutsModule} from './layouts/layouts.module';
 import {Translations} from './pipes/translations';
+import {NewsModule} from './news/news.module';
+import {UsersModule} from './users/users.module';
 
 @NgModule({
   declarations: [
@@ -27,6 +29,8 @@ import {Translations} from './pipes/translations';
     SharedModule,
     AuthModule,
     AccountModule,
+    NewsModule,
+    UsersModule,
     LayoutsModule,
     MaterialModule
   ],

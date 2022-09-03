@@ -18,8 +18,7 @@ export class ApiService {
     private alertService: AlertService,
     private router: Router
   ) {
-    const headers = new HttpHeaders();
-    // const headers = new HttpHeaders().set('Content-Type', 'text/plain');
+    const headers = new HttpHeaders().set('Accept', 'application/json');
 
     this.options = {
       headers: headers
