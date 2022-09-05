@@ -18,7 +18,7 @@ export class ApiService {
     private alertService: AlertService,
     private router: Router
   ) {
-    const headers = new HttpHeaders().set('Accept', 'application/json');
+    const headers = new HttpHeaders().set('Accept', 'application/json').set('Correlation-Id', 'GuuQcoAkQL1xvuTzJ6kPscYcPYSYNyUtzSKU3Cv9');
 
     this.options = {
       headers: headers

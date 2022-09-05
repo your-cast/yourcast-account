@@ -46,7 +46,6 @@ export class ShowDetailComponent implements OnInit {
       this.show = value[0].result;
       this.episodesDataSource = value[1].result;
     }, error => {
-      console.log(error)
       this.alertService.error('Something want wrong!');
     });
   }

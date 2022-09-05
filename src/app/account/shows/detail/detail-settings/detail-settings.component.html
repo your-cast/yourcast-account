@@ -34,8 +34,8 @@
   <div class="form-group row justify-content-md-center">
     <div class="d-flex mb-3">
       <figure class="pr-3">
-        <img class="rounded-pill w200" [src]="show.artwork" alt="artwork" *ngIf="show.artwork">
-        <img class="rounded-pill w200" src="/assets/image/placeholder-image.png" alt="artwork" *ngIf="!show.artwork">
+        <img class="rounded-pill w200" [src]="image" alt="artwork" *ngIf="image">
+        <img class="rounded-pill w200" src="/assets/image/placeholder-image.png" alt="artwork" *ngIf="!image">
       </figure>
       <div class="pl-3">
         <input type="file" accept=".png, .jpg, .jpeg" hidden #uploader (change)="uploadFile($event)">

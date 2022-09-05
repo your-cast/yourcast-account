@@ -1,4 +1,4 @@
-<mat-expansion-panel class="mat-elevation-z1" (opened)="true" [expanded]="true" (closed)="false">
+<mat-expansion-panel class="mat-elevation-z1">
   <mat-expansion-panel-header>
     <mat-panel-title>
       User roles
@@ -7,78 +7,278 @@
       Assigned roles
     </mat-panel-description>
   </mat-expansion-panel-header>
-  <mat-grid-list cols="2" rowHeight="50px" class="mat-grid-list-el">
-    <form [formGroup]="userRolesFormGroup">
-      <div>
-        <div class="d-flex justify-content-between">
-          <div class="flex-row border-bottom pb-3">
-            <div class="m-2">
-              <strong>Webservices settings:</strong>
+  <form [formGroup]="userRolesFormGroup">
+    <div>
+      <div class="d-flex justify-content-between">
+        <div class="flex-row border-bottom pb-3 min-w-450">
+          <div class="m-2">
+            <strong>Show settings:</strong>
+          </div>
+          <div class="d-flex align-items-center mt-1 p-1">
+            <div class="pl-2">
+              <span>Read</span>
             </div>
-            <div class="d-flex align-items-center mt-1 p-1">
-              <div class="pl-2">
-                <span>Activate Webservices1</span>
-              </div>
-              <div class="ml-auto pr-2">
-                <div data-qa-attr="aw-enable-block">
-                  <mat-slide-toggle formControlName="webservices"
-                                    (change)="saveUserRoles($event, roles)"></mat-slide-toggle>
-                </div>
+            <div class="ml-auto pr-2">
+              <div>
+                <mat-slide-toggle formControlName="showRead" (change)="saveUserRoles($event, roles)"></mat-slide-toggle>
               </div>
             </div>
           </div>
-          <div class="flex-row border-bottom pb-3">
-            <div class="m-2">
-              <strong>Balance:</strong>
+          <div class="d-flex align-items-center mt-1 p-1">
+            <div class="pl-2">
+              <span>Write</span>
             </div>
-            <div class="d-flex align-items-center mt-1 p-1">
-              <div class="pl-2">
-                <span>Balance1</span>
+            <div class="ml-auto pr-2">
+              <div>
+                <mat-slide-toggle formControlName="showWrite" (change)="saveUserRoles($event, roles)"></mat-slide-toggle>
               </div>
-              <div class="ml-auto pr-2">
-                <div data-qa-attr="bal-enable-block">
-                  <mat-slide-toggle formControlName="balance"
-                                    (change)="saveUserRoles($event, roles)"></mat-slide-toggle>
-                </div>
+            </div>
+          </div>
+          <div class="d-flex align-items-center mt-1 p-1">
+            <div class="pl-2">
+              <span>Analytics</span>
+            </div>
+            <div class="ml-auto pr-2">
+              <div>
+                <mat-slide-toggle formControlName="showAnalytics" (change)="saveUserRoles($event, roles)"></mat-slide-toggle>
               </div>
             </div>
           </div>
         </div>
-        <div>
-          <div class="flex-row border-bottom pb-3">
-            <div class="m-2">
-              <strong>Webservices settings:</strong>
+        <div class="flex-row border-bottom pb-3 min-w-450">
+          <div class="m-2">
+            <strong>Episodes settings:</strong>
+          </div>
+          <div class="d-flex align-items-center mt-1 p-1">
+            <div class="pl-2">
+              <span>Read</span>
             </div>
-            <div class="d-flex align-items-center mt-1 p-1">
-              <div class="pl-2">
-                <span>Activate Webservices</span>
-              </div>
-              <div class="ml-auto pr-2">
-                <div data-qa-attr="aw-enable-block">
-                  <mat-slide-toggle formControlName="webservices"
-                                    (change)="saveUserRoles($event, roles)"></mat-slide-toggle>
-                </div>
+            <div class="ml-auto pr-2">
+              <div>
+                <mat-slide-toggle formControlName="episodesRead" (change)="saveUserRoles($event, roles)"></mat-slide-toggle>
               </div>
             </div>
           </div>
-          <div class="flex-row border-bottom pb-3">
-            <div class="m-2">
-              <strong>Balance:</strong>
+          <div class="d-flex align-items-center mt-1 p-1">
+            <div class="pl-2">
+              <span>Write</span>
             </div>
-            <div class="d-flex align-items-center mt-1 p-1">
-              <div class="pl-2">
-                <span>Balance</span>
-              </div>
-              <div class="ml-auto pr-2">
-                <div data-qa-attr="bal-enable-block">
-                  <mat-slide-toggle formControlName="balance"
-                                    (change)="saveUserRoles($event, roles)"></mat-slide-toggle>
-                </div>
+            <div class="ml-auto pr-2">
+              <div>
+                <mat-slide-toggle formControlName="episodesWrite" (change)="saveUserRoles($event, roles)"></mat-slide-toggle>
               </div>
             </div>
           </div>
         </div>
       </div>
-    </form>
-  </mat-grid-list>
+      <div class="d-flex justify-content-between">
+        <div class="flex-row border-bottom pb-3 min-w-450">
+          <div class="m-2">
+            <strong>News settings:</strong>
+          </div>
+          <div class="d-flex align-items-center mt-1 p-1">
+            <div class="pl-2">
+              <span>Read</span>
+            </div>
+            <div class="ml-auto pr-2">
+              <div>
+                <mat-slide-toggle formControlName="newsRead" (change)="saveUserRoles($event, roles)"></mat-slide-toggle>
+              </div>
+            </div>
+          </div>
+          <div class="d-flex align-items-center mt-1 p-1">
+            <div class="pl-2">
+              <span>Write</span>
+            </div>
+            <div class="ml-auto pr-2">
+              <div>
+                <mat-slide-toggle formControlName="newsWrite" (change)="saveUserRoles($event, roles)"></mat-slide-toggle>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="flex-row border-bottom pb-3 min-w-450">
+          <div class="m-2">
+            <strong>Subscribers settings:</strong>
+          </div>
+          <div class="d-flex align-items-center mt-1 p-1">
+            <div class="pl-2">
+              <span>Read</span>
+            </div>
+            <div class="ml-auto pr-2">
+              <div>
+                <mat-slide-toggle formControlName="subscribersRead" (change)="saveUserRoles($event, roles)"></mat-slide-toggle>
+              </div>
+            </div>
+          </div>
+          <div class="d-flex align-items-center mt-1 p-1">
+            <div class="pl-2">
+              <span>Write</span>
+            </div>
+            <div class="ml-auto pr-2">
+              <div>
+                <mat-slide-toggle formControlName="subscribersWrite" (change)="saveUserRoles($event, roles)"></mat-slide-toggle>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="d-flex justify-content-between">
+        <div class="flex-row border-bottom pb-3 min-w-450">
+          <div class="m-2">
+            <strong>Support settings:</strong>
+          </div>
+          <div class="d-flex align-items-center mt-1 p-1">
+            <div class="pl-2">
+              <span>Read</span>
+            </div>
+            <div class="ml-auto pr-2">
+              <div>
+                <mat-slide-toggle formControlName="supportRead" (change)="saveUserRoles($event, roles)"></mat-slide-toggle>
+              </div>
+            </div>
+          </div>
+          <div class="d-flex align-items-center mt-1 p-1">
+            <div class="pl-2">
+              <span>Write</span>
+            </div>
+            <div class="ml-auto pr-2">
+              <div>
+                <mat-slide-toggle formControlName="supportWrite" (change)="saveUserRoles($event, roles)"></mat-slide-toggle>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="flex-row border-bottom pb-3 min-w-450">
+          <div class="m-2">
+            <strong>Contacts form settings:</strong>
+          </div>
+          <div class="d-flex align-items-center mt-1 p-1">
+            <div class="pl-2">
+              <span>Read</span>
+            </div>
+            <div class="ml-auto pr-2">
+              <div>
+                <mat-slide-toggle formControlName="contactsFormRead" (change)="saveUserRoles($event, roles)"></mat-slide-toggle>
+              </div>
+            </div>
+          </div>
+          <div class="d-flex align-items-center mt-1 p-1">
+            <div class="pl-2">
+              <span>Write</span>
+            </div>
+            <div class="ml-auto pr-2">
+              <div>
+                <mat-slide-toggle formControlName="contactsFormWrite" (change)="saveUserRoles($event, roles)"></mat-slide-toggle>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="d-flex justify-content-between">
+        <div class="flex-row border-bottom pb-3 min-w-450">
+          <div class="m-2">
+            <strong>Users settings:</strong>
+          </div>
+          <div class="d-flex align-items-center mt-1 p-1">
+            <div class="pl-2">
+              <span>Read</span>
+            </div>
+            <div class="ml-auto pr-2">
+              <div>
+                <mat-slide-toggle formControlName="userRead" (change)="saveUserRoles($event, roles)"></mat-slide-toggle>
+              </div>
+            </div>
+          </div>
+          <div class="d-flex align-items-center mt-1 p-1">
+            <div class="pl-2">
+              <span>Write</span>
+            </div>
+            <div class="ml-auto pr-2">
+              <div>
+                <mat-slide-toggle formControlName="userWrite" (change)="saveUserRoles($event, roles)"></mat-slide-toggle>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="flex-row border-bottom pb-3 min-w-450">
+          <div class="m-2">
+            <strong>Profile settings:</strong>
+          </div>
+          <div class="d-flex align-items-center mt-1 p-1">
+            <div class="pl-2">
+              <span>Read</span>
+            </div>
+            <div class="ml-auto pr-2">
+              <div>
+                <mat-slide-toggle formControlName="profileRead" (change)="saveUserRoles($event, roles)"></mat-slide-toggle>
+              </div>
+            </div>
+          </div>
+          <div class="d-flex align-items-center mt-1 p-1">
+            <div class="pl-2">
+              <span>Write</span>
+            </div>
+            <div class="ml-auto pr-2">
+              <div>
+                <mat-slide-toggle formControlName="profileWrite" (change)="saveUserRoles($event, roles)"></mat-slide-toggle>
+              </div>
+            </div>
+          </div>
+          <div class="d-flex align-items-center mt-1 p-1">
+            <div class="pl-2">
+              <span>Roles</span>
+            </div>
+            <div class="ml-auto pr-2">
+              <div>
+                <mat-slide-toggle formControlName="rolesUpdate" (change)="saveUserRoles($event, roles)"></mat-slide-toggle>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="d-flex justify-content-between">
+        <div class="flex-row border-bottom pb-3 min-w-450">
+          <div class="m-2">
+            <strong>Notifications settings:</strong>
+          </div>
+          <div class="d-flex align-items-center mt-1 p-1">
+            <div class="pl-2">
+              <span>Read</span>
+            </div>
+            <div class="ml-auto pr-2">
+              <div>
+                <mat-slide-toggle formControlName="notificationsRead" (change)="saveUserRoles($event, roles)"></mat-slide-toggle>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="flex-row border-bottom pb-3 min-w-450">
+          <div class="m-2">
+            <strong>Settings settings:</strong>
+          </div>
+          <div class="d-flex align-items-center mt-1 p-1">
+            <div class="pl-2">
+              <span>Read</span>
+            </div>
+            <div class="ml-auto pr-2">
+              <div>
+                <mat-slide-toggle formControlName="settingsRead" (change)="saveUserRoles($event, roles)"></mat-slide-toggle>
+              </div>
+            </div>
+          </div>
+          <div class="d-flex align-items-center mt-1 p-1">
+            <div class="pl-2">
+              <span>Write</span>
+            </div>
+            <div class="ml-auto pr-2">
+              <div>
+                <mat-slide-toggle formControlName="settingsWrite" (change)="saveUserRoles($event, roles)"></mat-slide-toggle>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
 </mat-expansion-panel>
