@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup} from '@angular/forms';
 import {UserRole} from '../../../model/UserRole';
-import {MatSlideToggleChange} from '@angular/material/slide-toggle';
+import {AlertService} from '../../../../services/alert.service';
 
 @Component({
   selector: 'app-user-roles',
@@ -12,8 +12,7 @@ export class UserRolesComponent implements OnInit {
   userRolesFormGroup: FormGroup;
   roles: any[] = [];
 
-  constructor(private formBuilder: FormBuilder) {
-
+  constructor(private formBuilder: FormBuilder ,private alertService: AlertService) {
   }
 
   ngOnInit(): void {
@@ -46,7 +45,8 @@ export class UserRolesComponent implements OnInit {
     });
   }
 
-  saveUserRoles($event: MatSlideToggleChange, userRoles: any) {
-    console.log(userRoles);
+  saveUserRoles() {
+    console.log(this.userRolesFormGroup.value);
+    this.alertService.success('User roles was updated!');
   }
 }
