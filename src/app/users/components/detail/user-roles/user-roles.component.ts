@@ -1,7 +1,8 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup} from '@angular/forms';
 import {UserRole} from '../../../model/UserRole';
 import {AlertService} from '../../../../services/alert.service';
+import {UsersService} from '../../../../services/users.service';
 
 @Component({
   selector: 'app-user-roles',
@@ -10,9 +11,16 @@ import {AlertService} from '../../../../services/alert.service';
 })
 export class UserRolesComponent implements OnInit {
   userRolesFormGroup: FormGroup;
-  roles: any[] = [];
+  @Input()
+  roles: any[];
+  @Input()
+  user: string;
 
-  constructor(private formBuilder: FormBuilder ,private alertService: AlertService) {
+  constructor(
+    private formBuilder: FormBuilder,
+    private alertService: AlertService,
+    private usersService: UsersService
+  ) {
   }
 
   ngOnInit(): void {
@@ -46,6 +54,7 @@ export class UserRolesComponent implements OnInit {
   }
 
   saveUserRoles() {
+    this.usersService.updatePermissions(this.user, this.userRolesFormGroup.value).subscribe();
     console.log(this.userRolesFormGroup.value);
     this.alertService.success('User roles was updated!');
   }

@@ -9,7 +9,8 @@ import {ActivatedRoute} from '@angular/router';
 })
 export class UsersDetailComponent implements OnInit {
   user: any;
-  history: any[];
+  history: any[] = [];
+  roles: any[] = [];
 
   constructor(
     protected usersService: UsersService,
@@ -25,10 +26,18 @@ export class UsersDetailComponent implements OnInit {
     const id = this.activatedRoute.snapshot.paramMap.get('id');
     this.usersService.getUserDetail(id).subscribe(response => {
       this.user = response.result;
+      this.history = response.result.history;
+      this.prepareRoles();
     });
   }
 
-  openDialog() {
+  prepareRoles(): void {
+    this.user.roles.forEach((value: any) => {
+      this.roles.push(value.role);
+    })
+  }
+
+  openDialog(): void {
 
   }
 }

@@ -11,4 +11,8 @@ export class UsersService extends ApiService {
   getUserDetail(id: any): Observable<any> {
     return this.get('v1/user/' + id);
   }
+
+  updatePermissions(id: string, permissions: any): Observable<any> {
+    return this.put('v1/user/permissions', {user_id: id, permissions: permissions});
+  }
 }
