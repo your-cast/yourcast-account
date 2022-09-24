@@ -37,12 +37,12 @@
     </div>
   </mat-card>
 </div>
-<div class="w-100 d-flex justify-content-center">
+<div class="w-100 d-flex justify-content-center" *ngIf="user">
   <mat-card class="w-90">
     <mat-card-content>
       <mat-accordion [multi]="true" class="accordion-headers-align">
-<!--        <app-user-ip-history [history]="user.history"></app-user-ip-history>-->
-        <app-user-roles></app-user-roles>
+        <app-user-ip-history [history]="history"></app-user-ip-history>
+        <app-user-roles [roles]="roles" [user]="user.id"></app-user-roles>
       </mat-accordion>
     </mat-card-content>
   </mat-card>
