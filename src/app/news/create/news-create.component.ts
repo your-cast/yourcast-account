@@ -62,7 +62,7 @@ export class NewsCreateComponent implements OnInit {
 
   subscribeEditForm(): void {
     const english = /^[A-Za-z\s]*$/;
-    this.infoFormGroup.controls['title'].valueChanges.subscribe((value: any) => {
+    this.infoFormGroup.controls['name'].valueChanges.subscribe((value: any) => {
       if (english.test(value)) {
         this.infoFormGroup.patchValue({
           alias: this.replaceSymbols(value),
@@ -177,19 +177,7 @@ export class NewsCreateComponent implements OnInit {
     }
   }
 
-  deleteAudioFile() {
-    this.audioFileList = [];
-    this.audioFile = null;
-  }
-
-  handleSelectShow(id: number) {
-    if (this.selectedShowId === id) {
-      this.selectedShowId = 0;
-    }
-    this.selectedShowId = id;
-  }
-
   onChange({editor}: ChangeEvent) {
-    this.infoFormGroup.controls['summary'].setValue(editor.getData());
+    this.infoFormGroup.controls['content'].setValue(editor.getData());
   }
 }
