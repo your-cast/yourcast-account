@@ -33,10 +33,10 @@ export class MainLayoutComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.navItems = this.navigationsService.getNavigationItems();
-    this.authService.profile().subscribe(response => {
+    this.authService.profile().subscribe((response: any) => {
       this.user = response.user;
       this.hasShow = response.hasShow;
+      this.navItems = this.navigationsService.getNavigationItems();
       this.loading = false;
     });
   }

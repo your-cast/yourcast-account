@@ -1,22 +1,29 @@
 import {Injectable} from '@angular/core';
 import {NavItem} from '../models/nav-item';
+import {UserRole} from '../users/model/UserRole';
+import {PermissionsService} from './permissions.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class NavigationsService {
-  navigationItems: NavItem[] = [];
+  constructor(
+    private permissionService: PermissionsService
+  ) {
+  }
 
-  constructor() {
-    this.prepareItems()
+  isAllow(roles: string[]): boolean {
+    let isAllowed = true;
+    roles.forEach(role => {
+      if (this.permissionService.getUserPermissions().includes(role)) {
+        isAllowed = false;
+      }
+    });
+    return isAllowed;
   }
 
   getNavigationItems(): NavItem[] {
-    return this.navigationItems;
-  }
-
-  prepareItems(): void {
-    this.navigationItems = [
+    return [
       {
         id: 'home-menu',
         displayName: 'Home',
@@ -28,18 +35,27 @@ export class NavigationsService {
         displayName: 'Shows',
         iconName: 'sensors',
         route: 'shows',
+        disabled: this.isAllow([
+          UserRole.SHOW_READ
+        ]),
         children: [
-          {
-            id: 'show-create-menu',
-            displayName: 'Create show',
-            iconName: 'add_circle',
-            route: 'shows/create'
-          },
           {
             id: 'show-list-menu',
             displayName: 'List shows',
             iconName: 'contactless',
-            route: 'shows/list'
+            route: 'shows/list',
+            disabled: this.isAllow([
+              UserRole.SHOW_READ
+            ]),
+          },
+          {
+            id: 'show-create-menu',
+            displayName: 'Create show',
+            iconName: 'add_circle',
+            route: 'shows/create',
+            disabled: this.isAllow([
+              UserRole.SHOW_WRITE
+            ]),
           }
         ]
       },
@@ -48,12 +64,18 @@ export class NavigationsService {
         displayName: 'Episodes',
         iconName: 'podcasts',
         route: 'episodes',
+        disabled: this.isAllow([
+          UserRole.EPISODES_READ
+        ]),
         children: [
           {
             id: 'podcast-create-menu',
             displayName: 'Create episode',
             iconName: 'add_circle',
-            route: 'episodes/create'
+            route: 'episodes/create',
+            disabled: this.isAllow([
+              UserRole.EPISODES_WRITE
+            ]),
           }
         ]
       },
@@ -62,25 +84,35 @@ export class NavigationsService {
         id: 'plans-menu',
         displayName: 'Plans',
         iconName: 'payments',
-        route: 'plans'
+        route: 'plans',
+        disabled: true
       },
       {
         id: 'news-menu',
         displayName: 'News',
         iconName: 'newspaper',
         route: 'news',
+        disabled: this.isAllow([
+          UserRole.NEWS_READ
+        ]),
         children: [
           {
             id: 'news-create-menu',
             displayName: 'Create news',
             iconName: 'add_circle',
-            route: 'news/create'
+            route: 'news/create',
+            disabled: this.isAllow([
+              UserRole.NEWS_WRITE
+            ]),
           },
           {
             id: 'news-list-menu',
             displayName: 'News list',
             iconName: 'feed',
-            route: 'news/list'
+            route: 'news/list',
+            disabled: this.isAllow([
+              UserRole.NEWS_READ
+            ]),
           }
         ]
       },
@@ -88,31 +120,51 @@ export class NavigationsService {
         id: 'subscriber-menu',
         displayName: 'Subscribers',
         iconName: 'unsubscribe',
-        route: 'subscriber'
+        route: 'subscriber',
+        disabled: this.isAllow([
+          UserRole.SUBSCRIBERS_READ,
+          UserRole.SUBSCRIBERS_WRITE,
+        ]),
       },
       {
         id: 'contacts-menu',
         displayName: 'Contacts form',
         iconName: 'mark_email_unread',
-        route: 'contacts'
+        route: 'contacts',
+        disabled: this.isAllow([
+          UserRole.CONTACTS_READ,
+          UserRole.CONTACTS_WRITE,
+        ]),
       },
       {
         id: 'support-menu',
         displayName: 'Support',
         iconName: 'drafts',
-        route: 'support'
+        route: 'support',
+        disabled: this.isAllow([
+          UserRole.SUPPORT_READ,
+          UserRole.SUPPORT_WRITE,
+        ]),
       },
       {
-        id: 'list-menu',
+        id: 'users-menu',
         displayName: 'Users',
         iconName: 'people',
-        route: 'users/list'
+        route: 'users/list',
+        disabled: this.isAllow([
+          UserRole.USER_READ,
+          UserRole.USER_WRITE,
+        ]),
       },
       {
         id: 'settings-menu',
         displayName: 'Settings',
         iconName: 'settings',
         route: 'settings',
+        disabled: this.isAllow([
+          UserRole.SETTINGS_READ,
+          UserRole.SETTINGS_WRITE,
+        ]),
         children: [
           {
             id: 'languages-menu',
