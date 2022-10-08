@@ -1,9 +1,11 @@
 import {ApiService} from './api.service';
-import {environment} from '../../environments/environment';
 import {Injectable} from '@angular/core';
 import {map} from 'rxjs/operators';
+import {environment} from '../../environments/environment';
 import {Router} from '@angular/router';
-import {Observable} from 'rxjs';
+import {AppState} from '../store/store';
+import {Store} from '@ngrx/store';
+import {clearUser, setUser, setUserPermissions} from '../store/user/actions/user.actions';
 
 @Injectable({
   providedIn: 'root'
@@ -13,13 +15,24 @@ export class AuthService {
 
   constructor(
     private apiService: ApiService,
+    private store: Store<AppState>,
     private router: Router
   ) {
     this.apiUrl = environment.apiUrl;
   }
 
-  profile(): Observable<any> {
-    return this.apiService.get('v1/profile');
+  profile(): any {
+    return this.apiService.get('v1/profile').pipe(
+      map(response => {
+        if (response && response['success']) {
+          this.store.dispatch(setUser({data: response['user']}));
+          this.store.dispatch(setUserPermissions({data: response['roles']}));
+          return response;
+        } else {
+          return null;
+        }
+      })
+    )
   }
 
   login(credentials: any): any {
@@ -28,6 +41,8 @@ export class AuthService {
         if (response && response['access_token']) {
           localStorage.setItem('token', response['access_token']);
           localStorage.setItem('userId', response['user'].id);
+          this.store.dispatch(setUser({data: response['user']}));
+          this.store.dispatch(setUserPermissions({data: response['roles']}));
           return true;
         } else {
           return false;
@@ -38,7 +53,6 @@ export class AuthService {
   register(credentials: any): any {
     return this.apiService.post('v1/register', credentials).pipe(
       map(response => {
-        console.log(response);
         return true;
       }));
   }
@@ -48,8 +62,8 @@ export class AuthService {
       map(response => {
         return true;
       })).subscribe(response => {
-
       localStorage.removeItem('token');
+      this.store.dispatch(clearUser());
       this.router.navigate(['/auth/login']);
     });
   }

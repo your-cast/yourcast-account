@@ -14,6 +14,10 @@ import {LayoutsModule} from './layouts/layouts.module';
 import {Translations} from './pipes/translations';
 import {NewsModule} from './news/news.module';
 import {UsersModule} from './users/users.module';
+import {StoreModule} from '@ngrx/store';
+import {ROOT_REDUCER} from './store/root.reducer';
+import {StoreDevtoolsModule} from '@ngrx/store-devtools';
+import {environment} from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -32,7 +36,17 @@ import {UsersModule} from './users/users.module';
     NewsModule,
     UsersModule,
     LayoutsModule,
-    MaterialModule
+    MaterialModule,
+    StoreModule.forRoot(ROOT_REDUCER, {
+      runtimeChecks: {
+        strictStateImmutability: true,
+        strictActionImmutability: true
+      }
+    }),
+    StoreDevtoolsModule.instrument({
+      maxAge: 25, // Retains last 25 states
+      logOnly: environment.name === 'prod', // Restrict extension to log-only mode
+    }),
   ],
   bootstrap: [AppComponent],
   providers: [

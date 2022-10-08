@@ -4,8 +4,9 @@ import {BreadcrumbsComponent} from './breadcrumbs/breadcrumbs.component';
 import {PageContentComponent} from './page-content/page-content.component';
 import {NotificationComponent} from './notification/notification.component';
 import {NotFoundComponent} from './not-found/not-found.component';
-import {Footer} from './footer/footer';
 import {MaterialModule} from '../material/material.module';
+import {LoaderComponent} from './loader/loader.component';
+import {Footer} from './footer/footer';
 
 @NgModule({
   declarations: [
@@ -13,6 +14,7 @@ import {MaterialModule} from '../material/material.module';
     NotFoundComponent,
     PageContentComponent,
     NotificationComponent,
+    LoaderComponent,
     Footer
   ],
   exports: [
@@ -20,6 +22,7 @@ import {MaterialModule} from '../material/material.module';
     NotFoundComponent,
     PageContentComponent,
     NotificationComponent,
+    LoaderComponent,
     Footer
   ],
   imports: [

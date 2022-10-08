@@ -1,20 +1,27 @@
 import {Injectable} from '@angular/core';
+import {Observable} from 'rxjs';
+import {Store} from '@ngrx/store';
+import {AppState} from '../store/store';
+import {getUserPermissions} from '../store/user/reducers/user.reducer';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PermissionsService {
+  private currentUserPermissions$: Observable<any>;
+  private permissions: any;
 
-  private currentUser: any;
-
-  getUserRoles(): string[] {
-    if (this.currentUser) {
-      return this.currentUser.roles;
-    }
-    return [];
+  constructor(private store: Store<AppState>) {
+    this.currentUserPermissions$ = this.store.select(getUserPermissions);
+    this.currentUserPermissions$.subscribe(permissions => {
+      this.permissions = permissions;
+    });
   }
 
-  getCurrentUserLogin(): string {
-    return this.currentUser.username;
+  getUserPermissions(): string[] {
+    if (this.permissions) {
+      return this.permissions;
+    }
+    return [];
   }
 }
