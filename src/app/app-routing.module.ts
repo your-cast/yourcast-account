@@ -15,6 +15,7 @@ import {NewsListComponent} from './news/list/news-list.component';
 import {NewsCreateComponent} from './news/create/news-create.component';
 import {UsersDetailComponent} from './users/components/detail/users-detail.component';
 import {UsersListComponent} from './users/components/list/users-list.component';
+import {NotificationsComponent} from './users/components/notifications/notifications.component';
 
 const appRoutes: Routes = [
   {
@@ -65,6 +66,10 @@ const appRoutes: Routes = [
       {
         path: 'users/detail/:id',
         component: UsersDetailComponent
+      },
+      {
+        path: 'notifications',
+        component: NotificationsComponent
       }
     ]
   },
