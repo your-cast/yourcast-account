@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {ActivatedRoute, Router} from '@angular/router';
 import {AuthService} from '../../services/auth.service';
+import {AlertService} from '../../services/alert.service';
 
 @Component({
   selector: 'app-registration',
@@ -22,7 +23,8 @@ export class RegistrationComponent implements OnInit {
   constructor(
     private router: Router,
     private route: ActivatedRoute,
-    private authService: AuthService
+    private authService: AuthService,
+    private alertService: AlertService
   ) {
     this.showSpinner = false;
   }
@@ -46,6 +48,7 @@ export class RegistrationComponent implements OnInit {
       .subscribe((result: any) => {
           this.showSpinner = false;
           if (result) {
+            this.alertService.success('Registration complete. Enter your credential for auth.');
             this.router.navigate(['/auth/login']);
           }
         },

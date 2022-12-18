@@ -18,6 +18,7 @@ export class MainLayoutComponent implements OnInit, OnDestroy {
   loading: boolean = true;
   hasShow: boolean = false;
   user: any = {};
+  notifications: [] = [];
 
   isHandset$: Observable<boolean> = this.breakpointObserver.observe([Breakpoints.Large, Breakpoints.XLarge])
     .pipe(
@@ -36,6 +37,7 @@ export class MainLayoutComponent implements OnInit, OnDestroy {
     this.authService.profile().subscribe((response: any) => {
       this.user = response.user;
       this.hasShow = response.hasShow;
+      this.notifications = response.notifications;
       this.navItems = this.navigationsService.getNavigationItems();
       this.loading = false;
     });
@@ -50,5 +52,9 @@ export class MainLayoutComponent implements OnInit, OnDestroy {
 
   handleMoveToDetail(id: string) {
     this.router.navigate(['/users/detail/' + id]);
+  }
+
+  handleMoveToNotifications(id: string) {
+    this.router.navigate(['/notifications']);
   }
 }

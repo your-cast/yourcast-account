@@ -8,13 +8,15 @@ import {UsersDetailComponent} from './components/detail/users-detail.component';
 import {UserRolesComponent} from './components/detail/user-roles/user-roles.component';
 import {UserIpHistoryComponent} from './components/detail/user-ip-history/user-ip-history.component';
 import {UsersListComponent} from './components/list/users-list.component';
+import {NotificationsComponent} from './components/notifications/notifications.component';
 
 @NgModule({
   declarations: [
     UsersListComponent,
     UsersDetailComponent,
     UserRolesComponent,
-    UserIpHistoryComponent
+    UserIpHistoryComponent,
+    NotificationsComponent
   ],
   imports: [
     CommonModule,

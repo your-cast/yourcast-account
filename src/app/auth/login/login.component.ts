@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {ActivatedRoute, Router} from '@angular/router';
 import {AuthService} from '../../services/auth.service';
+import {AlertService} from '../../services/alert.service';
 
 @Component({
   selector: 'app-login',
@@ -21,6 +22,7 @@ export class LoginComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute,
     private authService: AuthService,
+    private alertService: AlertService
   ) {
     this.showSpinner = false;
   }
@@ -52,6 +54,7 @@ export class LoginComponent implements OnInit {
           }
         },
         () => {
+          this.alertService.error('Invalid credentials. Email not found or wrong password.');
           this.showSpinner = false;
         });
   }
