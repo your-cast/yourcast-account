@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
+import {ShowService} from '../../services/show.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -8,8 +9,10 @@ import {ActivatedRoute, Router} from '@angular/router';
 })
 export class DashboardComponent implements OnInit {
   showSpinner: boolean;
+  data: any;
 
   constructor(
+    private showService: ShowService,
     private router: Router,
     private route: ActivatedRoute
   ) {
@@ -17,5 +20,12 @@ export class DashboardComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.getData();
+  }
+
+  getData(): void {
+    this.showService.showList().subscribe(response => {
+      this.data = response.result;
+    });
   }
 }

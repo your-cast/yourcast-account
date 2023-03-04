@@ -1,1 +1,28 @@
 <p>DASHBOARD</p>
+
+<div class="d-flex justify-content-center">
+  <div class="alert alert-primary">
+    Select your show. Don't worry! You can always choose another.
+  </div>
+</div>
+
+<div class="shows-row">
+  <div class="shows" *ngFor="let show of data">
+    <div
+      [class]="'shows-area shows-area-select'">
+        <span class="upload-zone-button">
+          <span>
+            <span><strong>{{ show.title }}</strong></span>
+            <br>
+            <span>{{ show.description }}</span>
+            <br>
+            <span>
+              <img class="rounded-pill w70" [src]="show.artwork" alt="artwork" *ngIf="show.artwork">
+              <img class="rounded-pill w70" src="/assets/image/placeholder-image.png" alt="artwork"
+                   *ngIf="!show.artwork">
+            </span>
+          </span>
+        </span>
+    </div>
+  </div>
+</div>
