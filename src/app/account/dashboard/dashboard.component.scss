@@ -1,70 +1,63 @@
-.center {
-  width: 300px;
-  margin: 10px auto;
+.w70 {
+  width: 70px;
 }
 
-.main-div {
-  height: 100vh;
+.alert-primary {
+  color: #004085;
+  background: rgba(80, 102, 225, 0.3) !important;
+}
+
+.alert {
+  position: relative;
+  padding: 0.75rem 1.25rem;
+  margin-bottom: 1rem;
+  border: 1px solid transparent;
+  border-radius: 0.25rem;
+}
+
+.shows-row {
   display: flex;
-  justify-content: center;
-  align-items: center;
+  flex-direction: row;
+  flex-wrap: wrap;
 }
 
-.example-full-width {
+.shows {
+  margin-top: 25px !important;
+}
+
+.shows-area {
+  min-height: 200px;
+  position: relative;
   width: 100%;
 }
 
-.right {
-  float: right;
+.shows-area-select {
+  background-color: #fafafa;
+  border: 1px dashed #ededf7;
+  border-radius: 4px;
+  cursor: pointer;
+  height: 100px;
+  width: 250px;
+  margin-bottom: 8px;
+  margin-right: 8px;
+  text-align: center;
+  transition: border-color .3s;
+  vertical-align: top;
 }
 
-.form-additions {
-  height: 14px;
-  display: flex;
-  justify-content: center;
+.shows-area-select:hover {
+  border-color: #4040a8;
 }
 
-.logo-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+.shows-area-selected {
+  background: rgba(64, 64, 168, 0.4);
+  border-color: #4040a8;
+}
+
+.shows-area-button {
   align-items: center;
-}
-
-.title {
-  font-weight: bold;
-  font-size: 36px;
-}
-
-.subtitle {
-  font-weight: bold;
-  font-size: 28px;
-}
-
-.sing-in-button {
-  font-size: 16px;
-  height: 2.5em;
-  font-weight: bold;
-}
-
-:host ::ng-deep .mat-form-field-flex > .mat-form-field-infix {
-  padding: 0.25em 0px 0.75em 0px !important;
-}
-
-:host ::ng-deep .mat-form-field-label-wrapper {
-  top: -1.3em;
-}
-
-:host ::ng-deep .mat-form-field-appearance-outline.mat-form-field-can-float.mat-form-field-should-float .mat-form-field-label {
-  transform: translateY(-1.1em) scale(.75);
-  width: 133.33333%;
-}
-
-.divider:before, .divider:after {
-  content: "";
-  display: inline-block;
-  width: 50%;
-  margin: 0 .5em 0 -55%;
-  vertical-align: middle;
-  border-bottom: 1px solid;
+  display: flex;
+  height: 100%;
+  justify-content: center;
+  text-align: center;
 }

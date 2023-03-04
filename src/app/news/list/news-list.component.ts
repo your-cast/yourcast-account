@@ -2,7 +2,6 @@ import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import {ShowService} from '../../services/show.service';
 import {TableComponent} from '../../common/table/table.component';
-import {NotificationService} from '../../services/notification.service';
 
 @Component({
   selector: 'app-show-list',
@@ -13,7 +12,6 @@ export class NewsListComponent extends TableComponent implements OnInit {
   constructor(
     protected showService: ShowService,
     private router: Router,
-    public notificationService: NotificationService
   ) {
     super(showService);
   }
